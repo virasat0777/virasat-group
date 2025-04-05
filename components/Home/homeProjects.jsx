@@ -34,12 +34,12 @@ const HomeProjects = () => {
 
   return (
     <div className="lg:pt-[4.167vw] pt-4 overflow-x-hidden">
-      <div className="flex justify-between">
+      <div className="flex justify-end ">
         {/* Left Swiper (Image 1) */}
-        <div className="w-[50%]">
-          <div className="lg:w-[80%] flex justify-between items-center flex-col bg-green-800">
+        <div className="w-[40%]">
+          <div className="lg:w-[80%] flex justify-between items-center flex-col ">
             <SectionTitle title={"OUR PROJECTS"} />
-            <div className="lg:mt-[3.646vw] mt-2 w-full mx-auto text-center">
+            <div className="lg:mt-[3.646vw] mt-2 w-full ">
               <Swiper
                 slidesPerView={1}
                 loop={true}
@@ -47,11 +47,11 @@ const HomeProjects = () => {
                 onSwiper={setFirstSwiper}
                 controller={{ control: secondSwiper }}
                 navigation={true}
-                className="featured-project-swiper"
+                className="featured-project-swiper "
               >
                 {featuredProjects.map((item, index) => (
                   <SwiperSlide key={index} className="flex justify-center">
-                    <div className="lg:h-[26.042vw] lg:w-[21.875vw] w-full h-auto flex justify-center">
+                    <div className="lg:h-[26.042vw] lg:w-[21.875vw] w-full h-auto  mx-auto text-center">
                       <Image
                         height={500}
                         width={420}
