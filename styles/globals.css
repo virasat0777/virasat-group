@@ -2,26 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "kenoky";
+  src: url("/font/Kenoky/KENOKY-Regular.otf");
+}
+@font-face {
+  font-family: "montserrat";
+  src: url("/font/Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+h4,
+h5,
+h6 {
+  font-family: "kenoky";
+}
+p {
+  font-family: "montserrat";
+}
+
+:root {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
+
+
+/* .featured-project-swiper .swiper-wrapper .swiper-slide{
+  display: flex;
+} */
