@@ -94,25 +94,6 @@ const CareerListing = () => {
                 />
               ))}
             </div>
-            {/* <p
-              dangerouslySetInnerHTML={{ __html: item?.description }}
-              className="lg:mb-[1.042vw] mb-4 lg:leading-[1.667vw] lg:text-lg text-xs"
-            ></p>
-            <p className="items-center  flex gap-2 lg:mb-[1.042vw] mb-4">
-              <span>Read more</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="8"
-                height="14"
-                viewBox="0 0 8 14"
-                fill="none"
-              >
-                <path
-                  d="M4.94978 7.00009L0 2.05032L1.41422 0.636108L7.77818 7.00009L1.41422 13.364L0 11.9498L4.94978 7.00009Z"
-                  fill="black"
-                />
-              </svg>
-            </p> */}
 
             <ReadMoreLess html={item?.description} wordLimit={20} />
 
