@@ -73,10 +73,10 @@ const HomeProjects = () => {
                     onRealIndexChange={(e) => {
                       setActiveSlide(e.realIndex);
                     }}
-                    // autoplay={{
-                    //   delay: 3000,
-                    //   disableOnInteraction: false,
-                    // }}
+                    autoplay={{
+                      delay: 3000,
+                      disableOnInteraction: false,
+                    }}
                   >
                     {featuredProjects.map((item, index) => (
                       <SwiperSlide

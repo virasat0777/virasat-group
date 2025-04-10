@@ -2,7 +2,8 @@ import BlackButton from "@/common/BlackButton";
 import SectionTitle from "@/common/SectionTitle";
 import Image from "next/image";
 import React from "react";
-
+import { slideIn } from "@/Animation/Variants";
+import { motion } from "framer-motion";
 const Overview = () => {
   return (
     <div className="lg:px-[10.208vw] px-4 lg:py-[4.167vw] py-4 relative">
@@ -15,16 +16,22 @@ const Overview = () => {
         />
       </div>
 
-      <div className="flex lg:gap-[2.188vw] lg:flex-row flex-col">
-        <div className="lg:mt-[10.625vw]">
-          <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto  flex justify-center">
-            <Image
-              width={364}
-              height={408}
-              src={`/images/about/abOverview2.png`}
-              alt="about overview image one"
-            />
-          </div>
+      <div className="flex lg:gap-[2.188vw] lg:flex-row flex-col overflow-x-hidden">
+        <div className="lg:mt-[10.625vw] ">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            variants={slideIn("right", 0.3)}
+          >
+            <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto  flex justify-center">
+              <Image
+                width={364}
+                height={408}
+                src={`/images/about/abOverview2.png`}
+                alt="about overview image one"
+              />
+            </div>
+          </motion.div>
         </div>
         <div>
           <div className="text-center lg:mt-[3.75vw] mt-4">
@@ -47,14 +54,20 @@ const Overview = () => {
           </div>
         </div>
         <div className="">
-          <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto flex justify-center">
-            <Image
-              width={364}
-              height={408}
-              src={`/images/about/abOverview1.png`}
-              alt="about overview image one"
-            />
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            variants={slideIn("left", 0.3)}
+          >
+            <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto flex justify-center">
+              <Image
+                width={364}
+                height={408}
+                src={`/images/about/abOverview1.png`}
+                alt="about overview image one"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>

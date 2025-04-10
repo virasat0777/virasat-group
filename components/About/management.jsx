@@ -2,7 +2,7 @@ import SectionTitle from "@/common/SectionTitle";
 import Image from "next/image";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller } from "swiper/modules";
+import { Navigation, Controller, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import {
@@ -73,9 +73,10 @@ const Management = () => {
                   nextEl: ".management-next",
                   prevEl: ".management-prev",
                 }}
-                modules={[Navigation]}
+                modules={[Navigation, Autoplay]}
                 className="awards-swiper"
                 loop={true}
+                autoplay={{ delay: 3000 }}
               >
                 {managementTeam.map((item, index) => (
                   <SwiperSlide key={index}>
