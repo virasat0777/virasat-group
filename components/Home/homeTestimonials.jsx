@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller } from "swiper/modules";
+import { Navigation, Controller, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
@@ -76,11 +76,15 @@ const HomeTestimonials = () => {
                   nextEl: ".button-testimonials-next-con",
                   prevEl: ".button-testimonials-prev-con",
                 }}
-                modules={[Navigation]}
+                modules={[Navigation, Autoplay]}
                 className="awards-swiper"
                 loop={true}
                 onRealIndexChange={(e) => {
                   setActiveSlide(e.realIndex);
+                }}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
                 }}
               >
                 {testimonials.map((item, index) => (

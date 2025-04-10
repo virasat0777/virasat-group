@@ -5,7 +5,7 @@ import {
   WhiteCircularRightArrow,
 } from "@/public/icon/arrows";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller } from "swiper/modules";
+import { Navigation, Controller, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
@@ -156,11 +156,15 @@ const ProjectAmenities = () => {
                 nextEl: ".button-amen-next-con",
                 prevEl: ".button-amen-prev-con",
               }}
-              modules={[Navigation]}
+              modules={[Navigation, Autoplay]}
               className="awards-swiper"
               loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
             >
-              {firstHalf.map((item, index) => (
+              {secondHalf.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="lg:p-[1.25vw] p-2 w-full flex flex-col items-center">
                     <div className="lg:w-[5.208vw]  lg:h-[5.208vw] w-[50px] h-auto lg:mb-[2.083vw] mb-2">

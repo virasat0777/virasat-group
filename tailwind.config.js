@@ -8,6 +8,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        shine: {
+          "0%, 10%": { "background-position": "-200px" },
+          "20%": { "background-position": "0px" },
+          "100%": { "background-position": "200px" },
+        },
+      },
+      animation: {
+        shine: "shine 5s infinite",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

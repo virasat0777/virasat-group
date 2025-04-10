@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller } from "swiper/modules";
+import { Navigation, Controller, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -62,7 +62,7 @@ const HomeProjects = () => {
                   <Swiper
                     slidesPerView={1}
                     loop={true}
-                    modules={[Navigation, Controller]}
+                    modules={[Navigation, Controller, Autoplay]}
                     onSwiper={setFirstSwiper}
                     controller={{ control: secondSwiper }}
                     navigation={{
@@ -72,6 +72,10 @@ const HomeProjects = () => {
                     className="featured-project-swiper "
                     onRealIndexChange={(e) => {
                       setActiveSlide(e.realIndex);
+                    }}
+                    autoplay={{
+                      delay: 3000,
+                      disableOnInteraction: false,
                     }}
                   >
                     {featuredProjects.map((item, index) => (

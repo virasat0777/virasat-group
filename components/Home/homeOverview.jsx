@@ -1,7 +1,9 @@
 import BlackButton from "@/common/BlackButton";
-import SectionTitle from "@/common/SectionTitle";
+import SectionTitle, { AnimatedTitle } from "@/common/SectionTitle";
 import Image from "next/image";
 import React from "react";
+import { slideIn } from "@/Animation/Variants";
+import { motion } from "framer-motion";
 
 const HomeOverview = () => {
   return (
@@ -18,7 +20,7 @@ const HomeOverview = () => {
         <div className="text-center">
           <SectionTitle title={"Discover the Magic of the Virasat"} />
         </div>
-        <div className="w-full flex flex-row justify-between lg:mt-[3.125vw] mt-4">
+        <div className="w-full flex flex-row justify-between lg:mt-[3.125vw] mt-4 overflow-x-hidden">
           <div className="lg:block hidden">
             <Image
               src={`/images/home/overviewOne.png`}
@@ -27,7 +29,8 @@ const HomeOverview = () => {
               className="lg:mt-[3.383vw] mt-1 lg:w-[19.271vw] lg:h-[19.271vw] "
             />
           </div>
-          <div>
+
+          <div className="flex justify-center">
             <Image
               src={`/images/home/overviewThree.png`}
               width={487}

@@ -3,11 +3,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
 import "swiper/css";
 import "swiper/css/navigation";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 const HomeAwards = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -67,12 +66,16 @@ const HomeAwards = () => {
                 nextEl: ".button-awards-next-con",
                 prevEl: ".button-awards-prev-con",
               }}
-              modules={[Navigation]}
-            
+              modules={[Navigation, Autoplay]}
               className="awards-swiper"
               loop={true}
               onRealIndexChange={(e) => {
                 setActiveSlide(e.realIndex);
+              }}
+              speed={1000}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
               }}
             >
               {awardsArray.map((item, index) => (

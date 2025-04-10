@@ -2,7 +2,7 @@ import SectionTitle from "@/common/SectionTitle";
 import React from "react";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller } from "swiper/modules";
+import { Navigation, Controller, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
@@ -65,9 +65,13 @@ const HomeNews = () => {
                   nextEl: ".button-news-next-con",
                   prevEl: ".button-news-prev-con",
                 }}
-                modules={[Navigation]}
+                modules={[Navigation, Autoplay]}
                 className="awards-swiper h-full w-full"
                 loop={true}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
               >
                 {news.map((item, index) => (
                   <SwiperSlide key={index} className="h-full w-full">

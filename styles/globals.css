@@ -40,6 +40,7 @@ p {
 }
 
 body {
+  overflow-x: hidden;
 }
 
 /* .featured-project-swiper .swiper-wrapper .swiper-slide{

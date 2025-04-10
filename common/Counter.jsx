@@ -30,9 +30,13 @@ const Counter = ({ start, end, duration, suffix }) => {
     <span ref={ref}>
       {inView ? (
         <h6 className=" flex heading-sm text-white font-bold">
-          <SectionTitle title={end} />
+          <h4 className="lg:text-[4.167vw] uppercase lg:leading-[5.208vw] text-2xl font-light ">
+            {count}
+          </h4>
           &nbsp;&nbsp;
-          <SectionTitle title={suffix} />
+          <h4 className="lg:text-[4.167vw] uppercase lg:leading-[5.208vw] text-xl font-light text-center ">
+            {suffix}
+          </h4>
         </h6>
       ) : (
         <>0</>
