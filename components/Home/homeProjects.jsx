@@ -54,10 +54,10 @@ const HomeProjects = () => {
           <div className="lg:w-[80%] w-full flex justify-between items-center flex-col ">
             <SectionTitle title={"OUR PROJECTS"} />
             <div className="lg:mt-[0vw] mt-2 w-full flex flex-col items-center ">
-              <div className="lg:w-[31.406vw] w-full justify-center h-auto items-center lg:mt-20 mt-4    flex md:justify-between md:items-center">
-                <div className="button-border group button-prev-con hidden lg:block ">
+              <div className="lg:w-[31.406vw]  lg:flex-row  w-full justify-center h-auto items-center lg:mt-20 mt-4  relative  flex md:justify-between md:items-center">
+                {/* <div className="button-border group button-prev-con hidden lg:block ">
                   <LeftArrow />
-                </div>
+                </div> */}
                 <div className="w-full">
                   <Swiper
                     slidesPerView={1}
@@ -73,10 +73,10 @@ const HomeProjects = () => {
                     onRealIndexChange={(e) => {
                       setActiveSlide(e.realIndex);
                     }}
-                    autoplay={{
-                      delay: 3000,
-                      disableOnInteraction: false,
-                    }}
+                    // autoplay={{
+                    //   delay: 3000,
+                    //   disableOnInteraction: false,
+                    // }}
                   >
                     {featuredProjects.map((item, index) => (
                       <SwiperSlide
@@ -96,12 +96,19 @@ const HomeProjects = () => {
                     ))}
                   </Swiper>
                 </div>
-
-                <div className="button-border group button-next-con hidden lg:block">
-                  <RightArrow />
+                <div className=" lg:flex hidden   justify-center lg:justify-between items-center w-full lg:absolute">
+                  <div className="button-border group button-prev-con cursor-pointer z-10">
+                    <LeftArrow />
+                  </div>
+                  <div className="button-border group button-next-con cursor-pointer z-10">
+                    <RightArrow />
+                  </div>
                 </div>
+                {/* <div className="button-border group button-next-con hidden lg:block">
+                  <RightArrow />
+                </div> */}
               </div>
-              <div className="text-center lg:w-[21.875vw] w-full ml-0 lg:ml-[5.104vw]">
+              <div className="text-center lg:w-[21.875vw] w-full ">
                 <p className="mt-2 text-center kenoky lg:text-[1.25vw] text-[24px]">
                   {featuredProjects[activeSlide]?.title}
                 </p>
@@ -121,7 +128,7 @@ const HomeProjects = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center">
+          <div className="flex lg:hidden justify-center items-center">
             <div className="button-border group button-prev-con lg:hidden block ">
               <LeftArrow />
             </div>

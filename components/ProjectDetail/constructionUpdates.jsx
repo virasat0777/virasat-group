@@ -1,7 +1,7 @@
 import SectionTitle from "@/common/SectionTitle";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
@@ -45,7 +45,7 @@ const ConstructionUpdates = () => {
         <Swiper
           grabCursor={true}
           speed={800}
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           navigation={{
             nextEl: ".project-construction-next",
             prevEl: ".project-construction-prev",
@@ -59,6 +59,10 @@ const ConstructionUpdates = () => {
           }}
           loop={true}
           className="w-full"
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
         >
           {constructionUpatesImages.map((item, index) => (
             <SwiperSlide key={index}>

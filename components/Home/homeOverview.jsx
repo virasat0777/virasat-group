@@ -20,32 +20,51 @@ const HomeOverview = () => {
         <div className="text-center">
           <SectionTitle title={"Discover the Magic of the Virasat"} />
         </div>
-        <div className="w-full flex flex-row justify-between lg:mt-[3.125vw] mt-4 overflow-x-hidden">
-          <div className="lg:block hidden">
-            <Image
-              src={`/images/home/overviewOne.png`}
-              width={370}
-              height={370}
-              className="lg:mt-[3.383vw] mt-1 lg:w-[19.271vw] lg:h-[19.271vw] "
-            />
+        <div className="w-full flex flex-row lg:justify-between justify-center lg:mt-[3.125vw] mt-4 overflow-x-hidden">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            variants={slideIn("right", 0.3)}
+          >
+            <div className="lg:block hidden">
+              <Image
+                src={`/images/home/overviewOne.png`}
+                width={370}
+                height={370}
+                className="lg:mt-[3.383vw] mt-1 lg:w-[19.271vw] lg:h-[19.271vw] "
+              />
+            </div>
+          </motion.div>
+          <div className="overflow-x-hidden">
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              variants={slideIn("left", 0.3)}
+            >
+              <div className="flex justify-center">
+                <Image
+                  src={`/images/home/overviewThree.png`}
+                  width={487}
+                  height={600}
+                  className="lg:w-[25.365vw] lg:h-[31.25vw] w-full h-auto"
+                />
+              </div>
+            </motion.div>
           </div>
-
-          <div className="flex justify-center">
-            <Image
-              src={`/images/home/overviewThree.png`}
-              width={487}
-              height={600}
-              className="lg:w-[25.365vw] lg:h-[31.25vw] w-full h-auto"
-            />
-          </div>
-          <div className="lg:block hidden ">
-            <Image
-              src={`/images/home/overviewOne.png`}
-              width={370}
-              height={370}
-              className="lg:mt-[10.942vw] mt-1 lg:w-[19.271vw] lg:h-[19.271vw]"
-            />
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            variants={slideIn("left", 0.3)}
+          >
+            <div className="lg:block hidden ">
+              <Image
+                src={`/images/home/overviewOne.png`}
+                width={370}
+                height={370}
+                className="lg:mt-[10.942vw] mt-1 lg:w-[19.271vw] lg:h-[19.271vw]"
+              />
+            </div>
+          </motion.div>
         </div>
         <div className="lg:mt-[2.083vw] mt-4 text-center">
           <p className="lg:text-[0.938vw] text-base text-center lg:mb-[2.917vw] mb-4 font-light">

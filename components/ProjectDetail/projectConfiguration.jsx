@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller } from "swiper/modules";
+import { Navigation, Controller, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -192,10 +192,14 @@ const ProjectConfiguration = () => {
               <Swiper
                 slidesPerView={1}
                 loop={true}
-                modules={[Navigation, Controller]}
+                modules={[Navigation, Controller, Autoplay]}
                 onSwiper={setSecondSwiper}
                 controller={{ control: firstSwiper }}
                 className="featured-project-swiper"
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
               >
                 {configuration.map((item, index) => (
                   <SwiperSlide key={index} className="">

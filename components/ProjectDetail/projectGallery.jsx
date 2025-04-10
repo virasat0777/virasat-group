@@ -1,7 +1,7 @@
 import SectionTitle from "@/common/SectionTitle";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller, EffectCards } from "swiper/modules";
+import { Navigation, Controller, EffectCards, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
@@ -30,7 +30,7 @@ const ProjectGallery = () => {
             effect={"cards"}
             grabCursor={true}
             speed={1200}
-            modules={[EffectCards, Navigation]}
+            modules={[EffectCards, Navigation, Autoplay]}
             navigation={{
               nextEl: ".project-gallery-next",
               prevEl: ".project-gallery-prev",
@@ -53,6 +53,10 @@ const ProjectGallery = () => {
               perSlideRotate: 0,
             }}
             className="w-full"
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
           >
             {data?.map((image, index) => (
               <SwiperSlide key={index} className="">

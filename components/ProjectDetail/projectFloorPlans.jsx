@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Controller } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 const ProjectFloorPlans = () => {
@@ -23,7 +23,7 @@ const ProjectFloorPlans = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="text-center lg:mb-[3vw]">
+      <div className="text-center mb-4 lg:mb-[3vw]">
         <SectionTitle title="Floor Plans" />
       </div>
 
@@ -31,7 +31,7 @@ const ProjectFloorPlans = () => {
         <div className="w-full h-full">
           <div className="w-full h-full">
             <div className="flex justify-between items-center gap-4">
-              <div className="button-border group button-floor-prev-con cursor-pointer z-10">
+              <div className="button-border group button-floor-prev-con cursor-pointer z-10 lg:block hidden">
                 <CircularLeftArrow />
               </div>
               <div className="h-full overflow-x-hidden w-full">
@@ -49,9 +49,13 @@ const ProjectFloorPlans = () => {
                     nextEl: ".button-floor-next-con",
                     prevEl: ".button-floor-prev-con",
                   }}
-                  modules={[Navigation]}
+                  modules={[Navigation, Autoplay]}
                   className="awards-swiper"
                   loop={true}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
                 >
                   {images.map((item, index) => (
                     <SwiperSlide key={index}>
@@ -69,16 +73,20 @@ const ProjectFloorPlans = () => {
                   ))}
                 </Swiper>
               </div>
-              <div className="button-border group button-floor-next-con cursor-pointer z-10">
+              <div className="button-border group button-floor-next-con cursor-pointer z-10 lg:block hidden">
                 <CircularRightArrow />
               </div>
             </div>
           </div>
         </div>
-        {/* <div className=" flex justify-center lg:justify-between items-center w-full ">
-          
-         
-        </div> */}
+        <div className=" lg:hidden flex justify-center  gap-4 mt-6 lg:justify-between items-center w-full ">
+          <div className="button-border group button-floor-prev-con cursor-pointer z-10">
+            <CircularLeftArrow />
+          </div>
+          <div className="button-border group button-floor-next-con cursor-pointer z-10">
+            <CircularRightArrow />
+          </div>
+        </div>
       </div>
     </div>
   );

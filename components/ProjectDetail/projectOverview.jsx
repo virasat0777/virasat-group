@@ -26,8 +26,10 @@ const ProjectOverview = () => {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className=" lg:w-1/2 flex flex-col lg:gap-[2.083vw] gap-4">
-            <SectionTitle title="OVERVIEW" />
+          <div className=" lg:w-1/2 flex flex-col lg:gap-[2.083vw] gap-4 lg:mb-0 ">
+            <div className="mt-4">
+              <SectionTitle title="OVERVIEW" />
+            </div>
             <p className="lg:text-[1.042vw] text-base lg:leading-[1.667vw] leading-5">
               Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat
               nibh sagittis orci dolor. Ipsum amet et elementum ipsum.

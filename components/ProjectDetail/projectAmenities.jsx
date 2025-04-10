@@ -92,7 +92,7 @@ const ProjectAmenities = () => {
         />
       </div>
 
-      <div className="lg:py-[4.167vw] py-4 lg:px-[10.885vw] px-4 text-white text-center">
+      <div className="lg:py-[1.167vw] xl:py-[4.167vw] py-4 lg:px-[10.885vw] px-4 text-white text-center">
         <div className="py-4">
           <SectionTitle title="AMENITIES" />
         </div>
@@ -115,9 +115,13 @@ const ProjectAmenities = () => {
                 nextEl: ".button-amen-next-con",
                 prevEl: ".button-amen-prev-con",
               }}
-              modules={[Navigation]}
+              modules={[Navigation, Autoplay]}
               className="awards-swiper"
               loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
             >
               {firstHalf.map((item, index) => (
                 <SwiperSlide key={index}>
