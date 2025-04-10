@@ -1,0 +1,87 @@
+import SectionTitle from "@/common/SectionTitle";
+import Image from "next/image";
+import React from "react";
+import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Controller } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+const ProjectFloorPlans = () => {
+  const images = [
+    { image: "/images/project-details/floor-plans/f3.png" },
+    { image: "/images/project-details/floor-plans/f3.png" },
+    { image: "/images/project-details/floor-plans/f3.png" },
+    { image: "/images/project-details/floor-plans/f3.png" },
+  ];
+  return (
+    <div className="pt-4 lg:pb-[4.167vw] pb-4 lg:pt-[0.167vw] px-4 lg:px-[13.333vw]">
+      <div className="absolute inset-0 -z-10 opacity-[0.015]">
+        <Image
+          src={`/images/home/homeOverviewPattern.svg`}
+          height={1000}
+          width={1000}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="text-center lg:mb-[3vw]">
+        <SectionTitle title="Floor Plans" />
+      </div>
+
+      <div className="w-full ">
+        <div className="w-full h-full">
+          <div className="w-full h-full">
+            <div className="flex justify-between items-center gap-4">
+              <div className="button-border group button-floor-prev-con cursor-pointer z-10">
+                <CircularLeftArrow />
+              </div>
+              <div className="h-full overflow-x-hidden w-full">
+                <Swiper
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                    },
+                  }}
+                  spaceBetween={25}
+                  navigation={{
+                    nextEl: ".button-floor-next-con",
+                    prevEl: ".button-floor-prev-con",
+                  }}
+                  modules={[Navigation]}
+                  className="awards-swiper"
+                  loop={true}
+                >
+                  {images.map((item, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="">
+                        <div className="lg:w-full  lg:h-[16.021vw] w-full h-auto ">
+                          <Image
+                            src={item?.image}
+                            width={432}
+                            height={328}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+              <div className="button-border group button-floor-next-con cursor-pointer z-10">
+                <CircularRightArrow />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className=" flex justify-center lg:justify-between items-center w-full ">
+          
+         
+        </div> */}
+      </div>
+    </div>
+  );
+};
+
+export default ProjectFloorPlans;

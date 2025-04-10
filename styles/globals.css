@@ -10,6 +10,10 @@
   font-family: "montserrat";
   src: url("/font/Montserrat/Montserrat-VariableFont_wght.ttf");
 }
+@font-face {
+  font-family: "valky";
+  src: url("/font/valky/ValkyRegular/ValkyRegular.ttf");
+}
 
 h4,
 h5,
@@ -20,13 +24,45 @@ p {
   font-family: "montserrat";
 }
 
+.kenoky {
+  font-family: "kenoky";
+}
+
+.montserrat {
+  font-family: "montserrat";
+}
+
+.valky {
+  font-family: "valky";
+}
+
 :root {
 }
 
 body {
 }
 
-
 /* .featured-project-swiper .swiper-wrapper .swiper-slide{
   display: flex;
 } */
+
+.amen-slider .swiper {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.hover {
+  background: transparent;
+  transition: 0.3s ease-in-out;
+}
+
+.hover-bg:hover {
+  background: linear-gradient(
+    105deg,
+    rgba(0, 0, 0, 0.9216173529958859) 0%,
+    rgba(1, 1, 1, 1) 0%,
+    rgba(1, 1, 1, 1) 5%,
+    rgba(1, 1, 1, 1) 9%,
+    rgba(1, 1, 1, 0.5434660924916841) 97%
+  );
+}

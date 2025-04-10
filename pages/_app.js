@@ -1,5 +1,15 @@
-import '@/styles/globals.css'
+import SmoothScroll from "@/common/SmoothScroller";
+import MainLayout from "@/layout/MainLayout";
+import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <SmoothScroll>
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
+    </SmoothScroll>
+  );
+};
+
+export default MyApp;

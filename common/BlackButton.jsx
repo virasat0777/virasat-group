@@ -3,7 +3,7 @@ import React from "react";
 const BlackButton = ({
   name = "View All",
   path = "#",
-  useLink = false,
+  useLink = true,
   handleFunction = null,
   color = "#000000", // default black, can be passed as prop
   hoverColor = "#C29B5C", // optional: gold
@@ -18,12 +18,12 @@ const BlackButton = ({
   return (
     <div
       onClick={handleClick}
-      className="relative inline-flex items-center justify-center cursor-pointer group w-[279px] h-[56px] mt-5 transition-transform duration-300 ease-in-out hover:scale-105"
+      className="relative inline-flex items-center justify-center cursor-pointer group w-[12rem] lg:w-[14.531vw] lg:h-[2.917vw] my-5 transition-transform duration-300 ease-in-out hover:scale-105"
     >
       {/* Animated SVG Background */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="279"
+        width="100%"
         height="56"
         viewBox="0 0 279 56"
         className="absolute z-0 transition-all duration-500 ease-in-out"
@@ -40,7 +40,7 @@ const BlackButton = ({
 
       {/* Button Text */}
       <span
-        className="relative z-10 font-semibold transition-colors duration-300"
+        className="relative z-10 font-semibold transition-colors duration-300 lg:text-[1.042vw] md:text-base text-xs"
         style={{
           color: textColor,
           transition: "color 0.4s ease-in-out",

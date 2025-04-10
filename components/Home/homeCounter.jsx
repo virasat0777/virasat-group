@@ -30,7 +30,7 @@ const CounterSection = () => {
         backgroundImage: `url(/images/home/counterFrame.png)`,
       }}
     >
-      <div className="  mx-auto lg:py-[3.333vw] lg:px-[12.942vw] h-full flex flex-col md:flex-row items-center justify-between gap-20 md:items-end">
+      <div className="  mx-auto lg:py-[3.333vw] lg:px-[12.942vw] h-full flex flex-col md:flex-row items-center justify-between lg:gap-20 gap-10 py-8 md:items-center">
         {list.map((item, index) => (
           <div
             className="  text-white flex flex-col justify-center items-center"
