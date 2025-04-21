@@ -6,7 +6,10 @@ import { Navigation, Controller, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
-const HomeBlogs = () => {
+import { cleanImage } from "@/services/imageHandling";
+import { useRouter } from "next/router";
+const HomeBlogs = ({ data }) => {
+  const router = useRouter();
   const blogs = [
     {
       title: "Blog heading will come here",
@@ -84,22 +87,40 @@ const HomeBlogs = () => {
                   disableOnInteraction: false,
                 }}
               >
-                {blogs.map((item, index) => (
+                {data.map((item, index) => (
                   <SwiperSlide key={index}>
                     <div className="lg:p-[1.25vw] w-fit p-2 border-[1px] border-black">
-                      <div className="lg:w-[19.063vw] lg:h-[18.229vw] w-full h-auto lg:mb-[2.083vw] mb-2">
-                        <Image
-                          src={item?.image}
-                          width={350}
-                          height={350}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                      {item?.attributes?.thumbnailImage?.data?.attributes
+                        ?.url && (
+                        <div className="lg:w-[19.063vw] lg:h-[18.229vw] w-full h-auto lg:mb-[2.083vw] mb-2">
+                          <Image
+                            src={cleanImage(
+                              item?.attributes?.thumbnailImage?.data?.attributes
+                                ?.url
+                            )}
+                            width={350}
+                            height={350}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
                       <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold  text-black text-[20px] lg:mb-[1.25vw] mb-2">
-                        {item?.title}
+                        {item?.attributes?.title}
                       </p>
                       <p className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  text-black text-[16px]">
-                        {item?.description}
+                        {item?.attributes?.description
+                          .split(" ")
+                          .slice(0, 10)
+                          .join(" ")}
+                        ...
+                      </p>
+                      <p
+                        className="mt-2 text-black cursor-pointer lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw] font-normal hover:text-blue-600"
+                        onClick={() =>
+                          router.push(`/blogs/${item?.attributes?.slug}`)
+                        }
+                      >
+                        Read more
                       </p>
                     </div>
                   </SwiperSlide>

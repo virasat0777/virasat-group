@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 
 const BlackButton = ({
@@ -10,9 +11,13 @@ const BlackButton = ({
   textColor = "#ffffff", // default text color
   hoverTextColor = "#000000", // default hover text color
 }) => {
+  const router = useRouter();
   const handleClick = () => {
-    if (handleFunction) handleFunction();
-    if (path && !useLink) window.location.href = path;
+    if (handleFunction) {
+      handleFunction();
+    } else {
+      router.push(path);
+    }
   };
 
   return (

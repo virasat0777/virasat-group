@@ -1,9 +1,10 @@
 import SectionTitle from "@/common/SectionTitle";
+import { cleanImage } from "@/services/imageHandling";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
-const BlogList = () => {
+const BlogList = ({ data }) => {
   const blogs = [
     {
       title: "Blog heading will come here",
@@ -86,29 +87,37 @@ const BlogList = () => {
         </div>
 
         <div className="flex flex-wrap lg:gap-[3.167vw] gap-3 mt-6 lg:mt-[3.333vw] justify-center">
-          {blogs.map((item, index) => (
+          {data?.map((item, index) => (
             <div
               className="lg:p-[1.25vw] p-2 border-[1px] border-black w-full lg:w-[20.563vw] md:w-1/2 "
               key={index}
             >
-              <div className="lg:w-full  lg:h-auto w-full h-auto lg:mb-[2.083vw] mb-2">
-                <Image
-                  src={item?.thumbnailImage}
-                  width={350}
-                  height={366}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {item?.attributes?.thumbnailImage?.data?.attributes?.url && (
+                <div className="lg:w-full  lg:h-auto w-full h-auto lg:mb-[2.083vw] mb-2">
+                  <Image
+                    src={cleanImage(
+                      item?.attributes?.thumbnailImage?.data?.attributes?.url
+                    )}
+                    width={350}
+                    height={366}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
               <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold  text-black text-[20px] lg:mb-[1.25vw] mb-2">
-                {item?.title}
+                {item?.attributes?.title}
               </p>
               <p className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  text-black text-[16px] lg:mb-[1.25vw] mb-2">
-                {item?.description.split(" ").slice(0, 10).join(" ")}...
+                {item?.attributes?.description
+                  ?.split(" ")
+                  ?.slice(0, 10)
+                  ?.join(" ")}
+                ...
               </p>
               <p
                 className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold cursor-pointer hover:text-blue-600 text-black text-[16px] "
                 onClick={() => {
-                  router.push(`/blogs/${item?.url}`);
+                  router.push(`/blogs/${item?.attributes?.slug}`);
                 }}
               >
                 Read more

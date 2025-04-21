@@ -8,11 +8,17 @@ import "swiper/css/navigation";
 import SectionTitle from "@/common/SectionTitle";
 import { RightArrow, LeftArrow } from "@/public/icon/arrows";
 import BlackButton from "@/common/BlackButton";
+import { cleanImage } from "@/services/imageHandling";
 
-const HomeProjects = () => {
+const HomeProjects = ({ projects }) => {
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const featuredProjectData = projects?.filter(
+    (item) => item?.attributes?.projectStatus === "ongoing"
+  );
+  console.log(featuredProjectData[0]?.attributes, "projects featured");
   const featuredProjects = [
     {
       id: 1,
@@ -78,20 +84,26 @@ const HomeProjects = () => {
                       disableOnInteraction: false,
                     }}
                   >
-                    {featuredProjects.map((item, index) => (
+                    {featuredProjectData.map((item, index) => (
                       <SwiperSlide
                         key={index}
                         className="lg:flex lg:justify-center"
                       >
-                        <div className="lg:h-[26.042vw] lg:w-[21.875vw] w-[100%] h-auto  mx-auto text-center">
-                          <Image
-                            height={500}
-                            width={420}
-                            className="w-full h-auto"
-                            src={item?.image1}
-                            alt={item?.title}
-                          />
-                        </div>
+                        {item?.attributes?.featuredSection?.primaryImage?.data
+                          ?.attributes?.url && (
+                          <div className="lg:h-[26.042vw] lg:w-[21.875vw] w-[100%] h-auto  mx-auto text-center">
+                            <Image
+                              height={500}
+                              width={420}
+                              className="w-full h-auto"
+                              src={cleanImage(
+                                item?.attributes?.featuredSection?.primaryImage
+                                  ?.data?.attributes?.url
+                              )}
+                              alt={item?.attributes?.title}
+                            />
+                          </div>
+                        )}
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -109,12 +121,20 @@ const HomeProjects = () => {
                 </div> */}
               </div>
               <div className="text-center lg:w-[21.875vw] w-full ">
-                <p className="mt-2 text-center kenoky lg:text-[1.25vw] text-[24px]">
-                  {featuredProjects[activeSlide]?.title}
-                </p>
-                <p className="mt-2 text-center">
-                  {featuredProjects[activeSlide]?.description}
-                </p>
+                {featuredProjectData[activeSlide]?.attributes?.projectTitle && (
+                  <p className="mt-2 text-center kenoky lg:text-[1.25vw] text-[24px]">
+                    {featuredProjectData[activeSlide]?.attributes?.projectTitle}
+                  </p>
+                )}
+                {featuredProjectData[activeSlide]?.attributes?.featuredSection
+                  ?.smallDescription && (
+                  <p className="mt-2 text-center">
+                    {
+                      featuredProjectData[activeSlide]?.attributes
+                        ?.featuredSection?.smallDescription
+                    }
+                  </p>
+                )}
 
                 <BlackButton
                   name="Know more"
@@ -149,20 +169,28 @@ const HomeProjects = () => {
               controller={{ control: firstSwiper }}
               className="featured-project-swiper"
             >
-              {featuredProjects.map((item, index) => (
+              {featuredProjectData.map((item, index) => (
                 <SwiperSlide key={index} className="">
                   <div className="lg:h-[50vw] lg:w-[50vw] w-full h-auto">
-                    <Image
-                      height={500}
-                      width={420}
-                      className="w-full h-auto relative"
-                      src={item?.image2}
-                      alt={item?.title}
-                    />
+                    {item?.attributes?.featuredSection?.secondaryImage?.data
+                      ?.attributes?.url && (
+                      <Image
+                        height={500}
+                        width={420}
+                        className="w-full h-auto relative"
+                        src={cleanImage(
+                          item?.attributes?.featuredSection?.secondaryImage
+                            ?.data?.attributes?.url
+                        )}
+                        alt={item?.attributes?.title}
+                      />
+                    )}
                   </div>
-                  <p className="absolute lg:bottom-[3vw] bottom-2 w-full text-center lg:text-[1.25vw] kenoky text-white  mx-auto ">
-                    {item?.date}
-                  </p>
+                  {item?.attributes?.date && (
+                    <p className="absolute lg:bottom-[3vw] bottom-2 w-full text-center lg:text-[1.25vw] kenoky text-white  mx-auto ">
+                      {item?.attributes?.date}
+                    </p>
+                  )}
                 </SwiperSlide>
               ))}
             </Swiper>

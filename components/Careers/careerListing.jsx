@@ -1,5 +1,6 @@
 import Badge from "@/common/Badge";
 import BlackButton from "@/common/BlackButton";
+import JobDescriptionAccordion from "@/common/JDAccordion";
 import Modal from "@/common/Modal";
 import ReadMoreLess from "@/common/Readmore";
 
@@ -8,7 +9,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const CareerListing = () => {
+const CareerListing = ({ data }) => {
+  console.log(data?.available_jobs?.data[0].attributes?.badges, "abai");
   const [show, setShow] = useState(false);
   const jobs = [
     {
@@ -72,39 +74,58 @@ const CareerListing = () => {
           <SectionTitle title={"CURRENT OPENINGS"} />
         </div>
 
-        {jobs.map((item, index) => (
-          <div
-            className="w-full pt-4 lg:pt-[2.5vw] pb-6 border-b-[3px] border-[#D2AB67] mb-5"
-            key={index}
-          >
-            <p className="lg:text-[1.042vw] text-base capitalize lg:mb-[1.042vw] mb-2">
-              {item?.field}
-            </p>
-            <p className="kenoky lg:leading-[1.51vw] leading-5 lg:text-[1.563vw] text-base lg:mb-[1.042vw] mb-2">
-              {item?.designation}
-            </p>
-            <p>{item?.location}</p>
-            <div className="w-auto lg:mb-[1.042vw] mb-4 flex lg:gap-4 gap-2 my-4 md:flex-row flex-col">
-              {item?.badges.map((item, index) => (
-                <Badge
-                  name={item}
-                  key={index}
-                  textColor="black"
-                  color="transparent"
+        {data?.available_jobs?.data.length > 0 &&
+          data?.available_jobs?.data?.map((item, index) => (
+            <div
+              className="w-full pt-4 lg:pt-[2.5vw] pb-6 border-b-[3px] border-[#D2AB67] mb-5"
+              key={index}
+            >
+              {item?.attributes?.field && (
+                <p className="lg:text-[1.042vw] text-base capitalize lg:mb-[1.042vw] mb-2">
+                  {item?.attributes?.field}
+                </p>
+              )}
+              {item?.attributes?.designation && (
+                <p className="kenoky lg:leading-[1.51vw] leading-5 lg:text-[1.563vw] text-base lg:mb-[1.042vw] mb-2">
+                  {item?.attributes?.designation}
+                </p>
+              )}
+              {item?.attributes?.location && (
+                <p>{item?.attributes?.location}</p>
+              )}
+              {item?.attributes?.badges.length > 0 && (
+                <div className="w-auto lg:mb-[1.042vw] mb-4 flex lg:gap-4 gap-2 my-4 md:flex-row flex-col">
+                  {item?.attributes?.badges.map((item) => (
+                    <Badge
+                      name={item?.badge}
+                      key={item?.id}
+                      textColor="black"
+                      color="transparent"
+                    />
+                  ))}
+                </div>
+              )}
+              <div>
+                <JobDescriptionAccordion
+                  item={{ jobDescription: item?.attributes?.jobDescription }}
                 />
-              ))}
+              </div>
+              <div className="lg:mt=[2vw] mt-4">
+                <p>About our team:</p>
+                <ReadMoreLess
+                  html={item?.attributes?.smallDescription}
+                  wordLimit={20}
+                />
+              </div>
+
+              <BlackButton
+                name="Apply Now"
+                handleFunction={() => {
+                  setShow(true);
+                }}
+              />
             </div>
-
-            <ReadMoreLess html={item?.description} wordLimit={20} />
-
-            <BlackButton
-              name="Apply Now"
-              handleFunction={() => {
-                setShow(true);
-              }}
-            />
-          </div>
-        ))}
+          ))}
       </div>
 
       <Modal isOpen={show} onClose={() => setShow(false)}>

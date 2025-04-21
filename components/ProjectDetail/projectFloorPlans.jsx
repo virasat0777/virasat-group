@@ -6,7 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-const ProjectFloorPlans = () => {
+import { cleanImage } from "@/services/imageHandling";
+const ProjectFloorPlans = ({ data }) => {
   const images = [
     { image: "/images/project-details/floor-plans/f3.png" },
     { image: "/images/project-details/floor-plans/f3.png" },
@@ -23,9 +24,11 @@ const ProjectFloorPlans = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="text-center mb-4 lg:mb-[3vw]">
-        <SectionTitle title="Floor Plans" />
-      </div>
+      {data?.title && (
+        <div className="text-center mb-4 lg:mb-[3vw]">
+          <SectionTitle title={data?.title} />
+        </div>
+      )}
 
       <div className="w-full ">
         <div className="w-full h-full">
@@ -57,20 +60,23 @@ const ProjectFloorPlans = () => {
                     disableOnInteraction: false,
                   }}
                 >
-                  {images.map((item, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="">
-                        <div className="lg:w-full  lg:h-[16.021vw] w-full h-auto ">
-                          <Image
-                            src={item?.image}
-                            width={432}
-                            height={328}
-                            className="w-full h-full object-cover"
-                          />
+                  {data?.images?.data &&
+                    data?.images?.data?.map((item, index) => (
+                      <SwiperSlide key={index}>
+                        <div className="">
+                          {item?.attributes?.url && (
+                            <div className="lg:w-full  lg:h-[16.021vw] w-full h-auto ">
+                              <Image
+                                src={cleanImage(item?.attributes?.url)}
+                                width={432}
+                                height={328}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
+                      </SwiperSlide>
+                    ))}
                 </Swiper>
               </div>
               <div className="button-border group button-floor-next-con cursor-pointer z-10 lg:block hidden">

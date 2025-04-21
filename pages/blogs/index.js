@@ -1,8 +1,10 @@
 import Banner from "@/common/Banner";
 import BlogList from "@/components/Blogs/BlogList";
 import React from "react";
+import { fetchBlogsList } from "@/redux/slices/blogsSlice";
+import { store } from "@/redux/store";
 
-const BlogListing = () => {
+const BlogListing = ({ blogs }) => {
   return (
     <div>
       <Banner
@@ -11,9 +13,20 @@ const BlogListing = () => {
         title="Blog Listing Page"
       />
 
-      <BlogList />
+      {blogs && <BlogList data={blogs} />}
     </div>
   );
 };
 
 export default BlogListing;
+
+export async function getServerSideProps() {
+  await store.dispatch(fetchBlogsList());
+  const blogs = store.getState()?.blogs?.data?.data;
+
+  return {
+    props: {
+      blogs: blogs,
+    },
+  };
+}

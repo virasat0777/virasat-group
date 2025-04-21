@@ -1,9 +1,10 @@
 import SectionTitle from "@/common/SectionTitle";
+import { cleanImage } from "@/services/imageHandling";
 import Image from "next/image";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
-const Bank = () => {
+const Bank = ({ data }) => {
   const images = [
     {
       image: "/images/about/bank/sbi.png",
@@ -31,9 +32,11 @@ const Bank = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="text-center lg:mb-[3.125vw] mb-6">
-        <SectionTitle title={"Our Bank collabs"} />
-      </div>
+      {data?.title && (
+        <div className="text-center lg:mb-[3.125vw] mb-6">
+          <SectionTitle title={data?.title} />
+        </div>
+      )}
       <div>
         <Marquee
           className="recruiters_logo"
@@ -43,13 +46,13 @@ const Bank = () => {
           direction={"left"}
           speed={50}
         >
-          {images &&
-            images.map((item, index) => {
+          {data?.collabs?.data &&
+            data?.collabs?.data?.map((item, index) => {
               return (
                 <div className="relative" key={`logo${index}`}>
                   <div className="relative lg:h-[3.7vw] lg:mx-[1.5vw] object-contain">
                     <Image
-                      src={item?.image}
+                      src={cleanImage(item?.attributes?.url)}
                       alt={"partner logo"}
                       height={200}
                       width={100}

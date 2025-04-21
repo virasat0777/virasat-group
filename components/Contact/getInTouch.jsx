@@ -5,13 +5,12 @@ import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const GetInTouch = () => {
+const GetInTouch = ({ data, office }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -58,44 +57,61 @@ const GetInTouch = () => {
       </div>
 
       <div>
-        <div className="text-center lg:mb-[2.083vw] mb-6">
-          <SectionTitle title={"GET IN TOUCH"} />
-        </div>
-        <div className="flex justify-center lg:mb-[2.083vw] mb-5">
-          <div className="lg:w-[36vw] w-full">
-            <p className="w-full text-center">
-              Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat
-              nibh sagittis orci dolor. Ipsum amet et elementum ipsum.{" "}
-            </p>
+        {data?.title && (
+          <div className="text-center lg:mb-[2.083vw] mb-6">
+            <SectionTitle title={data?.title} />
           </div>
+        )}
+        <div className="flex justify-center lg:mb-[2.083vw] mb-5">
+          {data?.description && (
+            <div className="lg:w-[36vw] w-full">
+              <p className="w-full text-center">{data?.description}</p>
+            </div>
+          )}
         </div>
         <div className="flex justify-center lg:mb-[2.5vw] mb-5">
           <div className="lg:w-[47.188vw] w-full">
             <div className=" flex lg:flex-row flex-col justify-between items-center ">
-              {info.map((item, index) => (
-                <span key={index} className="w-full lg:w-auto lg:mb-0 mb-4">
+              {data?.contactNo && (
+                <span className="w-full lg:w-auto lg:mb-0 mb-4">
                   <span className="flex lg:gap-[0.729vw] gap-[10px] items-center">
                     <div className="lg:w-[3.125vw] lg:h-[3.125vw] w-[60px] h-[60px]">
                       <Image
-                        src={item?.image}
+                        src={"/icon/contact/phone-logo.svg"}
                         height={60}
                         width={60}
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <Link
-                      href={
-                        item.type === "phone"
-                          ? `tel:${item?.title}`
-                          : `mailto:${item?.title}`
-                      }
+                      href={`tel:${data?.contactNo}`}
                       className="lg:text-[1.146vw] text-lg font-bold"
                     >
-                      {item?.title}
+                      {data?.title}
                     </Link>
                   </span>
                 </span>
-              ))}
+              )}
+              <span className="w-full lg:w-auto lg:mb-0 mb-4">
+                {data?.email && (
+                  <span className="flex lg:gap-[0.729vw] gap-[10px] items-center">
+                    <div className="lg:w-[3.125vw] lg:h-[3.125vw] w-[60px] h-[60px]">
+                      <Image
+                        src={"/icon/contact/email-logo.svg"}
+                        height={60}
+                        width={60}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <Link
+                      href={`mailto:${data?.email}`}
+                      className="lg:text-[1.146vw] text-lg font-bold"
+                    >
+                      {data?.email}
+                    </Link>
+                  </span>
+                )}
+              </span>
             </div>
           </div>
         </div>
@@ -196,27 +212,32 @@ const GetInTouch = () => {
           <SectionTitle title={"OFFICE LOCATION"} />
         </div>
         <div className="lg:flex gap-[2.292vw] ">
-          {contactBlocks.map((item, index) => (
-            <div
-              className="lg:w-[22.813vw]   w-full h-auto bg-black lg:py-[2.917vw] py-4 flex flex-col items-center mb-8"
-              key={index}
-            >
-              <div className="lg:w-[1.667vw] lg;h-[1.667vw] w-[32px] h-[32px] lg:mb-[1.25vw] mb-4 ">
-                <Image
-                  height={32}
-                  width={32}
-                  src={"/icon/contact/location.svg"}
-                  className="w-full h-full object-cover"
-                />
+          {office?.locationItems?.length > 0 &&
+            office?.locationItems?.map((item, index) => (
+              <div
+                className="lg:w-[22.813vw]   w-full h-auto bg-black lg:py-[2.917vw] py-4 flex flex-col items-center mb-8"
+                key={index}
+              >
+                <div className="lg:w-[1.667vw] lg;h-[1.667vw] w-[32px] h-[32px] lg:mb-[1.25vw] mb-4 ">
+                  <Image
+                    height={32}
+                    width={32}
+                    src={"/icon/contact/location.svg"}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {item?.name && (
+                  <p className="text-white lg:text-[1.146vw] text-lg lg:mb-[1.667vw] mb-2">
+                    {item?.name}
+                  </p>
+                )}
+                {item?.location && (
+                  <p className="text-white lg:text-[1.146vw] text-lg text-center px-4">
+                    {item?.location}
+                  </p>
+                )}
               </div>
-              <p className="text-white lg:text-[1.146vw] text-lg lg:mb-[1.667vw] mb-2">
-                {item?.title}
-              </p>
-              <p className="text-white lg:text-[1.146vw] text-lg text-center px-4">
-                {item?.address}
-              </p>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>

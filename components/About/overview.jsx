@@ -4,7 +4,8 @@ import Image from "next/image";
 import React from "react";
 import { slideIn } from "@/Animation/Variants";
 import { motion } from "framer-motion";
-const Overview = () => {
+import { cleanImage } from "@/services/imageHandling";
+const Overview = ({ data }) => {
   return (
     <div className="lg:px-[10.208vw] px-4 lg:py-[4.167vw] py-4 relative">
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
@@ -23,34 +24,30 @@ const Overview = () => {
             whileInView="show"
             variants={slideIn("right", 0.3)}
           >
-            <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto  flex justify-center">
-              <Image
-                width={364}
-                height={408}
-                src={`/images/about/abOverview2.png`}
-                alt="about overview image one"
-              />
-            </div>
+            {data?.leftImage && (
+              <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto  flex justify-center">
+                <Image
+                  width={364}
+                  height={408}
+                  src={cleanImage(data?.leftImage?.data?.attributes?.url)}
+                  alt="about overview image one"
+                />
+              </div>
+            )}
           </motion.div>
         </div>
         <div>
           <div className="text-center lg:mt-[3.75vw] mt-4">
-            <div className="lg:mb-[2.083vw] mb-4">
-              <SectionTitle title={"ABOUT VIRASAT"} />
-            </div>
-            <p className="lg:mb-[2.083vw] mb-4 lg:text-[1.042vw] text-12px ">
-              Virasat Group commenced operation in 2010, and has emerged as an
-              organization that is synonymous to trust, quality, Innovation, and
-              Customer Satisfaction. We have maintained our prerequisite of
-              delivering quality and affordable housing solution to people, and
-              are constantly striving for perfection. With the city emerging as
-              a promising real estate hub, Virasat Group is consistently
-              providing elegant and affordable housing structures, with no
-              compromise on the promise of modern and spacious living,
-              Guaranteeing satisfaction and meeting expectations with Virasat
-              Group.
-            </p>
-            <BlackButton name="Download Brochure" />
+            {data?.title && (
+              <div className="lg:mb-[2.083vw] mb-4">
+                <SectionTitle title={data?.title} />
+              </div>
+            )}
+            <p
+              className="lg:mb-[2.083vw] mb-4 lg:text-[1.042vw] text-12px"
+              dangerouslySetInnerHTML={{ __html: data?.overview }}
+            ></p>
+            {/* <BlackButton name="Download Brochure" /> */}
           </div>
         </div>
         <div className="">
@@ -59,14 +56,16 @@ const Overview = () => {
             whileInView="show"
             variants={slideIn("left", 0.3)}
           >
-            <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto flex justify-center">
-              <Image
-                width={364}
-                height={408}
-                src={`/images/about/abOverview1.png`}
-                alt="about overview image one"
-              />
-            </div>
+            {data?.rightImage && (
+              <div className="lg:w-[18.958vw] w-full lg:h-[21.25vw] h-auto flex justify-center">
+                <Image
+                  width={364}
+                  height={408}
+                  src={cleanImage(data?.rightImage?.data?.attributes?.url)}
+                  alt="about overview image one"
+                />
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

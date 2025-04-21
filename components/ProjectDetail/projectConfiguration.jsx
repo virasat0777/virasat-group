@@ -8,7 +8,8 @@ import "swiper/css/navigation";
 import SectionTitle from "@/common/SectionTitle";
 import { RightArrow, LeftArrow } from "@/public/icon/arrows";
 import BlackButton from "@/common/BlackButton";
-const ProjectConfiguration = () => {
+import { cleanImage } from "@/services/imageHandling";
+const ProjectConfiguration = ({ data }) => {
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -78,23 +79,29 @@ const ProjectConfiguration = () => {
                       onRealIndexChange={(e) => {
                         setActiveSlide(e.realIndex);
                       }}
+                      centeredSlides={true}
                     >
-                      {configuration.map((item, index) => (
-                        <SwiperSlide
-                          key={index}
-                          className="lg:flex lg:justify-center"
-                        >
-                          <div className="lg:h-[26.042vw] lg:w-[21.875vw] w-[100%] h-auto  mx-auto text-center">
-                            <Image
-                              height={500}
-                              width={420}
-                              className="w-full h-auto"
-                              src={item?.image1}
-                              alt={item?.title}
-                            />
-                          </div>
-                        </SwiperSlide>
-                      ))}
+                      {data &&
+                        data.map((item, index) => (
+                          <SwiperSlide
+                            key={index}
+                            className="lg:flex lg:justify-center"
+                          >
+                            {item?.primaryImage?.data?.attributes?.url && (
+                              <div className="lg:h-[26.042vw] lg:w-[21.875vw] w-[100%] h-auto  mx-auto text-center">
+                                <Image
+                                  height={500}
+                                  width={420}
+                                  className="w-full h-auto"
+                                  src={cleanImage(
+                                    item?.primaryImage?.data?.attributes?.url
+                                  )}
+                                  alt={item?.title}
+                                />
+                              </div>
+                            )}
+                          </SwiperSlide>
+                        ))}
                     </Swiper>
                   </div>
                   <div className=" flex justify-center lg:justify-between items-center w-full lg:absolute">
@@ -108,8 +115,8 @@ const ProjectConfiguration = () => {
                 </div>
                 <div className="lg:w-auto w-[80vw] overflow-x-hidden">
                   <ul>
-                    {configuration[activeSlide].configuration.map(
-                      (item, index) => (
+                    {data[activeSlide]?.areas &&
+                      data[activeSlide]?.areas?.map((item, index) => (
                         <li
                           className=" lg:text-[0.938vw] text-[0.938vw] text-[#000000] "
                           key={index}
@@ -119,12 +126,16 @@ const ProjectConfiguration = () => {
                               index === 0 ? "mt-[16px]" : ""
                             }`}
                           >
-                            <span className="lg:text-[1.25vw] text-lg kenoky">
-                              {item.bhk}
-                            </span>
-                            <span className="lg:text-[0.833vw] text-base montserrat">
-                              {item.area}
-                            </span>
+                            {item?.bhk && (
+                              <span className="lg:text-[1.25vw] text-lg kenoky">
+                                {item?.bhk}
+                              </span>
+                            )}
+                            {item?.area && (
+                              <span className="lg:text-[0.833vw] text-base montserrat">
+                                {item?.area}
+                              </span>
+                            )}
                           </div>
                           <div className="my-[16px]">
                             <svg
@@ -158,8 +169,7 @@ const ProjectConfiguration = () => {
                             </svg>
                           </div>
                         </li>
-                      )
-                    )}
+                      ))}
                   </ul>
                 </div>
 
@@ -201,19 +211,22 @@ const ProjectConfiguration = () => {
                   disableOnInteraction: false,
                 }}
               >
-                {configuration.map((item, index) => (
-                  <SwiperSlide key={index} className="">
-                    <div className="lg:h-[50vw] lg:w-[50vw] w-full h-auto">
-                      <Image
-                        height={500}
-                        width={420}
-                        className="w-full h-auto "
-                        src={item?.image2}
-                        alt={item?.title}
-                      />
-                    </div>
-                  </SwiperSlide>
-                ))}
+                {data &&
+                  data?.map((item, index) => (
+                    <SwiperSlide key={index} className="">
+                      <div className="lg:h-[50vw] lg:w-[50vw] w-full h-auto">
+                        <Image
+                          height={500}
+                          width={420}
+                          className="w-full h-auto "
+                          src={cleanImage(
+                            item?.secondaryImage?.data?.attributes?.url
+                          )}
+                          alt={item?.title}
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
           </div>

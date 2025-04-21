@@ -8,12 +8,9 @@ const Banner = ({
 }) => {
   return (
     <div className="relative w-full h-screen overflow-x-hidden">
-      {/* Desktop Image */}
       <div className="hidden md:block w-full h-full">
-        <Image src={src} alt="banner" fill className="object-cover" priority />
+        <Image src={src} alt="banner" fill className="object-cover object-center" priority />
       </div>
-
-      {/* Mobile Image */}
       <div className="block md:hidden w-full h-full">
         <Image
           src={mobileSrc || src}
@@ -24,7 +21,6 @@ const Banner = ({
         />
       </div>
 
-      {/* Title Overlay */}
       {title && (
         <div className="absolute lg:bottom-[4vw] lg:left-[4vw] bottom-[2.5vw] w-fit left-[2.5vw]">
           <h1 className="text-white text-3xl lg:text-[1.042vw] font-bold drop-shadow-md">

@@ -9,14 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@reduxjs/toolkit": "^2.7.0",
     "@studio-freight/lenis": "^1.0.42",
+    "axios": "^1.8.4",
     "framer-motion": "^12.6.3",
+    "gsap": "^3.12.7",
     "next": "13.5.8",
+    "qs": "^6.14.0",
     "react": "^18",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.55.0",
     "react-intersection-observer": "^9.16.0",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
     "styled-components": "^6.1.17",
     "swiper": "^11.2.6",
     "tw-elements-react": "^1.0.0-alpha-end"

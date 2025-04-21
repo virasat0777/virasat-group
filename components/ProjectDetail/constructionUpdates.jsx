@@ -6,8 +6,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
+import { cleanImage } from "@/services/imageHandling";
 
-const ConstructionUpdates = () => {
+const ConstructionUpdates = ({ data }) => {
   const constructionUpatesImages = [
     {
       image: "/images/project-details/construction-updates/1.png",
@@ -34,12 +35,15 @@ const ConstructionUpdates = () => {
       date: "Dec 2021",
     },
   ];
+  console.log(data?.constructionItems);
 
   return (
     <div className="lg:py-[4.167vw] py-4 px-4 lg:px-[10.938vw]">
-      <div className="lg:mb-[3.125vw] mb-4 text-center">
-        <SectionTitle title={`CONSTRUCTION UPDATES`} />
-      </div>
+      {data?.title && (
+        <div className="lg:mb-[3.125vw] mb-4 text-center">
+          <SectionTitle title={data?.title || "Construction Updates"} />
+        </div>
+      )}
 
       <div className="relative">
         <Swiper
@@ -64,30 +68,33 @@ const ConstructionUpdates = () => {
             disableOnInteraction: false,
           }}
         >
-          {constructionUpatesImages.map((item, index) => (
+          {data?.constructionItems?.map((item, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col items-center">
-                <div
-                  className={` size-full ${
-                    (index + 1) % 2 === 0
-                    
-                      ? " lg:size-[15.625vw] "
-                      : "  lg:size-[17.625vw]"
-                  }`}
-                >
-                  <Image
-                    src={item.image}
-                    alt={`Construction ${index + 1}`}
-                    width={1000}
-                    height={1000}
-                    className={`w-full h-full object-cover 
+                {item?.image?.data?.attributes?.url && (
+                  <div
+                    className={` size-full ${
+                      (index + 1) % 2 === 0
+                        ? " lg:size-[15.625vw] "
+                        : "  lg:size-[17.625vw]"
+                    }`}
+                  >
+                    <Image
+                      src={cleanImage(item?.image?.data?.attributes?.url)}
+                      alt={`Construction ${index + 1}`}
+                      width={1000}
+                      height={1000}
+                      className={`w-full h-full object-cover 
                         
                   `}
-                  />
-                </div>
-                <p className="mt-3 text-sm text-center font-medium ">
-                  {item.date}
-                </p>
+                    />
+                  </div>
+                )}
+                {item?.title && (
+                  <p className="mt-3 text-sm text-center font-medium ">
+                    {item?.title}
+                  </p>
+                )}
               </div>
             </SwiperSlide>
           ))}

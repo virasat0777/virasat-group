@@ -44,11 +44,12 @@ const Header = () => {
     <div
       className={`${
         isSticky ? "bg-nav z-[9999] shadow-md" : "bg-transparent"
-      } fixed top-0 left-0 w-full z-[10] transition-all duration-300`}
+      } fixed top-0 left-0 w-screen z-[10] transition-all duration-300`}
     >
-      <div className="flex container mx-auto py-5 justify-between items-center w-full">
+      <div className="flex max-md:px-5  md:container mx-auto py-5 justify-between items-center w-full">
         {/* Logo */}
-        <Image
+     
+       <Image
           className={` ${
             isSticky
               ? "lg:w-[4.3rem] w-[3.5rem] !cursor-pointer lg:h-[4rem]"
@@ -62,9 +63,7 @@ const Header = () => {
           }}
           alt="Logo"
         />
-
-        {/* Menu Icon */}
-
+      
         <svg
           onClick={toggleSidebar}
           xmlns="http://www.w3.org/2000/svg"

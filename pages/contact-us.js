@@ -1,22 +1,29 @@
 import Banner from "@/common/Banner";
 import GetInTouch from "@/components/Contact/getInTouch";
+import { fetchContactData } from "@/redux/slices/contactSlice";
+import { store } from "@/redux/store";
+import { cleanImage } from "@/services/imageHandling";
 import React from "react";
 
-const ContactUs = () => {
+const ContactUs = ({ data }) => {
+  console.log(data, "contact data");
   return (
     <div>
-      <Banner
-        src="/images/contact-us/contact-us-banner.png"
-        mobileSrc="/images/contact-us/contact-us-banner.png"
-        title="Contact us"
-      />
-      <GetInTouch />
-
-      <div className="w-screen lg:h-[43.333vw]">
+      {data?.banner && (
+        <Banner
+          src={cleanImage(data?.banner?.desktopBanner?.data?.attributes?.url)}
+          mobileSrc={cleanImage(
+            data?.banner?.mobileBanner?.data?.attributes?.url
+          )}
+          title="Contact us"
+        />
+      )}
+      {data?.getInTouch && data?.officeLocation && (
+        <GetInTouch data={data?.getInTouch} office={data?.officeLocation} />
+      )}
+      <div className="w-screen lg:h-[43.333vw] h-[50vh]">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.909919715179!2d80.98831847543704!3d26.842817276688976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be2d4f57f60ef%3A0x177a41a32fc8d165!2sDayal%20Paradise!5e0!3m2!1sen!2sin!4v1744287372850!5m2!1sen!2sin"
-          // width="800"
-          // height="600"
+          src={data?.officeLocation?.mapLink}
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -28,3 +35,13 @@ const ContactUs = () => {
 };
 
 export default ContactUs;
+
+export async function getServerSideProps() {
+  await store.dispatch(fetchContactData());
+  const contact = store?.getState()?.contact?.data?.data?.attributes;
+  return {
+    props: {
+      data: contact,
+    },
+  };
+}

@@ -6,8 +6,11 @@ import { Navigation, Controller, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
+import { cleanImage } from "@/services/imageHandling";
+import { useRouter } from "next/router";
 
-const HomeNews = () => {
+const HomeNews = ({ newsData }) => {
+  const router = useRouter();
   const news = [
     {
       description:
@@ -73,26 +76,48 @@ const HomeNews = () => {
                   disableOnInteraction: false,
                 }}
               >
-                {news.map((item, index) => (
-                  <SwiperSlide key={index} className="h-full w-full">
-                    <div className="">
-                      <div className="lg:w-[36.458vw] lg:h-[18.229vw] w-full h-full lg:mb-[2.083vw] mb-2">
-                        <Image
-                          src={item?.image}
-                          width={700}
-                          height={1000}
-                          className="w-full h-full object-cover"
-                        />
+                {newsData &&
+                  newsData.map((item, index) => (
+                    <SwiperSlide key={index} className="h-full w-full">
+                      <div className="">
+                        {item?.attributes?.thumbnailImage?.data?.attributes
+                          ?.url && (
+                          <div className="lg:w-[36.458vw] lg:h-[18.229vw] w-full h-full lg:mb-[2.083vw] mb-2">
+                            <Image
+                              src={cleanImage(
+                                item?.attributes?.thumbnailImage?.data
+                                  ?.attributes?.url
+                              )}
+                              width={700}
+                              height={1000}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        )}
+                        {item?.attributes?.title && (
+                          <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold  text-black text-[20px] lg:mb-[1.25vw] mb-2">
+                            {item?.attributes?.title}
+                          </p>
+                        )}
+                        {item?.attributes?.description && (
+                          <p className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  text-black text-[16px]">
+                            {item?.attributes?.description
+                              ?.split(" ")
+                              .slice(0, 10)
+                              .join(" ")}
+                          </p>
+                        )}
+                        <p
+                          className="mt-2 text-black cursor-pointer lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw] font-normal hover:text-blue-600"
+                          onClick={() =>
+                            router.push(`/news/${item?.attributes?.slug}`)
+                          }
+                        >
+                          Read more
+                        </p>
                       </div>
-                      <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold  text-black text-[20px] lg:mb-[1.25vw] mb-2">
-                        {item?.title}
-                      </p>
-                      <p className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  text-black text-[16px]">
-                        {item?.description}
-                      </p>
-                    </div>
-                  </SwiperSlide>
-                ))}
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
           </div>

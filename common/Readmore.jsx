@@ -19,9 +19,9 @@ export default function ReadMoreLess({ html, wordLimit = 20 }) {
 
   return (
     <>
-      <p className="lg:mb-[1.042vw] mb-4 lg:leading-[1.667vw] lg:text-lg text-xs">
+      <div className="lg:mb-[1.042vw] mb-4 lg:leading-[1.667vw] lg:text-[1vw] text-sm">
         {displayText}
-      </p>
+      </div>
       {text.split(" ").length > wordLimit && (
         <p
           className="items-center flex gap-2 lg:mb-[1.042vw] mb-4 cursor-pointer"

@@ -7,7 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
 import { Autoplay, Navigation } from "swiper/modules";
-const HomeAwards = () => {
+import { cleanImage } from "@/services/imageHandling";
+const HomeAwards = ({ award }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const awardsArray = [
@@ -51,9 +52,11 @@ const HomeAwards = () => {
         />
       </div>
       <div className="lg:px-[13.333vw] px-2 mt-8 lg:mt-[8vw] mb-[150px] md:mb-[13vw] lg:py-[2.604vw] lg:mb-[8vw] ">
-        <div className="text-center">
-          <SectionTitle title={"AWARDS AND RECOGNITION"} />
-        </div>
+        {award?.title && (
+          <div className="text-center">
+            <SectionTitle title={award?.title} />
+          </div>
+        )}
         <div className="flex justify-center items-center gap-4">
           <div className="button-border group cursor-pointer relative z-[999] button-awards-prev-con">
             <CircularLeftArrow />
@@ -78,20 +81,25 @@ const HomeAwards = () => {
                 disableOnInteraction: false,
               }}
             >
-              {awardsArray.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="flex justify-center relative">
-                    <div className="lg:w-[20.677vw] lg:h-[26.042vw] w-full h-auto lg:mt-[2.5vw] mt-2">
-                      <Image
-                        src={item?.image}
-                        width={1000}
-                        height={1000}
-                        className="w-full h-auto relative"
-                      />
+              {award?.awardItems &&
+                award?.awardItems.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="flex justify-center relative">
+                      <div className="lg:w-[20.677vw] lg:h-[26.042vw] w-full h-auto lg:mt-[2.5vw] mt-2">
+                        {item?.awardImage?.data?.attributes?.url && (
+                          <Image
+                            src={cleanImage(
+                              item?.awardImage?.data?.attributes?.url
+                            )}
+                            width={1000}
+                            height={1000}
+                            className="w-full h-auto relative"
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </div>
           <div className="button-border group cursor-pointer  z-[50] relative button-awards-next-con">
@@ -99,19 +107,25 @@ const HomeAwards = () => {
           </div>
         </div>
 
-        <div className="absolute w-full flex justify-center bottom-[4vw] left-0">
-          <span className=" valky top-0  h-full  lg:text-[15.625vw] text-[150px] opacity-10">
-            {awardsArray[activeSlide]?.year}
-          </span>
-        </div>
+        {award?.awardItems[activeSlide]?.year && (
+          <div className="absolute w-full flex justify-center bottom-[4vw] left-0">
+            <span className=" valky top-0  h-full  lg:text-[15.625vw] text-[150px] opacity-10">
+              {award?.awardItems[activeSlide]?.year}
+            </span>
+          </div>
+        )}
         <div className="absolute lg:bottom-0 md:-bottom-[12vw] -bottom-[15vh] lg:right-[11vw] z-50 ">
           <div className=" lg:w-[30vw] px-[4vw] h-full text-center flex flex-col justify-center lg:items-start items-center">
-            <div className="lg:mb-[1.25vw] text-[20px] mb-2 montserrat font-bold ">
-              {awardsArray[activeSlide]?.awardName}
-            </div>
-            <p className="lg:text-base text-center text-[16px] leading-[20px] lg:leading-[1.5vw] lg:text-[1.042vw] lg:text-start text-xs">
-              {awardsArray[activeSlide]?.description}
-            </p>
+            {award?.awardItems[activeSlide]?.awardName && (
+              <div className="lg:mb-[1.25vw] text-[20px] mb-2 montserrat font-bold ">
+                {award?.awardItems[activeSlide]?.awardName}
+              </div>
+            )}
+            {award?.awardItems[activeSlide]?.awardDescription && (
+              <p className="lg:text-base text-center text-[16px] leading-[20px] lg:leading-[1.5vw] lg:text-[1.042vw] lg:text-start text-xs">
+                {award?.awardItems[activeSlide]?.awardDescription}
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -2,21 +2,13 @@ import SectionTitle from "@/common/SectionTitle";
 import Image from "next/image";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Controller,
-  Keyboard,
-  Autoplay,
-  Pagination,
-} from "swiper/modules";
+import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import {
-  WhiteCircularLeftArrow,
-  WhiteCircularRightArrow,
-} from "@/public/icon/arrows";
-const LoanPartners = () => {
-  const data = [
+import { cleanImage } from "@/services/imageHandling";
+
+const LoanPartners = ({ data }) => {
+  const Data = [
     { img: "/images/about/l1.svg", title: "title1" },
     { img: "/images/about/l2.svg", title: "title2" },
     { img: "/images/about/l3.svg", title: "title3" },
@@ -49,6 +41,15 @@ const LoanPartners = () => {
     { img: "/images/about/l2.svg", title: "title15" },
   ];
 
+  const loanItems = [
+    ...data?.partners,
+    ...data?.partners,
+    ...data?.partners,
+    ...data?.partners,
+    ...data?.partners,
+    ...data?.partners,
+  ];
+
   const chunkArray = (array, size) => {
     const result = [];
     for (let i = 0; i < array.length; i += size) {
@@ -57,7 +58,7 @@ const LoanPartners = () => {
     return result;
   };
 
-  const chunks = chunkArray(data, 10);
+  const chunks = chunkArray(loanItems, 10);
 
   const chunkArray1 = (array, size) => {
     const result = [];
@@ -67,21 +68,23 @@ const LoanPartners = () => {
     return result;
   };
 
-  const chunks1 = chunkArray1(data, 6);
+  const chunks1 = chunkArray1(loanItems, 6);
   return (
     <div className="relative">
       <div className="absolute inset-0 -z-[10] ">
         <Image
-          src={`/images/about/management-bg.png`}
+          src={cleanImage(data?.bgImage?.data?.attributes?.url)}
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
         />
       </div>
       <div className="lg:py-[4.167vw] py-4 lg:px-[11.667vw] px-4">
-        <div className="text-white text-center">
-          <SectionTitle title={"LOAN PARTNERS"} />
-        </div>
+        {data?.title && (
+          <div className="text-white text-center">
+            <SectionTitle title={data?.title} />
+          </div>
+        )}
         <div>
           <div className="amen-slider position-relative mt-[50px] md:block hidden">
             <Swiper
@@ -93,8 +96,8 @@ const LoanPartners = () => {
               }}
               speed={1600}
               pagination={{
-                clickable: true, // Makes dots clickable
-                type: "bullets", // Type of dots/pagination
+                clickable: true,
+                type: "bullets",
               }}
               modules={[Keyboard, Autoplay, Navigation, Pagination]}
               className="mySwiper"
@@ -107,18 +110,24 @@ const LoanPartners = () => {
                         key={index}
                         className="flex hover-bg flex-col h-[200px] items-center justify-center border  border-opacity-5 border-[#E0E0E0]"
                       >
-                        <div className="h-full w-full flex items-center justify-center">
-                          <Image
-                            src={item.img || "/fallback-image.jpg"} // Fallback image in case item.img is null
-                            alt={item.title || "Image"} // Ensure alt text is always provided
-                            width={100}
-                            height={100}
-                            sizes="100%"
-                            className="max-w-full xl:w-[50%] lg:w-[70%] md:w-[80%] h-auto filter"
-                          />
-                        </div>
+                        {item?.image?.data?.attributes?.url && (
+                          <div className="h-full w-full flex items-center justify-center">
+                            <Image
+                              src={
+                                cleanImage(
+                                  item?.image?.data?.attributes?.url
+                                ) || "/fallback-image.jpg"
+                              }
+                              alt={item.title || "Image"}
+                              width={100}
+                              height={100}
+                              sizes="100%"
+                              className="max-w-full xl:w-[50%] lg:w-[70%] md:w-[80%] h-auto filter"
+                            />
+                          </div>
+                        )}
 
-                        {/* <p className="text-center mt-2 text-sm">{item.title}</p> */}
+                        {/* <p className="text-center mt-2 text-white text-sm">{item.title}</p> */}
                       </div>
                     ))}
                   </div>
@@ -150,18 +159,24 @@ const LoanPartners = () => {
                         key={index}
                         className="flex hover-bg flex-col sm:h-[200px] h-[120px] items-center justify-center border  border-opacity-25 border-[#E0E0E0]"
                       >
-                        <div className="h-full w-full flex items-center justify-center">
-                          <Image
-                            src={item.img || "/fallback-image.jpg"} // Fallback image in case item.img is null
-                            alt={item.title || "Image"} // Ensure alt text is always provided
-                            width={100}
-                            // sizes='100%'
-                            height={100}
-                            sizes="(max-width: 768px) 80vw, (max-width: 1024px) 70vw, 50vw"
-                            quality={75}
-                            className="sm:max-w-full h-auto filter w-[60%]"
-                          />
-                        </div>
+                        {item?.image?.data?.attributes?.url && (
+                          <div className="h-full w-full flex items-center justify-center">
+                            <Image
+                              src={
+                                cleanImage(
+                                  item?.image?.data?.attributes?.url
+                                ) || "/fallback-image.jpg"
+                              } // Fallback image in case item.img is null
+                              alt={item.title || "Image"} // Ensure alt text is always provided
+                              width={100}
+                              // sizes='100%'
+                              height={100}
+                              sizes="(max-width: 768px) 80vw, (max-width: 1024px) 70vw, 50vw"
+                              quality={75}
+                              className="sm:max-w-full h-auto filter w-[60%]"
+                            />
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>

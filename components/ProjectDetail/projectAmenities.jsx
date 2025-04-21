@@ -9,7 +9,8 @@ import { Navigation, Controller, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
-const ProjectAmenities = () => {
+import { cleanImage } from "@/services/imageHandling";
+const ProjectAmenities = ({ title, data, bg }) => {
   const amenities = [
     {
       image: "/icon/amenities-icon/pool.png",
@@ -69,15 +70,17 @@ const ProjectAmenities = () => {
     },
   ];
 
-  const firstHalf = amenities.slice(0, Math.ceil(amenities.length / 2));
-  const secondHalf = amenities.slice(Math.ceil(amenities.length / 2));
+  const firstHalf = data?.slice(0, Math.ceil(amenities.length / 2));
+  const secondHalf = data?.slice(Math.ceil(amenities.length / 2));
+
+  console.log(firstHalf[0], "first half in ");
   return (
     <div
       className={`relative bg-cover bg-no-repeat  bg-center w-full my-5 overflow-x-hidden`}
     >
       <div className="absolute w-screen -z-10 hidden lg:block">
         <Image
-          src={`/images/project-details/amenities-background.png`}
+          src={bg}
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
@@ -93,9 +96,11 @@ const ProjectAmenities = () => {
       </div>
 
       <div className="lg:py-[1.167vw] xl:py-[4.167vw] py-4 lg:px-[10.885vw] px-4 text-white text-center">
-        <div className="py-4">
-          <SectionTitle title="AMENITIES" />
-        </div>
+        {title && (
+          <div className="py-4">
+            <SectionTitle title={title} />
+          </div>
+        )}
         <div className="py-4 lg:py-0">
           <div>
             <Swiper
@@ -123,23 +128,30 @@ const ProjectAmenities = () => {
                 disableOnInteraction: false,
               }}
             >
-              {firstHalf.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="lg:p-[1.25vw] p-2 flex flex-col items-center">
-                    <div className="lg:w-[5.208vw]  lg:h-[5.208vw] w-[50px] h-auto lg:mb-[2.083vw] mb-2">
-                      <Image
-                        src={item?.image}
-                        width={100}
-                        height={100}
-                        className="w-full h-full object-cover"
-                      />
+              {firstHalf &&
+                firstHalf?.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="lg:p-[1.25vw] p-2 flex flex-col items-center">
+                      {item?.attributes?.image?.data?.attributes?.url && (
+                        <div className="lg:w-[5.208vw]  lg:h-[5.208vw] w-[50px] h-auto lg:mb-[2.083vw] mb-2">
+                          <Image
+                            src={cleanImage(
+                              item?.attributes?.image?.data?.attributes?.url
+                            )}
+                            width={100}
+                            height={100}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      {item?.attributes?.name && (
+                        <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] montserrat text-white text-[16px] lg:mb-[1.25vw] mb-2">
+                          {item?.attributes?.name}
+                        </p>
+                      )}
                     </div>
-                    <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] montserrat text-white text-[16px] lg:mb-[1.25vw] mb-2">
-                      {item?.title}
-                    </p>
-                  </div>
-                </SwiperSlide>
-              ))}
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </div>
           <div>
@@ -171,17 +183,23 @@ const ProjectAmenities = () => {
               {secondHalf.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="lg:p-[1.25vw] p-2 w-full flex flex-col items-center">
-                    <div className="lg:w-[5.208vw]  lg:h-[5.208vw] w-[50px] h-auto lg:mb-[2.083vw] mb-2">
-                      <Image
-                        src={item?.image}
-                        width={100}
-                        height={100}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] montserrat text-white text-[16px] lg:mb-[1.25vw] mb-2">
-                      {item?.title}
-                    </p>
+                    {item?.attributes?.image?.data?.attributes?.url && (
+                      <div className="lg:w-[5.208vw]  lg:h-[5.208vw] w-[50px] h-auto lg:mb-[2.083vw] mb-2">
+                        <Image
+                          src={cleanImage(
+                            item?.attributes?.image?.data?.attributes?.url
+                          )}
+                          width={100}
+                          height={100}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    {item?.attributes?.name && (
+                      <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] montserrat text-white text-[16px] lg:mb-[1.25vw] mb-2">
+                        {item?.attributes?.name}
+                      </p>
+                    )}
                   </div>
                 </SwiperSlide>
               ))}
