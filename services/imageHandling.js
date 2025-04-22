@@ -16,7 +16,7 @@ export const cleanImage = (originalImage) => {
   return imageUrl;
 };
 export const webFullurl = (originalImage) => {
-  let homeUrl = "http://localhost:1337";
+  let homeUrl = "http://localhost:1338";
   if (originalImage) {
     homeUrl = `${process.env.NEXT_PUBLIC_WEBSITE_HOME_URL}${originalImage}`;
   }
