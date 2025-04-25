@@ -2,49 +2,50 @@ import BlackButton from "@/common/BlackButton";
 import SectionTitle from "@/common/SectionTitle";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import axios from "axios";
 const GetInTouch = ({ data, office }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-  const onSubmit = (data) => {
+  const router = useRouter();
+  const onSubmit = async (data) => {
     console.log(data);
+
+    const leadData = {
+      name: data.name,
+      mobile: data.mobile,
+      email: data.email,
+      message: data.message,
+      source: "contact page",
+    };
+    const payload = {
+      data: leadData,
+    };
+    try {
+      const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/website-leads`;
+      const response = await axios.post(endpoint, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        reset();
+        router.push("/thankyou");
+      }
+    } catch (error) {
+      console.error(
+        "Error submitting to Google Sheet API:",
+        error.response ? error.response.data : error.message
+      );
+    }
   };
 
-  const info = [
-    {
-      title: "+91 7518109109",
-      image: "/icon/contact/phone-logo.svg",
-      type: "phone",
-    },
-    {
-      title: "info@virasatgroup.co.in",
-      image: "/icon/contact/email-logo.svg",
-      type: "email",
-    },
-  ];
-
-  const contactBlocks = [
-    {
-      title: "Corporate Office",
-      address:
-        "5/288, Vipul Khand, Gomti Nagar, Lucknow, Uttar Pradesh  226010",
-    },
-    {
-      title: "Head Office",
-      address:
-        "Plot No. 33, Khasra No-111, Geetapuri Colony Gomti Nagar Ext. Sector 5, Lucknow",
-    },
-    {
-      title: "Site Address",
-      address:
-        "Virasat Skyscrapers Group Housing Project Khasra No. 426,Baghamau Gomtinagar Extension Sector 6, Lucknow, UP.",
-    },
-  ];
   return (
     <div className={`lg:px-[13.333vw] px-4 lg:py-[4.167vw] py-8 relative`}>
       <div className="absolute inset-0 -z-10 opacity-[0.015]">

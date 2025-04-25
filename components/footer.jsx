@@ -14,8 +14,35 @@ const Footer = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+
+    const leadData = {
+      name: data.name,
+      mobile: data.mobile,
+      email: data.email,
+      source: "footer",
+    };
+    const payload = {
+      data: leadData,
+    };
+    try {
+      const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/website-leads`;
+      const response = await axios.post(endpoint, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        reset();
+        router.push("/thank-you");
+      }
+    } catch (error) {
+      console.error(
+        "Error submitting to Google Sheet API:",
+        error.response ? error.response.data : error.message
+      );
+    }
   };
 
   const QuickLinks = [

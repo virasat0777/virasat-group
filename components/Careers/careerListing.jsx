@@ -5,56 +5,78 @@ import Modal from "@/common/Modal";
 import ReadMoreLess from "@/common/Readmore";
 
 import SectionTitle from "@/common/SectionTitle";
+import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const CareerListing = ({ data }) => {
   console.log(data?.available_jobs?.data[0].attributes?.badges, "abai");
   const [show, setShow] = useState(false);
-  const jobs = [
-    {
-      field: "research",
-      designation: "Senior platform engineer",
-      location: "Mumbai, Maharashtra",
-      badges: ["On Site", "Full time"],
-      description:
-        "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia cupiditate, magnam quo distinctio praesentium numquam maxime nihil corrupti dolorum cumque architecto quis, veniam ratione sapiente rem aliquid totam fugit itaque voluptatum. Nostrum necessitatibus, quos officia ducimus illo dolore veniam voluptatibus temporibus eligendi aut consequuntur tempora odio modi maxime quia, cum accusantium obcaecati, possimus quis sequi ipsum porro iure maiores. Nihil a quos voluptas itaque voluptates facere voluptate aspernatur velit numquam nobis animi doloribus temporibus, quasi quisquam reiciendis cumque nam. Nisi, tenetur pariatur fugiat accusantium voluptas voluptatibus. Incidunt vitae quae eveniet non deserunt quos? Ullam animi quas blanditiis nihil, voluptates molestiae.</p>",
-    },
-    {
-      field: "research",
-      designation: "Senior platform engineer",
-      location: "Mumbai, Maharashtra",
-      badges: ["On Site", "Full time"],
-      description:
-        "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia cupiditate, magnam quo distinctio praesentium numquam maxime nihil corrupti dolorum cumque architecto quis, veniam ratione sapiente rem aliquid totam fugit itaque voluptatum. Nostrum necessitatibus, quos officia ducimus illo dolore veniam voluptatibus temporibus eligendi aut consequuntur tempora odio modi maxime quia, cum accusantium obcaecati, possimus quis sequi ipsum porro iure maiores. Nihil a quos voluptas itaque voluptates facere voluptate aspernatur velit numquam nobis animi doloribus temporibus, quasi quisquam reiciendis cumque nam. Nisi, tenetur pariatur fugiat accusantium voluptas voluptatibus. Incidunt vitae quae eveniet non deserunt quos? Ullam animi quas blanditiis nihil, voluptates molestiae.</p>",
-    },
-    {
-      field: "research",
-      designation: "Senior platform engineer",
-      location: "Mumbai, Maharashtra",
-      badges: ["On Site", "Full time"],
-      description:
-        "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia cupiditate, magnam quo distinctio praesentium numquam maxime nihil corrupti dolorum cumque architecto quis, veniam ratione sapiente rem aliquid totam fugit itaque voluptatum. Nostrum necessitatibus, quos officia ducimus illo dolore veniam voluptatibus temporibus eligendi aut consequuntur tempora odio modi maxime quia, cum accusantium obcaecati, possimus quis sequi ipsum porro iure maiores. Nihil a quos voluptas itaque voluptates facere voluptate aspernatur velit numquam nobis animi doloribus temporibus, quasi quisquam reiciendis cumque nam. Nisi, tenetur pariatur fugiat accusantium voluptas voluptatibus. Incidunt vitae quae eveniet non deserunt quos? Ullam animi quas blanditiis nihil, voluptates molestiae.</p>",
-    },
-    {
-      field: "research",
-      designation: "Senior platform engineer",
-      location: "Mumbai, Maharashtra",
-      badges: ["On Site", "Full time"],
-      description:
-        "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia cupiditate, magnam quo distinctio praesentium numquam maxime nihil corrupti dolorum cumque architecto quis, veniam ratione sapiente rem aliquid totam fugit itaque voluptatum. Nostrum necessitatibus, quos officia ducimus illo dolore veniam voluptatibus temporibus eligendi aut consequuntur tempora odio modi maxime quia, cum accusantium obcaecati, possimus quis sequi ipsum porro iure maiores. Nihil a quos voluptas itaque voluptates facere voluptate aspernatur velit numquam nobis animi doloribus temporibus, quasi quisquam reiciendis cumque nam. Nisi, tenetur pariatur fugiat accusantium voluptas voluptatibus. Incidunt vitae quae eveniet non deserunt quos? Ullam animi quas blanditiis nihil, voluptates molestiae.</p>",
-    },
-  ];
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+  const [selectedFile, setSelectedFile] = useState(null);
+  // const onSubmit = (data) => {
+  //   console.log("Form Submitted:");
+  //   console.log("Name:", data.name);
+  //   console.log("Email:", data.email);
+  //   console.log("Mobile:", data.mobile);
+  // };
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    console.log("Form Data:", data);
+    console.log("Selected File:", selectedFile);
+
+    if (!selectedFile) {
+      alert("Please select a file.");
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+
+      formData.append("data", JSON.stringify(data));
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("mobile", data.mobile);
+      formData.append("jobrole", data.jobRole || "N/A"); // Optional: if you have jobRole
+
+      formData.append("files.resume", selectedFile);
+
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/career-leads`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Form submitted successfully:", response.data);
+
+      if (response.status === 200) {
+        router.push("/thankyou");
+      }
+    } catch (error) {
+      if (error.response) {
+        console.error(
+          "Server responded with error status:",
+          error.response.status
+        );
+        console.error("Error data:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received from server:", error.request);
+      } else {
+        console.error("Error setting up request:", error.message);
+      }
+    }
   };
   return (
     <div
@@ -181,6 +203,14 @@ const CareerListing = ({ data }) => {
                 {...register("resume", {
                   required: "Resume is required",
                 })}
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    setSelectedFile(file);
+                  } else {
+                    setSelectedFile(null);
+                  }
+                }}
                 className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
               />
               {errors.resume && (

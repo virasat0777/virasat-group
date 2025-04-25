@@ -1,16 +1,46 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import BlackButton from "./BlackButton";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const ContactForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-
-  const onSubmit = (data) => {
+  const router = useRouter();
+  const onSubmit = async (data) => {
     console.log(data);
+
+    const leadData = {
+      name: data.name,
+      mobile: data.mobile,
+      email: data.email,
+      source: "footer",
+    };
+    const payload = {
+      data: leadData,
+    };
+    try {
+      const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/website-leads`;
+      const response = await axios.post(endpoint, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        reset();
+        router.push("/thankyou");
+      }
+    } catch (error) {
+      console.error(
+        "Error submitting to Google Sheet API:",
+        error.response ? error.response.data : error.message
+      );
+    }
   };
 
   return (
