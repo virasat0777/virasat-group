@@ -14,14 +14,13 @@ import { fetchProjectList } from "@/redux/slices/projectListSlice";
 import { fetchBlogsList } from "@/redux/slices/blogsSlice";
 
 export default function Home({ homeData, newsData, projects, blogs }) {
-  console.log(blogs, "home data");
   return (
     <>
       <div>
         {homeData?.banner && <HomeBanner data={homeData?.banner} />}
         {homeData?.overview && <HomeOverview overview={homeData?.overview} />}
         {homeData?.counter && <CounterSection counter={homeData?.counter} />}
-        {projects && <HomeProjects projects={projects} />}
+        {projects.length > 0 && <HomeProjects projects={projects} />}
         {homeData?.awards && <HomeAwards award={homeData?.awards} />}
         {homeData?.testimonial && (
           <HomeTestimonials testimonial={homeData?.testimonial} />
