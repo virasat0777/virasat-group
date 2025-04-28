@@ -6,6 +6,7 @@ import aboutSlice from "./slices/aboutSlice";
 import blogsSlice from "./slices/blogsSlice";
 import careerSlice from "./slices/careerSlice";
 import contactSlice from "./slices/contactSlice";
+import projectListPageSlice from "./slices/projectListPageSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     blogs: blogsSlice,
     career: careerSlice,
     contact: contactSlice,
+    projectListPage: projectListPageSlice,
   },
 });

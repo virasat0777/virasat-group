@@ -88,7 +88,7 @@ const GetInTouch = ({ data, office }) => {
                       href={`tel:${data?.contactNo}`}
                       className="lg:text-[1.146vw] text-lg font-bold"
                     >
-                      {data?.title}
+                      {data?.contactNo}
                     </Link>
                   </span>
                 </span>

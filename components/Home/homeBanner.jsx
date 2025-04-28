@@ -174,7 +174,7 @@ const HomeBanner = ({ data }) => {
     //   }
     // );
   }, []);
-
+  console.log(data?.desktopBanner?.data?.attributes?.url, "banner data");
   return (
     <div className="bg-black w-screen h-screen relative flex justify-center items-end overflow-hidden">
       <div className="flex justify-center items-center lg:gap-[2vw] gap-4 h-full flex-col ">
@@ -240,7 +240,10 @@ const HomeBanner = ({ data }) => {
         className=" absolute bottom-0  z-[6] overflow-hidden size-full"
         ref={bannerRef}
       >
-        <Banner src={bannerImage} />
+        <Banner
+          src={cleanImage(data?.desktopBanner?.data?.attributes?.url)}
+          mobileSrc={cleanImage(data?.mobileBanner?.data?.attributes?.url)}
+        />
         {/* <Image
           src={bannerImage}
           alt="banner-mobile"

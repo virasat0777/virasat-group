@@ -1,15 +1,17 @@
 import Image from "next/image";
 import React from "react";
 
-const Banner = ({
-  src = "/images/project-details/project-details-banner.png",
-  mobileSrc = "/images/project-details/project-details-banner.png",
-  title = "Project Detail Page",
-}) => {
+const Banner = ({ src, mobileSrc, title }) => {
   return (
     <div className="relative w-full h-screen overflow-x-hidden">
       <div className="hidden md:block w-full h-full">
-        <Image src={src} alt="banner" fill className="object-cover object-center" priority />
+        <Image
+          src={src}
+          alt="banner"
+          fill
+          className="object-cover object-center"
+          priority
+        />
       </div>
       <div className="block md:hidden w-full h-full">
         <Image
