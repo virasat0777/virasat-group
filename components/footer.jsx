@@ -123,7 +123,7 @@ const Footer = () => {
 
             <div className="flex gap-3 justify-start text-white-color mont text-[0.8rem] font-[500]">
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/VirasatInfraGroup"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -143,7 +143,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://twitter.com"
+                href="https://www.twitter.com/VirasatGroupLko"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -163,7 +163,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.youtube.com"
+                href="https://www.youtube.com/channel/UCaPGqgyfjxhPLEBJzgHQJBQ"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -178,7 +178,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/virasatinfragroup"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -257,8 +257,10 @@ const Footer = () => {
                 Contact Details
               </h2>
               <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-white">
-                5/288 Vipul Khand, Gomti Nagar, Lucknow, Reg. Office: 3/243
-                Vishwas Khand, Gomti Nagar, Lucknow
+                <Link href={""}>
+                  5/288 Vipul Khand, Gomti Nagar, Lucknow, Reg. Office: 3/243
+                  Vishwas Khand, Gomti Nagar, Lucknow
+                </Link>
               </p>
             </div>
           </div>

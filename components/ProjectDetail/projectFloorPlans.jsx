@@ -8,7 +8,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { cleanImage } from "@/services/imageHandling";
 const ProjectFloorPlans = ({ data }) => {
-  // }, []);
   return (
     <div className="pt-4 lg:pb-[4.167vw] pb-4 lg:pt-[0.167vw] px-4 lg:px-[13.333vw]">
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
