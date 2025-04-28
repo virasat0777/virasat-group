@@ -17,7 +17,7 @@ const News = ({ news, newsListPage }) => {
           mobileSrc={cleanImage(
             newsListPage?.banner?.mobileBanner?.data?.attributes?.url
           )}
-          title="News and Events"
+          title={newsListPage?.banner?.title}
         />
       )}
       <NewsList newsData={news} />
