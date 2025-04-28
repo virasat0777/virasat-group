@@ -22,7 +22,7 @@ export default function Home({ homeData, newsData, projects, blogs }) {
         {homeData?.counter && <CounterSection counter={homeData?.counter} />}
         {projects.length > 0 && <HomeProjects projects={projects} />}
         {homeData?.awards && <HomeAwards award={homeData?.awards} />}
-        {homeData?.testimonial && (
+        {homeData?.testimonial.length > 0 && (
           <HomeTestimonials testimonial={homeData?.testimonial} />
         )}
         {newsData && <HomeNews newsData={newsData} />}
