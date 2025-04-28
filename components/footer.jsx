@@ -56,8 +56,8 @@ const Footer = () => {
 
   const QuickLinkss = [
     { name: "Home", link: "/" },
-    { name: "About Us", link: "/about-us" },
-    { name: "Career", link: "/career" },
+    { name: "About Us", link: "/about" },
+    { name: "Career", link: "/careers" },
     { name: "Contact Us", link: "/contact-us" },
     { name: "Blogs", link: "/blogs" },
   ];
@@ -203,7 +203,7 @@ const Footer = () => {
             <div className="flex justify-start ">
               <div className="flex navTitle flex-col">
                 <span className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem]">
-                  Projects
+                  {/* Projects */}
                 </span>
                 <span className="navTitleBar"></span>
               </div>
@@ -257,7 +257,12 @@ const Footer = () => {
                 Contact Details
               </h2>
               <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-white">
-                <Link href={""}>
+                <Link
+                  href={
+                    "https://www.google.com/maps/search/5%2F288+Vipul+Khand,+Gomti+Nagar,+Lucknow,+Reg.+Office:+3%2F243+Vishwas+Khand,+Gomti+Nagar,+Lucknow/@26.853446,80.9776748,15z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDQyMy4wIKXMDSoASAFQAw%3D%3D"
+                  }
+                  target="_blank"
+                >
                   5/288 Vipul Khand, Gomti Nagar, Lucknow, Reg. Office: 3/243
                   Vishwas Khand, Gomti Nagar, Lucknow
                 </Link>

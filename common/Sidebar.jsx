@@ -5,7 +5,7 @@ const SideBar = ({ toggleSidebar, navLinks }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
     <motion.div
-      className="fixed top-0 right-0 h-full xl:w-[30rem] w-[20rem] bg-white/10 backdrop-blur-lg shadow-lg z-[100000] flex flex-col p-5 border-l border-white/20"
+      className="fixed top-0 right-0 h-screen overflow-hidden xl:w-[30rem] w-[20rem] bg-white/10 backdrop-blur-lg shadow-lg z-[100] flex flex-col p-5 border-l border-white/20"
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
       exit={{ x: "100%" }}
