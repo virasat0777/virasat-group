@@ -129,7 +129,7 @@ const ProjectListing = ({ projects }) => {
               )}
               <div>
                 <h6 className="lg:mt-[2.083vw] mb-6 lg:text-[1.25vw] mt-6 text-center montserrat text-xl font-bold">
-                  {item?.projectName}
+                  {item?.attributes?.projectTitle}
                 </h6>
               </div>
               <div className="lg:py-[1.25vw] flex justify-between   ">
