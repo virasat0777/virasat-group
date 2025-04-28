@@ -205,11 +205,11 @@ const Footer = () => {
                 <span className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem]">
                   Projects
                 </span>
-                <span className="navTitleBar"> </span>
+                <span className="navTitleBar"></span>
               </div>
             </div>
 
-            <div className="h-full xl:pt-2 pt-1">
+            {/* <div className="h-full xl:pt-2 pt-1">
               {["Projects Residential", "Commercial Projects"].map(
                 (val, index) => {
                   return (
@@ -224,7 +224,7 @@ const Footer = () => {
                   );
                 }
               )}
-            </div>
+            </div> */}
           </div>
           <div className="h-full">
             <div className="flex justify-start ">

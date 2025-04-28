@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const Accordion = ({ data }) => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);

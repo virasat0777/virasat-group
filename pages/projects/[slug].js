@@ -11,7 +11,6 @@ import React from "react";
 import qs from "qs";
 import { cleanImage } from "@/services/imageHandling";
 const ProjectDetail = ({ project }) => {
-  console.log(project, "project detail");
   return (
     <div>
       {project?.banner && <ProjectBanner data={project?.banner} />}

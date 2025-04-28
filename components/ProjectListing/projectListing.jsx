@@ -83,7 +83,6 @@ const ProjectListing = ({ projects }) => {
     "all",
     ...new Set(projects.map((item) => item?.attributes?.projectStatus)),
   ];
-
   return (
     <div className={`lg:py-[4.167vw] py-6 lg:px-[10.417vw] px-4 relative`}>
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
