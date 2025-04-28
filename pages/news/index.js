@@ -1,17 +1,25 @@
 import Banner from "@/common/Banner";
 import NewsList from "@/components/News/NewsList";
+import { fetchNewsListData } from "@/redux/slices/newsListSlice";
 import { fetchNewsList } from "@/redux/slices/newsSlice";
 import { store } from "@/redux/store";
+import { cleanImage } from "@/services/imageHandling";
 import React from "react";
 
-const News = ({ news }) => {
+const News = ({ news, newsListPage }) => {
   return (
     <div>
-      <Banner
-        src="/images/news/newsBanner.png"
-        mobileSrc="/images/news/newsBanner.png"
-        title="News and Events"
-      />
+      {newsListPage?.banner && (
+        <Banner
+          src={cleanImage(
+            newsListPage?.banner?.desktopBanner?.data?.attributes?.url
+          )}
+          mobileSrc={cleanImage(
+            newsListPage?.banner?.mobileBanner?.data?.attributes?.url
+          )}
+          title="News and Events"
+        />
+      )}
       <NewsList newsData={news} />
     </div>
   );
@@ -23,9 +31,13 @@ export async function getServerSideProps() {
   await store.dispatch(fetchNewsList());
   const news = store.getState()?.newsList?.data?.data;
 
+  await store.dispatch(fetchNewsListData());
+  const newsListPage = store.getState()?.newsListSlice?.data?.attributes;
+
   return {
     props: {
       news: news,
+      newsListPage: newsListPage,
     },
   };
 }

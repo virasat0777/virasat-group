@@ -22,7 +22,7 @@ const About = ({ data }) => {
         />
       )}
       {data?.overview && <Overview data={data?.overview} />}
-      {data?.management && <Management data={data?.management} />}
+      {data?.management.team.length > 0 && <Management data={data?.management} />}
       {data?.visionMission && <VisionMission data={data?.visionMission} />}
       {data?.loanPartners && <LoanPartners data={data?.loanPartners} />}
       {data?.bankCollabs && <Bank data={data?.bankCollabs} />}

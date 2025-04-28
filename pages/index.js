@@ -25,8 +25,8 @@ export default function Home({ homeData, newsData, projects, blogs }) {
         {homeData?.testimonial.length > 0 && (
           <HomeTestimonials testimonial={homeData?.testimonial} />
         )}
-        {newsData && <HomeNews newsData={newsData} />}
-        {blogs && <HomeBlogs data={blogs} />}
+        {newsData.length > 0 && <HomeNews newsData={newsData} />}
+        {blogs.length > 0 && <HomeBlogs data={blogs} />}
       </div>
     </>
   );
