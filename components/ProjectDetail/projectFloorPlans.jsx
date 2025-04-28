@@ -7,11 +7,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { cleanImage } from "@/services/imageHandling";
-
-import "@fancyapps/ui/dist/fancybox.css";
-
 const ProjectFloorPlans = ({ data }) => {
- 
   // }, []);
   return (
     <div className="pt-4 lg:pb-[4.167vw] pb-4 lg:pt-[0.167vw] px-4 lg:px-[13.333vw]">
