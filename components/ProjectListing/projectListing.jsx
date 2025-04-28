@@ -6,69 +6,6 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const ProjectListing = ({ projects }) => {
-  // const projects = [
-  //   {
-  //     thumbnailImage: "/images/project-listing/vProj1.png",
-  //     projectName: "Project 1",
-  //     totalUnits: "117",
-  //     bedrooms: "1 & 2",
-  //     projectType: "Apartment",
-  //     slug: "project-1",
-  //     status: "ongoing",
-  //     developmentSize: "1.83 Acres",
-  //   },
-  //   {
-  //     thumbnailImage: "/images/project-listing/vProj1.png",
-  //     projectName: "Project 2",
-  //     totalUnits: "85",
-  //     bedrooms: "2 & 3",
-  //     projectType: "Condominium",
-  //     slug: "project-2",
-  //     status: "ongoing",
-  //     developmentSize: "1.83 Acres",
-  //   },
-  //   {
-  //     thumbnailImage: "/images/project-listing/vProj1.png",
-  //     projectName: "Project 3",
-  //     totalUnits: "150",
-  //     bedrooms: "1, 2 & 3",
-  //     projectType: "Villa",
-  //     slug: "project-3",
-  //     status: "completed",
-  //     developmentSize: "1.83 Acres",
-  //   },
-  //   {
-  //     thumbnailImage: "/images/project-listing/vProj1.png",
-  //     projectName: "Project 4",
-  //     totalUnits: "200",
-  //     bedrooms: "Studio & 1",
-  //     projectType: "Studio Apartment",
-  //     slug: "project-4",
-  //     status: "completed",
-  //     developmentSize: "1.83 Acres",
-  //   },
-  //   {
-  //     thumbnailImage: "/images/project-listing/vProj1.png",
-  //     projectName: "Project 5",
-  //     totalUnits: "95",
-  //     bedrooms: "2 BHK",
-  //     projectType: "Townhouse",
-  //     slug: "project-5",
-  //     status: "upcoming",
-  //     developmentSize: "1.83 Acres",
-  //   },
-  //   {
-  //     thumbnailImage: "/images/project-listing/vProj1.png",
-  //     projectName: "Project 6",
-  //     totalUnits: "130",
-  //     bedrooms: "1, 2 & 3 BHK",
-  //     projectType: "Mixed-Use Development",
-  //     slug: "project-6",
-  //     status: "upcoming",
-  //     developmentSize: "1.83 Acres",
-  //   },
-  // ];
-
   const router = useRouter();
   const [selectedProjectTab, setSelectedProjectTab] = useState("all");
 
@@ -103,6 +40,7 @@ const ProjectListing = ({ projects }) => {
               key={index}
               name={item}
               handleFunction={() => setSelectedProjectTab(item)}
+              isActive={selectedProjectTab === item}
             />
           ))}
         </div>
@@ -171,7 +109,7 @@ const ProjectListing = ({ projects }) => {
                             Bedrooms
                           </p>
                           <p className="lg:text-[0.833vw] xs:text-[14px]  xxs:text-[10px]  text-base">
-                            {item?.attributes?.bedrooms} BHK
+                            {item?.attributes?.bedrooms}
                           </p>
                         </div>
                       </div>
@@ -196,7 +134,7 @@ const ProjectListing = ({ projects }) => {
                             Total units
                           </p>
                           <p className="lg:text-[0.833vw] xs:text-[14px] text-base xxs:text-[10px]">
-                            {item?.attributes?.totalUnits} units
+                            {item?.attributes?.totalUnits}
                           </p>
                         </div>
                       </div>
@@ -228,15 +166,17 @@ const ProjectListing = ({ projects }) => {
                 }
               </div>
 
-              <div className="text-center">
-                <BlackButton
-                  name="KNOW MORE"
-                  useLink={false}
-                  handleFunction={() =>
-                    router.push(`/projects/${item?.attributes?.slug}`)
-                  }
-                />
-              </div>
+              {item?.attributes?.projectStatus.toLowerCase() === "ongoing" && (
+                <div className="text-center">
+                  <BlackButton
+                    name="KNOW MORE"
+                    useLink={false}
+                    handleFunction={() =>
+                      router.push(`/projects/${item?.attributes?.slug}`)
+                    }
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>

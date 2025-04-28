@@ -16,9 +16,9 @@ const HomeProjects = ({ projects }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const featuredProjectData = projects?.filter(
-    (item) => item?.attributes?.projectStatus === "ongoing"
+    (item) => item?.attributes?.projectStatus.toLowerCase() === "ongoing"
   );
-  console.log(featuredProjectData[0]?.attributes, "projects featured");
+  console.log(featuredProjectData, "projects featured");
   const featuredProjects = [
     {
       id: 1,
@@ -138,7 +138,7 @@ const HomeProjects = ({ projects }) => {
 
                 <BlackButton
                   name="Know more"
-                  path="/learn"
+                  path={`/projects/${featuredProjectData[activeSlide]?.attributes?.slug}`}
                   color="#000000"
                   hoverColor="#C29B5C"
                   textColor="#ffffff"

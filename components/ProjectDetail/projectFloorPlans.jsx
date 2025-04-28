@@ -1,19 +1,18 @@
 import SectionTitle from "@/common/SectionTitle";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { cleanImage } from "@/services/imageHandling";
+
+import "@fancyapps/ui/dist/fancybox.css";
+
 const ProjectFloorPlans = ({ data }) => {
-  const images = [
-    { image: "/images/project-details/floor-plans/f3.png" },
-    { image: "/images/project-details/floor-plans/f3.png" },
-    { image: "/images/project-details/floor-plans/f3.png" },
-    { image: "/images/project-details/floor-plans/f3.png" },
-  ];
+ 
+  // }, []);
   return (
     <div className="pt-4 lg:pb-[4.167vw] pb-4 lg:pt-[0.167vw] px-4 lg:px-[13.333vw]">
       <div className="absolute inset-0 -z-10 opacity-[0.015]">

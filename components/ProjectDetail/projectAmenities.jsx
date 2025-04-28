@@ -73,7 +73,6 @@ const ProjectAmenities = ({ title, data, bg }) => {
   const firstHalf = data?.slice(0, Math.ceil(amenities.length / 2));
   const secondHalf = data?.slice(Math.ceil(amenities.length / 2));
 
-  console.log(firstHalf[0], "first half in ");
   return (
     <div
       className={`relative bg-cover bg-no-repeat  bg-center w-full my-5 overflow-x-hidden`}

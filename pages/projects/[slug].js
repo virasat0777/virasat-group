@@ -12,11 +12,16 @@ import qs from "qs";
 import { cleanImage } from "@/services/imageHandling";
 const ProjectDetail = ({ project }) => {
   return (
-    <div>
+    <div className="overflow-hidden">
       {project?.banner && <ProjectBanner data={project?.banner} />}
-      {project?.overview && <ProjectOverview data={project?.overview} />}
+      {project?.overview && (
+        <ProjectOverview data={project?.overview} title={project?.title} />
+      )}
       {project?.configuration && (
-        <ProjectConfiguration data={project?.configuration} />
+        <ProjectConfiguration
+          data={project?.configuration}
+          title={project?.title}
+        />
       )}
       {project?.amenitySection && (
         <ProjectAmenities
