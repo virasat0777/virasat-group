@@ -38,7 +38,7 @@ const HomeNews = ({ newsData }) => {
     },
   ];
   return (
-    <div className="lg:px-[12.292vw] px-4 lg:py-[5vw] py-8">
+    <div className="lg:px-[12.292vw] px-4 lg:py-[5vw] py-20">
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
         <Image
           src={`/images/home/homeOverviewPattern.svg`}

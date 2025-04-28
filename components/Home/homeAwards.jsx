@@ -10,37 +10,6 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { cleanImage } from "@/services/imageHandling";
 const HomeAwards = ({ award }) => {
   const [activeSlide, setActiveSlide] = useState(0);
-
-  const awardsArray = [
-    {
-      image: "/images/home/trophyhh.png",
-      year: "2019",
-      awardName: "Award name",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum. Condimentum faucibus lacinia tempus vulputate sit arcu egestas.",
-    },
-    {
-      image: "/images/home/trophyhh.png",
-      year: "2019",
-      awardName: "Award name",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum. Condimentum faucibus lacinia tempus vulputate sit arcu egestas.",
-    },
-    {
-      image: "/images/home/trophyhh.png",
-      year: "2020",
-      awardName: "Award name",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum. Condimentum faucibus lacinia tempus vulputate sit arcu egestas.",
-    },
-    {
-      image: "/images/home/trophyhh.png",
-      year: "2021",
-      awardName: "Award name",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum. Condimentum faucibus lacinia tempus vulputate sit arcu egestas.",
-    },
-  ];
   return (
     <div className={`relative bg-cover bg-no-repeat  bg-center w-full  `}>
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
@@ -114,7 +83,7 @@ const HomeAwards = ({ award }) => {
             </span>
           </div>
         )}
-        <div className="absolute lg:bottom-0 md:-bottom-[12vw] -bottom-[15vh] lg:right-[11vw] z-50 ">
+        <div className="absolute lg:bottom-0 md:-bottom-[12vw] sm:-bottom-[30vw] mt-3 lg:right-[5vw] z-50 ">
           <div className=" lg:w-[30vw] px-[4vw] h-full text-center flex flex-col justify-center lg:items-start items-center">
             {award?.awardItems[activeSlide]?.awardName && (
               <div className="lg:mb-[1.25vw] text-[20px] mb-2 montserrat font-bold ">
