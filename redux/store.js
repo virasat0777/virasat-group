@@ -8,6 +8,7 @@ import careerSlice from "./slices/careerSlice";
 import contactSlice from "./slices/contactSlice";
 import projectListPageSlice from "./slices/projectListPageSlice";
 import newsListPageSlice from "./slices/newsListSlice";
+import blogsListingPageSlice from "./slices/blogListPageSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     contact: contactSlice,
     projectListPage: projectListPageSlice,
     newsListSlice: newsListPageSlice,
+    blogsListingPage: blogsListingPageSlice,
   },
 });
