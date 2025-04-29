@@ -63,7 +63,7 @@ const Header = () => {
     { name: "About us", link: "/about" },
     { name: "Project", link: "/projects" },
     // { name: "Project Detail", link: "/project-detail" },
-    // { name: "News and Media", link: "/news" },
+    { name: "News and Media", link: "/news" },
     { name: "Careers", link: "/careers" },
     { name: "Contact Us", link: "/contact-us" },
     { name: "Blogs", link: "/blogs" },
@@ -72,7 +72,9 @@ const Header = () => {
   return (
     <div
       className={`${
-        isScrolledDown ? "bg-[#000000a6] z-[9999] shadow-md" : "bg-transparent"
+        !isScrolledDown
+          ? "bg-[#000000a6] z-[9999] block shadow-md"
+          : "bg-transparent  hidden transition-all ease-in-out duration-500"
       } fixed top-0 left-0 w-screen z-[10] transition-all duration-300`}
     >
       <div className="flex max-md:px-5  md:container mx-auto py-5 justify-between items-center w-full">
@@ -108,7 +110,13 @@ const Header = () => {
       </div>
 
       {/* Sidebar Modal */}
-      <div>
+      <div
+        className={`${
+          !isScrolledDown
+            ? "bg-[#000000a6] z-[9999] block shadow-md"
+            : "bg-transparent  hidden transition-all ease-in-out duration-500"
+        }`}
+      >
         {showMenu && (
           <SideBar
             toggleSidebar={toggleSidebar}
