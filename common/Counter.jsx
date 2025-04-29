@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import SectionTitle from "./SectionTitle";
 
-const Counter = ({ start, end, duration, suffix }) => {
+const Counter = ({ start, end, duration, suffix, prefix }) => {
   const [count, setCount] = useState(0);
   const [ref, inView] = useInView({
     triggerOnce: false,

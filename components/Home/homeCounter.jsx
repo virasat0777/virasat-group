@@ -44,7 +44,9 @@ const CounterSection = ({ counter }) => {
                 start={0}
                 end={item?.count}
                 duration={2500}
-                suffix={item?.prefix}
+                suffix={item?.suffix}
+                prefix={item?.prefix}
+
               />
 
               <p className=" para font-medium">{item?.name}</p>
