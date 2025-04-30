@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "http",
         hostname: "51.79.250.26",
       },
+      {
+        protocol: "http",
+        hostname: "15.235.143.37",
+      },
     ],
   },
 };
