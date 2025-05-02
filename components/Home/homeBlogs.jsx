@@ -82,12 +82,12 @@ const HomeBlogs = ({ data }) => {
                 modules={[Navigation, Autoplay]}
                 className="awards-swiper"
                 loop={true}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
+                // autoplay={{
+                //   delay: 3000,
+                //   disableOnInteraction: false,
+                // }}
               >
-                {data.map((item, index) => (
+                {data?.map((item, index) => (
                   <SwiperSlide key={index}>
                     <div className="lg:p-[1.25vw] w-fit p-2 border-[1px] border-black">
                       {item?.attributes?.thumbnailImage?.data?.attributes
@@ -104,10 +104,10 @@ const HomeBlogs = ({ data }) => {
                           />
                         </div>
                       )}
-                      <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold  text-black text-[20px] lg:mb-[1.25vw] mb-2">
+                      <p className="lg:text-[1.25vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold lg:min-h-[6.667vw] min-h-[66px] text-black text-[20px] lg:mb-[1.25vw] mb-2">
                         {item?.attributes?.title}
                       </p>
-                      <p className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  text-black text-[16px]">
+                      <p className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  text-black text-[16px] ">
                         {item?.attributes?.description
                           ?.split(" ")
                           ?.slice(0, 10)
