@@ -94,8 +94,8 @@ const Footer = () => {
 
             <div className="lg:mt-[2.183vw] mt-6 lg:mb-[6.25vw] mb-4">
               <p className="lg:text-[1.042vw] lg:leading-[1.667vw] leading-5 text-base">
-                Have queries or ready to take the next step in your journey with
-                us? Reach out, and let's craft your success story together!
+                Have questions or ready to get started? Connect with us and
+                let’s make great things happen. Our team is just a message away.
               </p>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import SectionTitle from "@/common/SectionTitle";
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -7,6 +7,8 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
 import { cleanImage } from "@/services/imageHandling";
+import { Fancybox as NativeFancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 const ConstructionUpdates = ({ data }) => {
   const constructionUpatesImages = [
@@ -36,7 +38,13 @@ const ConstructionUpdates = ({ data }) => {
     },
   ];
   console.log(data?.constructionItems);
+  useEffect(() => {
+    NativeFancybox.bind("[data-fancybox]", {});
 
+    return () => {
+      NativeFancybox.unbind("[data-fancybox]");
+    };
+  }, []);
   return (
     <div className="lg:py-[4.167vw] py-4 px-4 lg:px-[10.938vw]">
       {data?.title && (
@@ -87,6 +95,8 @@ const ConstructionUpdates = ({ data }) => {
                       className={`w-full h-full object-cover 
                         
                   `}
+                      data-src={cleanImage(item?.image?.data?.attributes?.url)}
+                      data-fancybox={`Construction Image ${index + 1}`}
                     />
                   </div>
                 )}

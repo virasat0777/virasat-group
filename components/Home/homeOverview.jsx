@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { cleanImage } from "@/services/imageHandling";
 
 const HomeOverview = ({ overview }) => {
+  console.log(overview, "overview");
   return (
     <div className={`relative bg-cover bg-no-repeat  bg-center w-full `}>
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
@@ -88,16 +89,8 @@ const HomeOverview = ({ overview }) => {
           </motion.div>
         </div>
         <div className="lg:mt-[2.083vw] mt-4 text-center">
-          <p className="lg:text-[0.938vw] text-base text-center lg:mb-[2.917vw] mb-4 font-light">
-            Virasat Group commenced operation in 2010, and has emerged as an
-            organization that is synonymous to trust, quality, Innovation, and
-            Customer Satisfaction. We have maintained our prerequisite of
-            delivering quality and affordable housing solution to people, and
-            are constantly striving for perfection. With the city emerging as a
-            promising real estate hub, Virasat Group is consistently providing
-            elegant and affordable housing structures, with no compromise on the
-            promise of modern and spacious living, Guaranteeing satisfaction and
-            meeting expectations with Virasat Group.
+          <p className="lg:text-[0.938vw] text-base text-center lg:mb-[3.517vw] mb-4 font-light">
+            {overview?.description}
           </p>
 
           <BlackButton

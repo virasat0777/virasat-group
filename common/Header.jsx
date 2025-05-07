@@ -61,7 +61,7 @@ const Header = () => {
   const navLinks = [
     { name: "Home", link: "/" },
     { name: "About us", link: "/about" },
-    { name: "Project", link: "/projects" },
+    { name: "Projects", link: "/projects" },
     // { name: "Project Detail", link: "/project-detail" },
     { name: "News and Media", link: "/news" },
     { name: "Careers", link: "/careers" },
@@ -73,18 +73,18 @@ const Header = () => {
     <div
       className={`${
         !isScrolledDown
-          ? "bg-[#000000a6] z-[9999] block shadow-md"
+          ? "bg-white z-[9999] block shadow-md"
           : "bg-transparent  hidden transition-all ease-in-out duration-500"
       } fixed top-0 left-0 w-screen z-[10] transition-all duration-300`}
     >
-      <div className="flex max-md:px-5  md:container mx-auto py-5 justify-between items-center w-full">
+      <div className="flex max-md:px-5  md:container mx-auto py-3 justify-between items-center w-full">
         {/* Logo */}
 
         <Image
           className={` ${
             isSticky
               ? "lg:w-[4.3rem] w-[3.5rem] !cursor-pointer lg:h-auto"
-              : "lg:w-[4.74vw] w-[3.5rem] !cursor-pointer lg:h-auto"
+              : "lg:w-[2.74vw] w-[3.5rem] !cursor-pointer lg:h-auto"
           }`}
           src={"/images/home/virasat-logo.png"}
           height={100}
@@ -98,7 +98,7 @@ const Header = () => {
         <svg
           onClick={toggleSidebar}
           xmlns="http://www.w3.org/2000/svg"
-          className="xl:w-[3rem] h-[2rem] w-[2rem] xl:h-[3rem] !cursor-pointer"
+          className="xl:w-[2rem] h-[2rem] w-[2rem] xl:h-[2rem] !cursor-pointer"
           viewBox="0 0 43 29"
           fill="#D2AB67"
         >
@@ -113,7 +113,7 @@ const Header = () => {
       <div
         className={`${
           !isScrolledDown
-            ? "bg-[#000000a6] z-[9999] block shadow-md"
+            ? "bg-[#000000a6] z-[999] block shadow-md"
             : "bg-transparent  hidden transition-all ease-in-out duration-500"
         }`}
       >

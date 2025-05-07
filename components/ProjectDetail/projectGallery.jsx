@@ -1,14 +1,28 @@
 import SectionTitle from "@/common/SectionTitle";
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectCards, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  EffectCards,
+  Autoplay,
+  EffectCoverflow,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
 import { cleanImage } from "@/services/imageHandling";
+import { Fancybox as NativeFancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 const ProjectGallery = ({ data }) => {
+  useEffect(() => {
+    NativeFancybox.bind("[data-fancybox]", {});
+
+    return () => {
+      NativeFancybox.unbind("[data-fancybox]");
+    };
+  }, []);
   // ];
   return (
     <div className="lg:py-[4.167vw] py-4 lg:px-[10.938vw] px-4">
@@ -18,43 +32,51 @@ const ProjectGallery = ({ data }) => {
         </div>
       )}
       <div className="relative">
-        <div className="relative">
+        <div className="relative flex justify-center items-center">
           <Swiper
-            effect={"cards"}
+            effect="coverflow"
             grabCursor={true}
-            speed={1200}
-            modules={[EffectCards, Navigation, Autoplay]}
-            navigation={{
-              nextEl: ".project-gallery-next",
-              prevEl: ".project-gallery-prev",
-            }}
-            breakpoints={{
-              0: { slidesPerView: 1 },
-              768: { slidesPerView: 1 },
-              1024: { slidesPerView: 1 },
-              1240: { slidesPerView: 1 },
-            }}
-            cardsEffect={{
+            centeredSlides={true}
+            slidesPerView={1.7}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 300,
+              depth: 10,
+              modifier: 2,
               slideShadows: false,
-              perSlideOffset: 12,
-              perSlideRotate: 0,
+              scale: 1,
             }}
-            className="w-full"
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
+            breakpoints={{
+              slidesPerView: 1,
+              768: { slidesPerView: 1 },
+              1024: { slidesPerView: 1 },
+              1240: { slidesPerView: 1.7 },
+            }}
+            loop={true}
+            speed={1000}
+            navigation={{
+              nextEl: ".project-gallery-next",
+              prevEl: ".project-gallery-prev",
+            }}
+            modules={[EffectCoverflow, Navigation, Autoplay]}
+            className="w-[90vw] h-[35vh] lg:h-[35vw] project-gallery-swiper"
           >
-            {data?.images?.data &&
+            {data?.images?.data.length > 0 &&
               data?.images?.data?.map((image, index) => (
-                <SwiperSlide key={index} className="">
-                  <div className="lg:w-[62.5vw] w-full h-[35vh] lg:h-[35vw]">
+                <SwiperSlide key={index}>
+                  <div className="w-full h-full proj-div">
                     <Image
+                      data-src={cleanImage(image?.attributes?.url)}
+                      data-fancybox={`Gallery Image ${index + 1}`}
                       src={cleanImage(image?.attributes?.url)}
-                      alt={`CSR Image ${index + 1}`}
-                      height={1000}
+                      alt={`Gallery Image ${index + 1}`}
                       width={1000}
-                      className={`h-full  w-full`}
+                      height={1000}
+                      className="h-full w-full object-cover"
                     />
                   </div>
                 </SwiperSlide>
