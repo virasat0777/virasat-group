@@ -48,7 +48,7 @@ const HomeBlogs = ({ data }) => {
     },
   ];
   return (
-    <div className="lg:px-[15.625vw] py-8 h-full px-4 relative">
+    <div className="lg:px-[15.625vw] py-24  h-full px-4 relative">
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
         <Image
           src={`/images/home/homeOverviewPattern.svg`}
