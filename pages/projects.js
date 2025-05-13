@@ -9,7 +9,7 @@ const Projects = ({ projects, banner }) => {
   console.log(banner, "project listing");
   return (
     <div>
-      {banner?.banner && <ProjectListingBanner banner={banner?.banner} />}
+      {banner && <ProjectListingBanner banner={banner} />}
       {projects && <ProjectListing projects={projects} />}
     </div>
   );
@@ -22,7 +22,7 @@ export async function getServerSideProps() {
   const projects = store.getState()?.projectList?.data?.data;
 
   await store.dispatch(fetchProjectListingPageData());
-  const banner = store.getState()?.projectListPage?.data?.attributes;
+  const banner = store.getState()?.projectListPage?.data?.attributes?.banner;
 
   return {
     props: {

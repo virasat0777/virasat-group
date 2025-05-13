@@ -4,20 +4,38 @@ import { fetchCareerData } from "@/redux/slices/careerSlice";
 import { store } from "@/redux/store";
 import { cleanImage } from "@/services/imageHandling";
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Careers = ({ data }) => {
   return (
     <div>
       {data?.attributes?.banner && (
-        <Banner
-          src={cleanImage(
-            data?.attributes?.banner?.desktopBanner?.data?.attributes?.url
-          )}
-          mobileSrc={cleanImage(
-            data?.attributes?.banner?.mobileBanner?.data?.attributes?.url
-          )}
-          title={data?.attributes?.banner?.title}
-        />
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          className="w-full h-full"
+        >
+          {data?.attributes?.banner?.map((banner, index) => (
+            <SwiperSlide key={index}>
+              <Banner
+                src={cleanImage(banner?.desktopBanner?.data?.attributes?.url)}
+                mobileSrc={cleanImage(
+                  banner?.mobileBanner?.data?.attributes?.url
+                )}
+                title={banner?.title}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       )}
       {data?.attributes?.listingSection && (
         <CareerListing data={data?.attributes?.listingSection} />
