@@ -20,7 +20,7 @@ const HomeAwards = ({ award }) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="lg:px-[13.333vw] px-2 mt-8 lg:mt-[8vw] mb-[150px] md:mb-[13vw] lg:py-[2.604vw] lg:mb-[8vw] ">
+      <div className="lg:px-[13.333vw] px-2 mt-8 lg:mt-0 mb-[150px] md:mb-[13vw] lg:py-[2.604vw] lg:mb-0 ">
         {award?.title && (
           <div className="text-center">
             <SectionTitle title={award?.title} />

@@ -57,6 +57,8 @@ const Footer = () => {
   const QuickLinkss = [
     { name: "Home", link: "/" },
     { name: "About Us", link: "/about" },
+    { name: "Projects", link: "/projects" },
+    { name: "News And Media", link: "/news" },
     { name: "Career", link: "/careers" },
     { name: "Contact Us", link: "/contact-us" },
     { name: "Blogs", link: "/blogs" },
@@ -107,7 +109,7 @@ const Footer = () => {
 
       <div className=" bg-black lg:px-20 xl:px-40  flex flex-col gap-16 w-full lg:pb-10 lg:pt-0   px-5 py-5">
         <div className="grid text-start border-t-2 border-[#E2A4307D] pt-10 xl:grid-cols-[22%,25%,25%,20%] lg:grid-cols-[22%,25%,25%,20%] lg:gap-0 gap-7 xs:grid-cols-1 items-start overflow-hidden w-full ">
-          <div className=" text-left flex flex-col  gap-5  ">
+          <div className=" text-left flex flex-col gap-2  md:gap-5  ">
             <div className="flex justify-start text-white-color mont text-[1.5rem] font-[500]">
               <Image
                 className="w-[9rem] cursor-pointer h-[9rem]"
@@ -192,24 +194,24 @@ const Footer = () => {
               </a>
             </div>
 
-            <div className="flex justify-start">
+            <div className=" hidden md:flex justify-start">
               <div className="flex items-center text-white-color Montserrat text-[0.932rem] font-[400] gap-3">
                 Copyright ©2025
               </div>
             </div>
           </div>
 
-          <div className="h-full">
+          {/* <div className="h-full">
             <div className="flex justify-start ">
               <div className="flex navTitle flex-col">
                 <span className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem]">
-                  {/* Projects */}
+          
                 </span>
                 <span className="navTitleBar"></span>
               </div>
             </div>
 
-            {/* <div className="h-full xl:pt-2 pt-1">
+            <div className="h-full xl:pt-2 pt-1">
               {["Projects Residential", "Commercial Projects"].map(
                 (val, index) => {
                   return (
@@ -224,8 +226,8 @@ const Footer = () => {
                   );
                 }
               )}
-            </div> */}
-          </div>
+            </div> 
+          </div> */}
           <div className="h-full">
             <div className="flex justify-start ">
               <div className="flex navTitle flex-col">
