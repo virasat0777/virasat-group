@@ -1,6 +1,7 @@
+import { cleanImage } from "@/services/imageHandling";
 import Head from "next/head";
 import React from "react";
-import { cleanImage } from "../imageHandling";
+
 const Seo = (props) => {
   const imgUrl = cleanImage(props?.seo?.metaImage?.data?.attributes?.url);
   const schema = props?.seo?.schema;

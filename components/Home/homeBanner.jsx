@@ -4,13 +4,15 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
-const HomeBanner = ({ data }) => {
+const HomeBanner = ({ data, text }) => {
   let theString =
-    data?.animationText || "ULTRA LUXURIOUS HOME DESIGN FOR YOUR FAMILY";
-  let bannerImage =
-    cleanImage(data?.desktopBanner?.data?.attributes?.url) ||
-    "/images/home/homeBanner.png";
+    text?.animationText || "ULTRA LUXURIOUS HOME DESIGN FOR YOUR FAMILY";
+
   const firstWord = useRef(null);
   const secondWord = useRef(null);
   const thirdWord = useRef(null);
@@ -142,37 +144,6 @@ const HomeBanner = ({ data }) => {
       },
       "<" // run at the same time as previous, or adjust timing here
     );
-    // tl.fromTo(
-    //   bannerRef.current,
-    //   {
-    //     opacity: 1,
-    //     scale: 0.1,
-    //     height: "60px",
-    //     width: "60px",
-    //     borderTopLeftRadius: "50%",
-    //     borderTopRightRadius: "50%",
-    //     y: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     scale: 1,
-    //     duration: 1,
-    //     borderTopLeftRadius: 0,
-    //     borderTopRightRadius: 0,
-    //     height: "100%",
-    //     width: "100%",
-    //     ease: "power2.out",
-    //   }
-    // );
-    // tl.to(
-    //   bannerRef.current,
-
-    //   {
-    //     borderTopLeftRadius: 0,
-    //     borderTopRightRadius: 0,
-    //     ease: "power2.out",
-    //   }
-    // );
   }, []);
   console.log(data?.desktopBanner?.data?.attributes?.url, "banner data");
   return (
@@ -237,20 +208,27 @@ const HomeBanner = ({ data }) => {
         </div>
       </div>
       <div
-        className=" absolute bottom-0  z-[6] overflow-hidden size-full"
+        className="absolute bottom-0 z-[6] overflow-hidden size-full"
         ref={bannerRef}
       >
-        <Banner
-          src={cleanImage(data?.desktopBanner?.data?.attributes?.url)}
-          mobileSrc={cleanImage(data?.mobileBanner?.data?.attributes?.url)}
-        />
-        {/* <Image
-          src={bannerImage}
-          alt="banner-mobile"
-          fill
-          className="object-cover size-full"
-          priority
-        /> */}
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          autoplay={{ delay: 4000 }}
+          loop={true}
+          pagination={{ clickable: true }}
+          className="w-full h-full"
+        >
+          {data.map((item, idx) => (
+            <SwiperSlide key={idx}>
+              <Banner
+                src={cleanImage(item?.desktopBanner?.data?.attributes?.url)}
+                mobileSrc={cleanImage(
+                  item?.mobileBanner?.data?.attributes?.url
+                )}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

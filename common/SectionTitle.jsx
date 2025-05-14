@@ -44,7 +44,7 @@ export default function SectionTitle({ title }) {
       ref={ref}
       aria-label={title}
       role="heading"
-      className="text-2xl font-thin uppercase lg:text-[4.167vw] lg:leading-[5.208vw]"
+      className="text-xl font-thin uppercase lg:text-[2.567vw] lg:leading-[3.208vw]"
     >
       {title.split(" ").map((word, wordIndex) => {
         const wordWithSpace =

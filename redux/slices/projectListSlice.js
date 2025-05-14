@@ -7,11 +7,11 @@ export const fetchProjectList = createAsyncThunk(
   async () => {
     const query = {
       populate: [
-        // "seo",
-        // "seo.metaImage",
-        // "seo.schema",
-        // "seo.metaSocial",
-        // "seo.metaSocial.image",
+        "seo",
+        "seo.metaImage",
+        "seo.schema",
+        "seo.metaSocial",
+        "seo.metaSocial.image",
         "banner.desktopBanner",
         "banner.mobileBanner",
         "overview.image",

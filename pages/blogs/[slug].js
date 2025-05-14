@@ -35,11 +35,11 @@ export async function getServerSideProps(params) {
       },
     },
     populate: [
-      // "seo",
-      // "seo.metaImage",
-      // "seo.schema",
-      // "seo.metaSocial",
-      // "seo.metaSocial.image",
+      "seo",
+      "seo.metaImage",
+      "seo.schema",
+      "seo.metaSocial",
+      "seo.metaSocial.image",
       "thumbnailImage",
     ],
   };

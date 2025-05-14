@@ -56,11 +56,25 @@ const PopUp = ({ imageSrc, onClose }) => {
               setIsVisible(false);
               if (onClose) onClose();
             }}
+            aria-label="Close"
           >
-            X
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </button>
 
-          <div className="relative lg:w-[20vw] lg:h-[70vh] w-[200px] h-[400px]">
+          <div className="relative lg:w-[18vw] lg:h-[70vh] w-[200px] h-[400px]">
             <Image
               src={imageSrc}
               alt="Pop-up"

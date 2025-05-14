@@ -8,10 +8,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Seo from "@/components/Seo/Seo";
 const ContactUs = ({ data }) => {
   console.log(data, "contact data");
   return (
     <div>
+      <Seo seo={data?.seo} />
       {data?.banner && (
         <Swiper
           spaceBetween={30}

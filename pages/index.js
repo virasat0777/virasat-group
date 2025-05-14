@@ -12,12 +12,16 @@ import { store } from "@/redux/store";
 import { fetchNewsList } from "@/redux/slices/newsSlice";
 import { fetchProjectList } from "@/redux/slices/projectListSlice";
 import { fetchBlogsList } from "@/redux/slices/blogsSlice";
+import Seo from "@/components/Seo/Seo";
 
 export default function Home({ homeData, newsData, projects, blogs }) {
   return (
     <>
+      <Seo seo={homeData?.seo} />
       <div>
-        {homeData?.banner && <HomeBanner data={homeData?.banner} />}
+        {homeData?.banners && (
+          <HomeBanner data={homeData?.banners} texts={homeData?.bannerTexts} />
+        )}
         {homeData?.overview && <HomeOverview overview={homeData?.overview} />}
         {homeData?.counter && <CounterSection counter={homeData?.counter} />}
         {projects.length > 0 && <HomeProjects projects={projects} />}

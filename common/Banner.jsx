@@ -3,7 +3,7 @@ import React from "react";
 
 const Banner = ({ src, mobileSrc, title }) => {
   return (
-    <div className="relative w-full h-screen overflow-x-hidden">
+    <div className="relative w-full h-screen overflow-x-hidden ">
       <div className="hidden md:block w-full h-full">
         <Image
           src={src}

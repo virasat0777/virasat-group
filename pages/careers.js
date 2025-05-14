@@ -8,10 +8,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Seo from "@/components/Seo/Seo";
 
 const Careers = ({ data }) => {
   return (
     <div>
+      <Seo seo={data?.attributes?.Seo} />
       {data?.attributes?.banner && (
         <Swiper
           spaceBetween={30}

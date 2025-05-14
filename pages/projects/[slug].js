@@ -10,9 +10,12 @@ import axios from "axios";
 import React from "react";
 import qs from "qs";
 import { cleanImage } from "@/services/imageHandling";
+import Seo from "@/components/Seo/Seo";
+
 const ProjectDetail = ({ project }) => {
   return (
     <div className="overflow-hidden">
+      <Seo seo={project?.Seo} />
       {project?.banner && <ProjectBanner data={project?.banner} />}
       {project?.overview && (
         <ProjectOverview data={project?.overview} title={project?.title} />

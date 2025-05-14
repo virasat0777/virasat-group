@@ -57,7 +57,7 @@ const HomeBlogs = ({ data }) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="w-full text-center lg:mb-[2.083vw] mb-2">
+      <div className="w-full text-center lg:mb-[2.083vw] mb-2 mt-4">
         <SectionTitle title={"BLOGS"} />
       </div>
 

@@ -9,10 +9,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Seo from "@/components/Seo/Seo";
 
 const News = ({ news, newsListPage }) => {
   return (
     <div>
+      <Seo seo={newsListPage?.Seo} />
       <Swiper
         spaceBetween={30}
         slidesPerView={1}

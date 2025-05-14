@@ -7,13 +7,14 @@ export const fetchHomeData = createAsyncThunk(
   async () => {
     const query = {
       populate: [
-        // "seo",
-        // "seo.metaImage",
-        // "seo.schema",
-        // "seo.metaSocial",
-        // "seo.metaSocial.image",
-        "banner.desktopBanner",
-        "banner.mobileBanner",
+        "seo",
+        "seo.metaImage",
+        "seo.schema",
+        "seo.metaSocial",
+        "seo.metaSocial.image",
+        "bannerTexts",
+        "banners.desktopBanner",
+        "banners.mobileBanner",
         "overview.leftImage",
         "overview.centerImage",
         "overview.rightImage",

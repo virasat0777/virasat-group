@@ -18,7 +18,7 @@ const Counter = ({ start, end, suffix, prefix }) => {
 
   return (
     <span ref={ref}>
-      <h6 className="flex heading-sm text-white font-bold">
+      <div className="flex heading-sm text-white font-bold">
         <h4 className="lg:text-[4.167vw] uppercase lg:leading-[5.208vw] text-2xl font-light">
           {count}
         </h4>
@@ -26,7 +26,7 @@ const Counter = ({ start, end, suffix, prefix }) => {
         <div className="lg:text-[4.167vw] uppercase lg:leading-[5.208vw] text-xl font-light text-center">
           {suffix}
         </div>
-      </h6>
+      </div>
     </span>
   );
 };
