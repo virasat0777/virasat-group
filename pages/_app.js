@@ -3,7 +3,7 @@ import MainLayout from "@/layout/MainLayout";
 import "@/styles/globals.css";
 import { store } from "@/redux/store";
 import Providers from "@/redux/provider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopUp from "@/common/Popup";
 import axios from "axios";
 import Modal from "@/common/Modal";
