@@ -305,7 +305,7 @@ const Header = () => {
                   >
                     {link.icon(true)}
                     <div className="flex flex-col">
-                      <span className="xl:text-lg lg:text-xs md:text-xs text-xs font-medium">
+                      <span className="xl:text-lg lg:text-xs md:text-xs text-xs font-medium capitalize">
                         {link.name}
                       </span>
                     </div>

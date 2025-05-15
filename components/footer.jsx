@@ -255,7 +255,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="h-full">
-            <div className="h-full xl:pt-2 pt-1">
+            <div className="h-full ">
               <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem]">
                 Contact Details
               </h2>
