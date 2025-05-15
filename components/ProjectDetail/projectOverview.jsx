@@ -53,7 +53,7 @@ const ProjectOverview = ({ data, title }) => {
   };
   return (
     <div
-      className={`relative bg-cover bg-no-repeat  bg-center w-full  lg:py-[4.167vw] lg:px-[10.417vw] py-4 px-4 z-10 `}
+      className={`relative bg-cover bg-no-repeat  bg-center w-full  lg:py-[4.167vw] lg:px-[10.417vw] py-4 px-4 `}
     >
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
         <Image
