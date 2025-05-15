@@ -113,9 +113,10 @@ const Footer = () => {
             <div className="flex justify-start text-white-color mont text-[1.5rem] font-[500]">
               <Image
                 className="w-[9rem] cursor-pointer h-[9rem]"
-                src={"/icon/virasatlogo.png"}
-                height={100}
-                width={100}
+                // src={"/icon/virasatlogo.png"}
+                src={"/images/footer/footer.svg"}
+                height={300}
+                width={300}
                 alt="Logo"
                 onClick={() => {
                   router.push("/");
@@ -267,6 +268,26 @@ const Footer = () => {
                 >
                   5/288 Vipul Khand, Gomti Nagar, Lucknow, Reg. Office: 3/243
                   Vishwas Khand, Gomti Nagar, Lucknow
+                </Link>
+              </p>
+
+              <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem] mt-5">
+                Email
+              </h2>
+              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-white">
+                <Link
+                  href={"mailto:contact@virasatgroup.co.in"}
+                  target="_blank"
+                >
+                  contact@virasatgroup.co.in
+                </Link>
+              </p>
+              <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem] mt-5">
+                call
+              </h2>
+              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-white">
+                <Link href={"tel:+91 7518109109"} target="_blank">
+                  +91 7518109109
                 </Link>
               </p>
             </div>
