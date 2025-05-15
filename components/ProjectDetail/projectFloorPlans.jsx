@@ -1,13 +1,38 @@
 import SectionTitle from "@/common/SectionTitle";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import { CircularLeftArrow, CircularRightArrow } from "@/public/icon/arrows";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { cleanImage } from "@/services/imageHandling";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { Fancybox } from "@fancyapps/ui";
+import { useEffect } from "react";
+
 const ProjectFloorPlans = ({ data }) => {
+  useEffect(() => {
+    Fancybox.bind("[data-fancybox='gallery']", {
+      Thumbs: false,
+      Toolbar: {
+        display: [
+          { id: "counter", position: "center" },
+          "zoom",
+          "slideshow",
+          "fullscreen",
+          "download",
+          "thumbs",
+          "close",
+        ],
+      },
+    });
+
+    return () => {
+      Fancybox.destroy();
+    };
+  }, []);
+
   return (
     <div className="pt-4 lg:pb-[4.167vw] pb-4 lg:pt-[0.167vw] px-4 lg:px-[13.333vw]">
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
@@ -60,12 +85,18 @@ const ProjectFloorPlans = ({ data }) => {
                         <div className="">
                           {item?.attributes?.url && (
                             <div className="lg:w-full  lg:h-[16.021vw] w-full h-auto ">
-                              <Image
-                                src={cleanImage(item?.attributes?.url)}
-                                width={432}
-                                height={328}
-                                className="w-full h-full object-cover"
-                              />
+                              <a
+                                href={cleanImage(item?.attributes?.url)}
+                                data-fancybox="gallery"
+                              >
+                                <Image
+                                  src={cleanImage(item?.attributes?.url)}
+                                  width={432}
+                                  height={328}
+                                  className="w-full h-full object-cover"
+                                  alt={`floor-plan-${index}`}
+                                />
+                              </a>
                             </div>
                           )}
                         </div>

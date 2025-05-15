@@ -147,37 +147,39 @@ const ProjectConfiguration = ({ data, title }) => {
                               </span>
                             )}
                           </div>
-                          <div className="my-[16px]">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="398"
-                              height="2"
-                              viewBox="0 0 398 2"
-                              fill="none"
-                            >
-                              <path
-                                d="M0 1H398"
-                                stroke="url(#paint0_linear_218_1257)"
-                                stroke-width="0.7"
-                              />
-                              <defs>
-                                <linearGradient
-                                  id="paint0_linear_218_1257"
-                                  x1="0"
-                                  y1="1.5"
-                                  x2="398"
-                                  y2="1.5"
-                                  gradientUnits="userSpaceOnUse"
-                                >
-                                  <stop stop-color="#FAF6EF" />
-                                  <stop offset="0.25" />
-                                  <stop offset="0.5" />
-                                  <stop offset="0.75" />
-                                  <stop offset="1" stop-color="#FAF6EF" />
-                                </linearGradient>
-                              </defs>
-                            </svg>
-                          </div>
+                          {item?.bhk && item?.area && (
+                            <div className="my-[16px]">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="398"
+                                height="2"
+                                viewBox="0 0 398 2"
+                                fill="none"
+                              >
+                                <path
+                                  d="M0 1H398"
+                                  stroke="url(#paint0_linear_218_1257)"
+                                  stroke-width="0.7"
+                                />
+                                <defs>
+                                  <linearGradient
+                                    id="paint0_linear_218_1257"
+                                    x1="0"
+                                    y1="1.5"
+                                    x2="398"
+                                    y2="1.5"
+                                    gradientUnits="userSpaceOnUse"
+                                  >
+                                    <stop stop-color="#FAF6EF" />
+                                    <stop offset="0.25" />
+                                    <stop offset="0.5" />
+                                    <stop offset="0.75" />
+                                    <stop offset="1" stop-color="#FAF6EF" />
+                                  </linearGradient>
+                                </defs>
+                              </svg>
+                            </div>
+                          )}
                         </li>
                       ))}
                   </ul>
@@ -246,6 +248,8 @@ const ProjectConfiguration = ({ data, title }) => {
         </div>
       </div>
       <Modal isOpen={show} onClose={() => setShow(false)}>
+        <p className="lg:text-xl text-base font-bold text-white">Download Brochure</p>
+
         <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
           <form
             onSubmit={handleSubmit(onSubmit)}

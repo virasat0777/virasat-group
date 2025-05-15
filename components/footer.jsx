@@ -8,52 +8,6 @@ import { useForm } from "react-hook-form";
 
 const Footer = () => {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = async (data) => {
-    console.log(data);
-
-    const leadData = {
-      name: data.name,
-      mobile: data.mobile,
-      email: data.email,
-      source: "footer",
-    };
-    const payload = {
-      data: leadData,
-    };
-    try {
-      const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/website-leads`;
-      const response = await axios.post(endpoint, payload, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.status === 200) {
-        reset();
-        router.push("/thank-you");
-      }
-    } catch (error) {
-      console.error(
-        "Error submitting to Google Sheet API:",
-        error.response ? error.response.data : error.message
-      );
-    }
-  };
-
-  const QuickLinks = [
-    { name: "Home", link: "/" },
-    { name: "About Us", link: "/about-us" },
-    { name: "Awards", link: "/award" },
-    { name: "Testimonials", link: "/testimonials" },
-    { name: "Project ", link: "/projects" },
-    { name: "Contact Us", link: "/" },
-  ];
-
   const QuickLinkss = [
     { name: "Home", link: "/" },
     { name: "About Us", link: "/about" },
@@ -64,18 +18,6 @@ const Footer = () => {
     { name: "Blogs", link: "/blogs" },
   ];
 
-  const topologies = [
-    { name: "Flats in andheri west", link: "/career" },
-    { name: "2 and 3 bhk in andheri west", link: "/privacy-policy" },
-    { name: "2 Bhk flat in bandra west", link: "/contact" },
-    { name: "4 Bhk in bandra west", link: "4 Bhk in bandra west" },
-  ];
-
-  const topology = [
-    {
-      data: "Transcon Triumph, Next to Oberoi Springs Opp. Tanishq Showroom, Off New Link Road, near Monginis Cake Factory, Andheri West, Mumbai, Maharashtra 400053",
-    },
-  ];
 
   return (
     <>
@@ -202,33 +144,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* <div className="h-full">
-            <div className="flex justify-start ">
-              <div className="flex navTitle flex-col">
-                <span className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem]">
-          
-                </span>
-                <span className="navTitleBar"></span>
-              </div>
-            </div>
-
-            <div className="h-full xl:pt-2 pt-1">
-              {["Projects Residential", "Commercial Projects"].map(
-                (val, index) => {
-                  return (
-                    <div className="flex flex-col gap-10" key={index}>
-                      <Link
-                        className=" Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-white "
-                        href={val}
-                      >
-                        {val}
-                      </Link>
-                    </div>
-                  );
-                }
-              )}
-            </div> 
-          </div> */}
           <div className="h-full">
             <div className="flex justify-start ">
               <div className="flex navTitle flex-col">

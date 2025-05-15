@@ -115,7 +115,7 @@ const HomeBlogs = ({ data }) => {
                         {/* ... */}
                       </p>
                       <p
-                        className="mt-2 text-black cursor-pointer lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw] font-normal hover:text-blue-600"
+                        className="mt-2 font-bold text-black cursor-pointer lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  hover:text-blue-600"
                         onClick={() =>
                           router.push(`/blogs/${item?.attributes?.slug}`)
                         }

@@ -29,7 +29,7 @@ const Accordion = ({ data }) => {
                       height={50}
                       width={50}
                       className={`w-full h-full transform transition-transform duration-300 ease-in-out ${
-                        openIndex === index ? "rotate-180" : ""
+                        openIndex === index ? "" : "rotate-180"
                       }`}
                       src="/icon/up-arrow.svg"
                       alt="arrow"

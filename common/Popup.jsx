@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
-const PopUp = ({ imageSrc, onClose }) => {
+const PopUp = ({ imageSrc, onClose, source }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const modalRef = useRef(null);

@@ -65,6 +65,7 @@ const MyApp = ({ Component, pageProps }) => {
             <PopUp
               imageSrc="/images/home/poster.jpeg"
               onClose={handlePopUpClose}
+              source={"Enquire now"}
             />
           )}
 
@@ -76,6 +77,9 @@ const MyApp = ({ Component, pageProps }) => {
           </button>
 
           <Modal isOpen={show} onClose={() => setShow(false)}>
+            <p className="lg:text-xl text-base font-bold text-white">
+              Enquire now
+            </p>
             <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
               <form
                 onSubmit={handleSubmit(onSubmit)}
