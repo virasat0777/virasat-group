@@ -9,7 +9,15 @@ import React, { useEffect } from "react";
 const Projects = ({ projects, banner }) => {
   console.log(banner, "project listing");
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+      }
+    }
   }, []);
   return (
     <div>

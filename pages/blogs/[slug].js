@@ -5,7 +5,15 @@ import axios from "axios";
 
 const BlogDetail = ({ data }) => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+      }
+    }
   }, []);
   const blog = data?.data[0]?.attributes;
   return (

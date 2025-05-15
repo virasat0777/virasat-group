@@ -16,7 +16,15 @@ import Seo from "@/components/Seo/Seo";
 
 const About = ({ data }) => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300); // Delay helps ensure images/layout are ready
+      }
+    }
   }, []);
   return (
     <div>
