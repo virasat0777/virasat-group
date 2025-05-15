@@ -12,6 +12,7 @@ import { cleanImage } from "@/services/imageHandling";
 import Modal from "@/common/Modal";
 
 const ProjectOverview = ({ data, title }) => {
+  console.log(data, "projectData");
   const [show, setShow] = useState(false);
   const {
     register,
@@ -19,6 +20,7 @@ const ProjectOverview = ({ data, title }) => {
     formState: { errors },
     reset,
   } = useForm();
+  const brochure = data?.brochure?.data?.attributes?.url;
   const router = useRouter();
   const onSubmit = async (data) => {
     const leadData = {
@@ -38,9 +40,9 @@ const ProjectOverview = ({ data, title }) => {
         },
       });
       if (response.status === 200) {
-        reset();
-        window.open(brochure, "_blank");
+        window.open(cleanImage(brochure), "_blank");
         router.push("/thankyou");
+        reset();
       }
     } catch (error) {
       console.error(

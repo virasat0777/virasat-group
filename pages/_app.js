@@ -69,7 +69,7 @@ const MyApp = ({ Component, pageProps }) => {
           )}
 
           <button
-            className="fixed right-[-38px] top-1/2 transform -translate-y-1/2 -rotate-90 text-white bg-[#C29B5C]  px-3 py-2 rounded-t-md shadow-lg z-50"
+            className="fixed right-[-47px] top-1/2 transform -translate-y-1/2 -rotate-90 text-white bg-[#C29B5C]  px-5 py-2 rounded-t-md shadow-lg z-50"
             onClick={() => setShow(true)}
           >
             Enquire Now

@@ -295,7 +295,7 @@ const Header = () => {
               return (
                 <Link key={index} href={link.link}>
                   <div
-                    className={`group flex items-center gap-2 cursor-pointer relative rounded-md px-2 py-1 transition-all duration-300
+                    className={`group flex items-center gap-2 cursor-pointer relative rounded-md px-3 py-1 transition-all duration-300
                     ${
                       isActive
                         ? "bg-[#001F3F] text-white"
