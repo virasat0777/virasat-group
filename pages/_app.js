@@ -62,7 +62,8 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <Providers store={store}>
-      <SmoothScroll>
+      
+      {/* <SmoothScroll> */}
         <MainLayout>
           <Component {...pageProps} />
 
@@ -181,7 +182,7 @@ const MyApp = ({ Component, pageProps }) => {
             </div>
           </a>
         </MainLayout>
-      </SmoothScroll>
+      {/* </SmoothScroll> */}
     </Providers>
   );
 };
