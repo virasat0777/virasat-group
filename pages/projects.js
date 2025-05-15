@@ -4,10 +4,13 @@ import Seo from "@/components/Seo/Seo";
 import { fetchProjectListingPageData } from "@/redux/slices/projectListPageSlice";
 import { fetchProjectList } from "@/redux/slices/projectListSlice";
 import { store } from "@/redux/store";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Projects = ({ projects, banner }) => {
   console.log(banner, "project listing");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <Seo seo={banner?.Seo} />

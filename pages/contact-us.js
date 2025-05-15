@@ -3,14 +3,17 @@ import GetInTouch from "@/components/Contact/getInTouch";
 import { fetchContactData } from "@/redux/slices/contactSlice";
 import { store } from "@/redux/store";
 import { cleanImage } from "@/services/imageHandling";
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Seo from "@/components/Seo/Seo";
+
 const ContactUs = ({ data }) => {
-  console.log(data, "contact data");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <Seo seo={data?.seo} />

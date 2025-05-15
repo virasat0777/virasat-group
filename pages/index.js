@@ -13,8 +13,11 @@ import { fetchNewsList } from "@/redux/slices/newsSlice";
 import { fetchProjectList } from "@/redux/slices/projectListSlice";
 import { fetchBlogsList } from "@/redux/slices/blogsSlice";
 import Seo from "@/components/Seo/Seo";
-
+import { useEffect } from "react";
 export default function Home({ homeData, newsData, projects, blogs }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Seo seo={homeData?.seo} />

@@ -4,7 +4,7 @@ import { fetchNewsListData } from "@/redux/slices/newsListSlice";
 import { fetchNewsList } from "@/redux/slices/newsSlice";
 import { store } from "@/redux/store";
 import { cleanImage } from "@/services/imageHandling";
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -12,6 +12,9 @@ import "swiper/css/navigation";
 import Seo from "@/components/Seo/Seo";
 
 const News = ({ news, newsListPage }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <Seo seo={newsListPage?.Seo} />

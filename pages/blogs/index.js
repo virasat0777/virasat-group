@@ -1,6 +1,6 @@
 import Banner from "@/common/Banner";
 import BlogList from "@/components/Blogs/BlogList";
-import React from "react";
+import React, { useEffect } from "react";
 import { fetchBlogsList } from "@/redux/slices/blogsSlice";
 import { store } from "@/redux/store";
 import { fetchBlogsListData } from "@/redux/slices/blogListPageSlice";
@@ -12,6 +12,9 @@ import "swiper/css/navigation";
 import Seo from "@/components/Seo/Seo";
 
 const BlogListing = ({ blogs, blogsListPage }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <Seo seo={blogsListPage?.Seo} />

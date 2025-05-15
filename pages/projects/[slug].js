@@ -7,12 +7,15 @@ import ProjectFloorPlans from "@/components/ProjectDetail/projectFloorPlans";
 import ProjectGallery from "@/components/ProjectDetail/projectGallery";
 import ProjectOverview from "@/components/ProjectDetail/projectOverview";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import qs from "qs";
 import { cleanImage } from "@/services/imageHandling";
 import Seo from "@/components/Seo/Seo";
 
 const ProjectDetail = ({ project }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="overflow-hidden">
       <Seo seo={project?.Seo} />

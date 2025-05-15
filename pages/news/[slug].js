@@ -1,10 +1,12 @@
 import SectionTitle from "@/common/SectionTitle";
-import React from "react";
+import React, { useEffect } from "react";
 import qs from "qs";
 import axios from "axios";
 
 const NewsDetail = ({ data }) => {
-  console.log(data?.data[0]?.attributes, "news data");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const news = data?.data[0]?.attributes;
   return (
     <div className="w-full min-h-screen lg:py-[5vw] lg:px-[12vw] py-[12px] px-[12px]">
