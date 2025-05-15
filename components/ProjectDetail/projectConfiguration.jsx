@@ -248,7 +248,7 @@ const ProjectConfiguration = ({ data, title }) => {
         </div>
       </div>
       <Modal isOpen={show} onClose={() => setShow(false)}>
-        <p className="lg:text-xl text-base font-bold text-black">Download Brochure</p>
+        <p className="lg:text-xl text-base font-bold text-black">Know more</p>
 
         <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
           <form

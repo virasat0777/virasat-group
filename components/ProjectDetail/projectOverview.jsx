@@ -124,6 +124,10 @@ const ProjectOverview = ({ data, title }) => {
         </div>
       </div>
       <Modal isOpen={show} onClose={() => setShow(false)}>
+        <p className="lg:text-xl text-base font-bold text-black">
+          Download Brochure
+        </p>
+
         <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
           <form
             onSubmit={handleSubmit(onSubmit)}
