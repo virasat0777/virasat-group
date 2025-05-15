@@ -281,7 +281,7 @@ const Header = () => {
             height={100}
             width={100}
             onClick={() => {
-              router.push("/");
+              router.push("/", undefined, { scroll: true });
             }}
             alt="Logo"
           />
@@ -333,7 +333,7 @@ const Header = () => {
             height={100}
             width={100}
             onClick={() => {
-              router.push("/");
+              router.push("/", undefined, { scroll: true });
             }}
             alt="Logo"
           />

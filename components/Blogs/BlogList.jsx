@@ -117,7 +117,7 @@ const BlogList = ({ data }) => {
               <p
                 className=" lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw] font-bold cursor-pointer hover:text-blue-600 text-black text-[16px] "
                 onClick={() => {
-                  router.push(`/blogs/${item?.attributes?.slug}`);
+                  router.push(`/blogs/${item?.attributes?.slug}`, undefined, { scroll: true });
                 }}
               >
                 Read more

@@ -172,7 +172,11 @@ const ProjectListing = ({ projects }) => {
                     name="KNOW MORE"
                     useLink={false}
                     handleFunction={() =>
-                      router.push(`/projects/${item?.attributes?.slug}`)
+                      router.push(
+                        `/projects/${item?.attributes?.slug}`,
+                        undefined,
+                        { scroll: true }
+                      )
                     }
                   />
                 </div>

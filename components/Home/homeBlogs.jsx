@@ -117,7 +117,7 @@ const HomeBlogs = ({ data }) => {
                       <p
                         className="mt-2 font-bold text-black cursor-pointer lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  hover:text-blue-600"
                         onClick={() =>
-                          router.push(`/blogs/${item?.attributes?.slug}`)
+                          router.push(`/blogs/${item?.attributes?.slug}`, undefined, { scroll: true })
                         }
                       >
                         Read more

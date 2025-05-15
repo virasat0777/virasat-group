@@ -110,7 +110,7 @@ const HomeNews = ({ newsData }) => {
                         <p
                           className="mt-2 text-black cursor-pointer lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw] font-normal hover:text-blue-600"
                           onClick={() =>
-                            router.push(`/news/${item?.attributes?.slug}`)
+                            router.push(`/news/${item?.attributes?.slug}`, undefined, { scroll: true })
                           }
                         >
                           Read more

@@ -61,7 +61,7 @@ const Footer = () => {
                 width={300}
                 alt="Logo"
                 onClick={() => {
-                  router.push("/");
+                  router.push("/", undefined, { scroll: true });
                 }}
               />
             </div>

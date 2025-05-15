@@ -17,7 +17,7 @@ const BlackButton = ({
     if (handleFunction) {
       handleFunction();
     } else {
-      router.push(path);
+      router.push(path, undefined, { scroll: true });
     }
   };
 

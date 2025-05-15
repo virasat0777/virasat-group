@@ -108,7 +108,7 @@ const NewsList = ({ newsData }) => {
                 onClick={() => {
                   item?.attributes?.redirect
                     ? window.open(item?.attributes?.redirect, "_blank")
-                    : router.push(`/news/${item?.attributes?.slug}`);
+                    : router.push(`/news/${item?.attributes?.slug}`, undefined, { scroll: true });
                 }}
               >
                 Read more
