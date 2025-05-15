@@ -17,6 +17,11 @@ const MyApp = ({ Component, pageProps }) => {
   const handlePopUpClose = () => {
     setIsPopUpVisible(false);
   };
+   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
 
   const [show, setShow] = useState(false);
   const {
@@ -77,7 +82,7 @@ const MyApp = ({ Component, pageProps }) => {
           </button>
 
           <Modal isOpen={show} onClose={() => setShow(false)}>
-            <p className="lg:text-xl text-base font-bold text-white">
+            <p className="lg:text-xl text-base font-bold text-black">
               Enquire now
             </p>
             <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">

@@ -152,6 +152,8 @@ const CareerListing = ({ data }) => {
 
       <Modal isOpen={show} onClose={() => setShow(false)}>
         <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
+          <p className="lg:text-xl text-base font-bold text-black">Apply now</p>
+
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="bg-transparent w-full flex flex-col gap-4 rounded"
