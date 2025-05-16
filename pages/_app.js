@@ -31,16 +31,52 @@ const MyApp = ({ Component, pageProps }) => {
     reset,
   } = useForm();
   const router = useRouter();
+  const { query } = router;
+
   const onSubmit = async (data) => {
+
+    const utmdata = {
+      utm_campaign: query.utm_campaign ? query.utm_campaign : "",
+      utm_channel: query.utm_channel ? query.utm_channel : "",
+      utm_keyword: query.utm_keyword ? query.utm_keyword : "",
+      utm_placement: query.utm_placement ? query.utm_placement : "",
+      utm_device: query.utm_device ? query.utm_device : "",
+      utm_medium: query.utm_medium ? query.utm_medium : "",
+      gclid: query.gclid ? query.gclid : "",
+    };
+
     const leadData = {
       name: data.name,
       mobile: data.mobile,
       email: data.email,
-      source: title,
+      source: 'Enquire Now',
+      ...utmdata,
     };
+
+    // console.log('leadData',leadData)
     const payload = {
       data: leadData,
     };
+
+    //Google Sheet Start
+    try {
+      const response2 = await axios.post("/api/googlesheetapi", leadData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Google Sheet API response:", response2.data);
+    } catch (error) {
+      console.error(
+        "Error submitting to Google Sheet API:",
+        error.response ? error.response.data : error.message
+      );
+    }
+
+    //Google Sheet End
+    
+    //Strapi backend Sheet Start
+
     try {
       const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/website-leads`;
       const response = await axios.post(endpoint, payload, {
@@ -50,7 +86,8 @@ const MyApp = ({ Component, pageProps }) => {
       });
       if (response.status === 200) {
         reset();
-        router.push("/thankyou");
+        // router.push("/thankyou");
+        window.location.href = "/thankyou";
       }
     } catch (error) {
       console.error(
@@ -58,6 +95,10 @@ const MyApp = ({ Component, pageProps }) => {
         error.response ? error.response.data : error.message
       );
     }
+
+    //Strapi backend Sheet End
+
+
   };
 
   return (
@@ -83,13 +124,13 @@ const MyApp = ({ Component, pageProps }) => {
           </button>
 
           <Modal isOpen={show} onClose={() => setShow(false)}>
-            <p className="lg:text-xl text-base font-bold text-black">
+            <p className="text-base font-bold text-center text-white lg:text-xl">
               Enquire now
             </p>
             <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="bg-transparent w-full flex flex-col gap-4 rounded"
+                className="flex flex-col w-full gap-4 bg-transparent rounded"
               >
                 {/* Name Field */}
                 <input
@@ -99,7 +140,7 @@ const MyApp = ({ Component, pageProps }) => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-xs">{errors.name.message}</p>
+                  <p className="text-xs text-red-500">{errors.name.message}</p>
                 )}
 
                 <input
@@ -115,7 +156,7 @@ const MyApp = ({ Component, pageProps }) => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-xs">{errors.email.message}</p>
+                  <p className="text-xs text-red-500">{errors.email.message}</p>
                 )}
                 <input
                   type="tel"
@@ -127,7 +168,7 @@ const MyApp = ({ Component, pageProps }) => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
                 />
                 {errors.mobile && (
-                  <p className="text-red-500 text-xs">
+                  <p className="text-xs text-red-500">
                     {errors.mobile.message}
                   </p>
                 )}
@@ -144,11 +185,11 @@ const MyApp = ({ Component, pageProps }) => {
                   </label>
                 </div>
                 {errors.acceptTerms && (
-                  <p className="text-red-500 text-xs">
+                  <p className="text-xs text-red-500">
                     {errors.acceptTerms.message}
                   </p>
                 )}
-                <div className="flex w-full justify-center">
+                <div className="flex justify-center w-full">
                   <BlackButton
                     color={"#C29B5C"}
                     hoverColor={"#000000"}
@@ -165,11 +206,11 @@ const MyApp = ({ Component, pageProps }) => {
             href="https://wa.me/917518109109"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-5 right-5 z-50"
+            className="fixed z-50 bottom-5 right-5"
           >
             <div className="relative">
-              <div className="absolute inset-0 rounded-full animate-ping bg-green-500 opacity-75"></div>
-              <div className="relative flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg">
+              <div className="absolute inset-0 bg-green-500 rounded-full opacity-75 animate-ping"></div>
+              <div className="relative flex items-center justify-center text-white bg-green-500 rounded-full shadow-lg w-14 h-14">
                 <svg
                   className="w-7 h-7"
                   fill="currentColor"

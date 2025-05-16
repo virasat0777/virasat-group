@@ -13,6 +13,7 @@ import { cleanImage } from "@/services/imageHandling";
 import Seo from "@/components/Seo/Seo";
 
 const ProjectDetail = ({ project }) => {
+
   useEffect(() => {
     if (window && window.location.hash) {
       const id = window.location.hash.replace("#", "");
@@ -29,12 +30,12 @@ const ProjectDetail = ({ project }) => {
       <Seo seo={project?.Seo} />
       {project?.banner && <ProjectBanner data={project?.banner} />}
       {project?.overview && (
-        <ProjectOverview data={project?.overview} title={project?.title} />
+        <ProjectOverview data={project?.overview} title={project?.projectTitle} />
       )}
       {project?.configuration && (
         <ProjectConfiguration
           data={project?.configuration}
-          title={project?.title}
+          title={project?.projectTitle}
         />
       )}
       {project?.amenitySection && (

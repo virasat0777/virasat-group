@@ -14,8 +14,20 @@ const GetInTouch = ({ data, office }) => {
     reset,
   } = useForm();
   const router = useRouter();
+  const { query } = router;
+
   const onSubmit = async (data) => {
     console.log(data);
+
+    const utmdata = {
+      utm_campaign: query.utm_campaign ? query.utm_campaign : "",
+      utm_channel: query.utm_channel ? query.utm_channel : "",
+      utm_keyword: query.utm_keyword ? query.utm_keyword : "",
+      utm_placement: query.utm_placement ? query.utm_placement : "",
+      utm_device: query.utm_device ? query.utm_device : "",
+      utm_medium: query.utm_medium ? query.utm_medium : "",
+      gclid: query.gclid ? query.gclid : "",
+    };
 
     const leadData = {
       name: data.name,
@@ -23,10 +35,32 @@ const GetInTouch = ({ data, office }) => {
       email: data.email,
       message: data.message,
       source: "contact page",
+      ...utmdata,
     };
+
     const payload = {
       data: leadData,
     };
+
+    //Google Sheet Start
+    try {
+      const response2 = await axios.post("/api/googlesheetapi", leadData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Google Sheet API response:", response2.data);
+    } catch (error) {
+      console.error(
+        "Error submitting to Google Sheet API:",
+        error.response ? error.response.data : error.message
+      );
+    }
+
+    //Google Sheet End
+
+    //Strapi backend Sheet Start
+
     try {
       const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/website-leads`;
       const response = await axios.post(endpoint, payload, {
@@ -44,6 +78,7 @@ const GetInTouch = ({ data, office }) => {
         error.response ? error.response.data : error.message
       );
     }
+    //Strapi backend Sheet End
   };
 
   return (
@@ -53,7 +88,7 @@ const GetInTouch = ({ data, office }) => {
           src={`/images/home/homeOverviewPattern.svg`}
           height={1000}
           width={1000}
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
         />
       </div>
 
@@ -72,16 +107,16 @@ const GetInTouch = ({ data, office }) => {
         </div>
         <div className="flex justify-center lg:mb-[2.5vw] mb-5">
           <div className="lg:w-[47.188vw] w-full">
-            <div className=" flex lg:flex-row flex-col justify-between items-center ">
+            <div className="flex flex-col items-center justify-between lg:flex-row">
               {data?.contactNo && (
-                <span className="w-full lg:w-auto lg:mb-0 mb-4">
+                <span className="w-full mb-4 lg:w-auto lg:mb-0">
                   <span className="flex lg:gap-[0.729vw] gap-[10px] items-center">
                     <div className="lg:w-[3.125vw] lg:h-[3.125vw] w-[60px] h-[60px]">
                       <Image
                         src={"/icon/contact/phone-logo.svg"}
                         height={60}
                         width={60}
-                        className="w-full h-full object-cover"
+                        className="object-cover w-full h-full"
                       />
                     </div>
                     <Link
@@ -93,7 +128,7 @@ const GetInTouch = ({ data, office }) => {
                   </span>
                 </span>
               )}
-              <span className="w-full lg:w-auto lg:mb-0 mb-4">
+              <span className="w-full mb-4 lg:w-auto lg:mb-0">
                 {data?.email && (
                   <span className="flex lg:gap-[0.729vw] gap-[10px] items-center">
                     <div className="lg:w-[3.125vw] lg:h-[3.125vw] w-[60px] h-[60px]">
@@ -101,7 +136,7 @@ const GetInTouch = ({ data, office }) => {
                         src={"/icon/contact/email-logo.svg"}
                         height={60}
                         width={60}
-                        className="w-full h-full object-cover"
+                        className="object-cover w-full h-full"
                       />
                     </div>
                     <Link
@@ -116,11 +151,11 @@ const GetInTouch = ({ data, office }) => {
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center">
+        <div className="flex justify-center w-full">
           <div className="lg:w-[34.479vw] w-full lg:p-[2.5vw] p-4 bg-black rounded-lg lg:rounded-none">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="bg-transparent w-full flex flex-col gap-4"
+              className="flex flex-col w-full gap-4 bg-transparent"
             >
               {/* Name Field */}
               <input
@@ -130,7 +165,7 @@ const GetInTouch = ({ data, office }) => {
                 className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
               />
               {errors.name && (
-                <p className="text-red-500 text-xs">{errors.name.message}</p>
+                <p className="text-xs text-red-500">{errors.name.message}</p>
               )}
               {/* Email Field */}
               <input
@@ -146,7 +181,7 @@ const GetInTouch = ({ data, office }) => {
                 className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
               />
               {errors.email && (
-                <p className="text-red-500 text-xs">{errors.email.message}</p>
+                <p className="text-xs text-red-500">{errors.email.message}</p>
               )}
               {/* Mobile Field */}
               <input
@@ -159,7 +194,7 @@ const GetInTouch = ({ data, office }) => {
                 className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
               />
               {errors.mobile && (
-                <p className="text-red-500 text-xs">{errors.mobile.message}</p>
+                <p className="text-xs text-red-500">{errors.mobile.message}</p>
               )}
 
               <textarea
@@ -172,7 +207,7 @@ const GetInTouch = ({ data, office }) => {
                 className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
               />
               {errors.message && (
-                <p className="text-red-500 text-xs">{errors.message.message}</p>
+                <p className="text-xs text-red-500">{errors.message.message}</p>
               )}
 
               <div className="flex items-center space-x-3">
@@ -188,12 +223,12 @@ const GetInTouch = ({ data, office }) => {
                 </label>
               </div>
               {errors.acceptTerms && (
-                <p className="text-red-500 text-xs">
+                <p className="text-xs text-red-500">
                   {errors.acceptTerms.message}
                 </p>
               )}
               {/* Submit Button */}
-              <div className="flex w-full justify-center">
+              <div className="flex justify-center w-full">
                 <BlackButton
                   color={"#C29B5C"}
                   hoverColor={"#000000"}
@@ -224,7 +259,7 @@ const GetInTouch = ({ data, office }) => {
                     height={32}
                     width={32}
                     src={"/icon/contact/location.svg"}
-                    className="w-full h-full object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 {item?.name && (

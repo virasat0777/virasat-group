@@ -12,7 +12,9 @@ import { cleanImage } from "@/services/imageHandling";
 import Modal from "@/common/Modal";
 
 const ProjectOverview = ({ data, title }) => {
-  console.log(data, "projectData");
+  // console.log(data, "projectData");
+// console.log('title',title)
+
   const [show, setShow] = useState(false);
   const {
     register,
@@ -20,18 +22,53 @@ const ProjectOverview = ({ data, title }) => {
     formState: { errors },
     reset,
   } = useForm();
+
   const brochure = data?.brochure?.data?.attributes?.url;
   const router = useRouter();
+  const { query } = router;
+
   const onSubmit = async (data) => {
+
+    const utmdata = {
+      utm_campaign: query.utm_campaign ? query.utm_campaign : "",
+      utm_channel: query.utm_channel ? query.utm_channel : "",
+      utm_keyword: query.utm_keyword ? query.utm_keyword : "",
+      utm_placement: query.utm_placement ? query.utm_placement : "",
+      utm_device: query.utm_device ? query.utm_device : "",
+      utm_medium: query.utm_medium ? query.utm_medium : "",
+      gclid: query.gclid ? query.gclid : "",
+    };
+
     const leadData = {
       name: data.name,
       mobile: data.mobile,
       email: data.email,
-      source: title,
+      source: `${title} (Download Brochure)`,
+      ...utmdata,
     };
+    
     const payload = {
       data: leadData,
     };
+
+     //Google Sheet Start
+     try {
+      const response2 = await axios.post("/api/googlesheetapi", leadData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Google Sheet API response:", response2.data);
+    } catch (error) {
+      console.error(
+        "Error submitting to Google Sheet API:",
+        error.response ? error.response.data : error.message
+      );
+    }
+
+    //Google Sheet End
+    
+    //Strapi backend Sheet Start
     try {
       const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/website-leads`;
       const response = await axios.post(endpoint, payload, {
@@ -41,7 +78,8 @@ const ProjectOverview = ({ data, title }) => {
       });
       if (response.status === 200) {
         window.open(cleanImage(brochure), "_blank");
-        router.push("/thankyou");
+        // router.push("/thankyou");
+        window.location.href = "/thankyou";
         reset();
       }
     } catch (error) {
@@ -50,6 +88,8 @@ const ProjectOverview = ({ data, title }) => {
         error.response ? error.response.data : error.message
       );
     }
+    //Strapi backend Sheet End
+
   };
   return (
     <div
@@ -60,11 +100,11 @@ const ProjectOverview = ({ data, title }) => {
           src={`/images/home/homeOverviewPattern.svg`}
           height={1000}
           width={1000}
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
         />
       </div>
       <div className="">
-        <div className="flex justify-between lg:flex-row flex-col items-center">
+        <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="overflow-x-hidden">
             <motion.div
               initial="hidden"
@@ -81,7 +121,7 @@ const ProjectOverview = ({ data, title }) => {
                     }
                     width={548}
                     height={674}
-                    className="h-full w-full object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
               )}
@@ -124,14 +164,14 @@ const ProjectOverview = ({ data, title }) => {
         </div>
       </div>
       <Modal isOpen={show} onClose={() => setShow(false)}>
-        <p className="lg:text-xl text-base font-bold text-black">
+        <p className="text-base font-bold text-center text-white lg:text-xl">
           Download Brochure
         </p>
 
         <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-transparent w-full flex flex-col gap-4 rounded"
+            className="flex flex-col w-full gap-4 bg-transparent rounded"
           >
             {/* Name Field */}
             <input
@@ -141,7 +181,7 @@ const ProjectOverview = ({ data, title }) => {
               className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
             />
             {errors.name && (
-              <p className="text-red-500 text-xs">{errors.name.message}</p>
+              <p className="text-xs text-red-500">{errors.name.message}</p>
             )}
             {/* Email Field */}
             <input
@@ -157,7 +197,7 @@ const ProjectOverview = ({ data, title }) => {
               className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
             />
             {errors.email && (
-              <p className="text-red-500 text-xs">{errors.email.message}</p>
+              <p className="text-xs text-red-500">{errors.email.message}</p>
             )}
             {/* Mobile Field */}
             <input
@@ -170,7 +210,7 @@ const ProjectOverview = ({ data, title }) => {
               className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#C29B5C]"
             />
             {errors.mobile && (
-              <p className="text-red-500 text-xs">{errors.mobile.message}</p>
+              <p className="text-xs text-red-500">{errors.mobile.message}</p>
             )}
 
             {/* Accept Terms Field */}
@@ -187,12 +227,12 @@ const ProjectOverview = ({ data, title }) => {
               </label>
             </div>
             {errors.acceptTerms && (
-              <p className="text-red-500 text-xs">
+              <p className="text-xs text-red-500">
                 {errors.acceptTerms.message}
               </p>
             )}
             {/* Submit Button */}
-            <div className="flex w-full justify-center">
+            <div className="flex justify-center w-full">
               <BlackButton
                 color={"#C29B5C"}
                 hoverColor={"#000000"}
