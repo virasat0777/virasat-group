@@ -161,6 +161,9 @@ const CareerListing = ({ data }) => {
       </div>
 
       <Modal isOpen={show} onClose={() => setShow(false)}>
+        <p className="text-base font-bold text-start text-white lg:text-xl">
+          Apply Now
+        </p>
         <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
           <p className="lg:text-xl text-base font-bold text-black">Apply now</p>
 
