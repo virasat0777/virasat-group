@@ -21,7 +21,7 @@ const Projects = ({ projects, banner }) => {
   return (
     <div>
       <Seo seo={banner?.Seo} />
-      {banner && <ProjectListingBanner banner={banner?.banner} />}
+      {banner && <ProjectListingBanner banner={banner?.banner} full={true} />}
       {projects && <ProjectListing projects={projects} />}
     </div>
   );

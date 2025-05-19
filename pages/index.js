@@ -31,7 +31,11 @@ export default function Home({ homeData, newsData, projects, blogs }) {
       <Seo seo={homeData?.seo} />
       <div>
         {homeData?.banners && (
-          <HomeBanner data={homeData?.banners} texts={homeData?.bannerTexts} />
+          <HomeBanner
+            data={homeData?.banners}
+            texts={homeData?.bannerTexts}
+            full={true}
+          />
         )}
         {homeData?.overview && <HomeOverview overview={homeData?.overview} />}
         {homeData?.counter && <CounterSection counter={homeData?.counter} />}

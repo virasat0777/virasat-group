@@ -160,7 +160,7 @@ const Footer = () => {
                 return (
                   <div className="flex flex-col gap-10" key={index}>
                     <Link
-                      className=" Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-black "
+                      className=" Montserrat text-[1rem] flex flex-col gap-10 hover:bg-sky-300 rounded-sm w-fit px-2 pt-3 font-[400] text-black "
                       href={val?.link}
                     >
                       {val.name}
@@ -185,7 +185,7 @@ const Footer = () => {
                 return (
                   <div className="flex flex-col gap-10" key={index}>
                     <Link
-                      className=" Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-black "
+                      className=" Montserrat text-[1rem] flex flex-col gap-10 hover:bg-sky-300 rounded-sm pt-3 font-[400] text-black w-fit px-2"
                       href={val?.link}
                     >
                       {val.name}
@@ -200,7 +200,7 @@ const Footer = () => {
               <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem]">
                 Contact Details
               </h2>
-              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-black">
+              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:bg-sky-300 rounded-sm pt-3 font-[400] text-black ">
                 <Link
                   href={
                     "https://www.google.com/maps/search/5%2F288+Vipul+Khand,+Gomti+Nagar,+Lucknow,+Reg.+Office:+3%2F243+Vishwas+Khand,+Gomti+Nagar,+Lucknow/@26.853446,80.9776748,15z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDQyMy4wIKXMDSoASAFQAw%3D%3D"
@@ -217,7 +217,7 @@ const Footer = () => {
             <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem] ">
               Email
             </h2>
-            <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-1 font-[400] text-black">
+            <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:bg-sky-300 rounded-sm pt-1 font-[400] text-black ">
               <Link href={"mailto:contact@virasatgroup.co.in"} target="_blank">
                 contact@virasatgroup.co.in
               </Link>
@@ -225,7 +225,7 @@ const Footer = () => {
             <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem] mt-5">
               call
             </h2>
-            <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-1 font-[400] text-black">
+            <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:bg-sky-300 rounded-sm pt-1 font-[400] text-black">
               <Link href={"tel:+91 7518109109"} target="_blank">
                 +91 7518109109
               </Link>

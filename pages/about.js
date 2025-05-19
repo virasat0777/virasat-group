@@ -48,6 +48,7 @@ const About = ({ data }) => {
                 banner?.mobileBanner?.data?.attributes?.url
               )}
               title={banner?.title}
+              full={true}
             />
           </SwiperSlide>
         ))}

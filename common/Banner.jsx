@@ -1,18 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-const Banner = ({ src, mobileSrc, title, isOther }) => {
+const Banner = ({ src, mobileSrc, title, isOther, full }) => {
   return (
     <div
       className={`relative w-full  ${
-        isOther ? "h-[80vh]" : "h-screen"
+        full ? "h-screen" : "h-[70vh]"
       } overflow-x-hidden`}
     >
-      <div
-        className={`hidden md:block w-full ${
-          isOther ? "h-[80vh]" : "h-screen"
-        }`}
-      >
+      <div className={`hidden md:block w-full `}>
         <Image
           src={src}
           alt="banner"
@@ -22,7 +18,7 @@ const Banner = ({ src, mobileSrc, title, isOther }) => {
         />
       </div>
 
-      <div className="block md:hidden w-full h-full">
+      <div className={`block md:hidden w-full h-full`}>
         <Image
           src={mobileSrc || src}
           alt="banner-mobile"
