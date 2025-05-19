@@ -12,12 +12,13 @@ const Footer = () => {
     { name: "Home", link: "/" },
     { name: "About Us", link: "/about" },
     { name: "Projects", link: "/projects" },
+  ];
+  const otherLinks = [
     { name: "News And Media", link: "/news" },
     { name: "Career", link: "/careers" },
     { name: "Contact Us", link: "/contact-us" },
     { name: "Blogs", link: "/blogs" },
   ];
-
 
   return (
     <>
@@ -49,10 +50,10 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className=" bg-black lg:px-20 xl:px-40  flex flex-col gap-16 w-full lg:pb-10 lg:pt-0   px-5 py-5">
-        <div className="grid text-start border-t-2 border-[#E2A4307D] pt-10 xl:grid-cols-[22%,25%,25%,20%] lg:grid-cols-[22%,25%,25%,20%] lg:gap-0 gap-7 xs:grid-cols-1 items-start overflow-hidden w-full ">
+      <div className=" bg-white lg:px-20 xl:px-40  flex flex-col gap-16 w-full lg:pb-10 lg:pt-0   px-5 py-5">
+        <div className="grid text-start border-t-2 border-[#E2A4307D] pt-10 xl:grid-cols-[20%,20%,20%,20%,20%] lg:grid-cols-[25%,25%,25%,25%] lg:gap-0 gap-7 xs:grid-cols-1 items-start overflow-hidden w-full ">
           <div className=" text-left flex flex-col gap-2  md:gap-5  ">
-            <div className="flex justify-start text-white-color mont text-[1.5rem] font-[500]">
+            <div className="flex justify-start text-black mont text-[1.5rem] font-[500]">
               <Image
                 className="w-[9rem] cursor-pointer h-[9rem]"
                 // src={"/icon/virasatlogo.png"}
@@ -66,7 +67,7 @@ const Footer = () => {
               />
             </div>
 
-            <div className="flex gap-3 justify-start text-white-color mont text-[0.8rem] font-[500]">
+            <div className="flex gap-3 justify-start text-black mont text-[0.8rem] font-[500]">
               <a
                 href="https://www.facebook.com/VirasatInfraGroup"
                 target="_blank"
@@ -138,7 +139,7 @@ const Footer = () => {
             </div>
 
             <div className=" hidden md:flex justify-start">
-              <div className="flex items-center text-white-color Montserrat text-[0.932rem] font-[400] gap-3">
+              <div className="flex items-center text-blackMontserrat text-[0.932rem] font-[400] gap-3">
                 Copyright ©2025
               </div>
             </div>
@@ -147,7 +148,7 @@ const Footer = () => {
           <div className="h-full">
             <div className="flex justify-start ">
               <div className="flex navTitle flex-col">
-                <span className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem]">
+                <span className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem]">
                   Quick Links
                 </span>
                 <span className="navTitleBar"> </span>
@@ -159,7 +160,32 @@ const Footer = () => {
                 return (
                   <div className="flex flex-col gap-10" key={index}>
                     <Link
-                      className=" Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-white "
+                      className=" Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-black "
+                      href={val?.link}
+                    >
+                      {val.name}
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="h-full">
+            <div className="flex justify-start ">
+              <div className="flex navTitle flex-col">
+                <span className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem]">
+                  Other Links
+                </span>
+                <span className="navTitleBar"> </span>
+              </div>
+            </div>
+
+            <div className="h-full xl:pt-2 pt-1">
+              {otherLinks.map((val, index) => {
+                return (
+                  <div className="flex flex-col gap-10" key={index}>
+                    <Link
+                      className=" Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-black "
                       href={val?.link}
                     >
                       {val.name}
@@ -171,10 +197,10 @@ const Footer = () => {
           </div>
           <div className="h-full">
             <div className="h-full ">
-              <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem]">
+              <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem]">
                 Contact Details
               </h2>
-              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-white">
+              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-3 font-[400] text-black">
                 <Link
                   href={
                     "https://www.google.com/maps/search/5%2F288+Vipul+Khand,+Gomti+Nagar,+Lucknow,+Reg.+Office:+3%2F243+Vishwas+Khand,+Gomti+Nagar,+Lucknow/@26.853446,80.9776748,15z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDQyMy4wIKXMDSoASAFQAw%3D%3D"
@@ -185,27 +211,25 @@ const Footer = () => {
                   Vishwas Khand, Gomti Nagar, Lucknow
                 </Link>
               </p>
-
-              <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem] mt-5">
-                Email
-              </h2>
-              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-1 font-[400] text-white">
-                <Link
-                  href={"mailto:contact@virasatgroup.co.in"}
-                  target="_blank"
-                >
-                  contact@virasatgroup.co.in
-                </Link>
-              </p>
-              <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-white text-[1.4rem] mt-5">
-                call
-              </h2>
-              <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-1 font-[400] text-white">
-                <Link href={"tel:+91 7518109109"} target="_blank">
-                  +91 7518109109
-                </Link>
-              </p>
             </div>
+          </div>
+          <div className="h-full flex items-start lg:items-end flex-col">
+            <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem] ">
+              Email
+            </h2>
+            <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-1 font-[400] text-black">
+              <Link href={"mailto:contact@virasatgroup.co.in"} target="_blank">
+                contact@virasatgroup.co.in
+              </Link>
+            </p>
+            <h2 className="font-[600] capitalize xl:text-[1.5rem] md:text-[1.2rem] GildaDisplay text-black text-[1.4rem] mt-5">
+              call
+            </h2>
+            <p className="Montserrat text-[1rem] flex flex-col gap-10 hover:text-[#C29B5C] pt-1 font-[400] text-black">
+              <Link href={"tel:+91 7518109109"} target="_blank">
+                +91 7518109109
+              </Link>
+            </p>
           </div>
         </div>
       </div>

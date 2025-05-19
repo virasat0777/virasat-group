@@ -45,6 +45,7 @@ const ContactUs = ({ data }) => {
                   banner?.mobileBanner?.data?.attributes?.url
                 )}
                 title={banner?.title}
+                isOther={true}
               />
             </SwiperSlide>
           ))}

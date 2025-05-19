@@ -45,6 +45,7 @@ const News = ({ news, newsListPage }) => {
                 banner?.mobileBanner?.data?.attributes?.url
               )}
               title={banner?.title}
+              isOther={true}
             />
           </SwiperSlide>
         ))}

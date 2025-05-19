@@ -7,6 +7,7 @@ import ReadMoreLess from "@/common/Readmore";
 import SectionTitle from "@/common/SectionTitle";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -94,6 +95,15 @@ const CareerListing = ({ data }) => {
       <div>
         <div className="flex justify-center mb-8">
           <SectionTitle title={"CURRENT OPENINGS"} />
+        </div>
+
+        <div>
+          <p className="lg:text-[1.042vw] text-base lg:mb-[1.042vw] mb-2 text-center">
+            Send your updated CV to{" "}
+            <Link href={`mailto:hr@virasatgroup.co.in`} target="_blank">
+              hr@virasatgroup.co.in
+            </Link>
+          </p>
         </div>
 
         {data?.available_jobs?.data.length > 0 &&

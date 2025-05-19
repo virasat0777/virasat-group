@@ -40,6 +40,7 @@ const Careers = ({ data }) => {
           {data?.attributes?.banner?.map((banner, index) => (
             <SwiperSlide key={index}>
               <Banner
+                isOther={true}
                 src={cleanImage(banner?.desktopBanner?.data?.attributes?.url)}
                 mobileSrc={cleanImage(
                   banner?.mobileBanner?.data?.attributes?.url
