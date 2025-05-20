@@ -51,7 +51,7 @@ const Footer = () => {
       </div>
 
       <div className=" bg-white lg:px-20 xl:px-40  flex flex-col gap-16 w-full lg:pb-10 lg:pt-0   px-5 py-5">
-        <div className="grid text-start border-t-2 border-[#E2A4307D] pt-10 lg:grid-cols-[20%,20%,20%,20%,20%] grid-cols-[25%,25%,25%,25%] lg:gap-0 gap-7 xs:grid-cols-1 items-start overflow-hidden w-full ">
+        <div className="grid text-start border-t-2 border-[#E2A4307D] pt-10 lg:grid-cols-[20%,20%,20%,20%,20%] grid-cols-[25%,25%,25%,25%] lg:gap-0 gap-7 xs:grid-cols-1 xxs:grid-cols-1 items-start overflow-hidden w-full ">
           <div className=" text-left flex flex-col gap-2  md:gap-5  ">
             <div className="flex justify-start text-black mont text-[1.5rem] font-[500]">
               <Image
