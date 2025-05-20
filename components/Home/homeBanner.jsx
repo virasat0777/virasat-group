@@ -225,6 +225,7 @@ const HomeBanner = ({ data, text }) => {
                 mobileSrc={cleanImage(
                   item?.mobileBanner?.data?.attributes?.url
                 )}
+                full={true}
               />
             </SwiperSlide>
           ))}
