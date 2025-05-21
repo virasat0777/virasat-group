@@ -34,7 +34,6 @@ export const fetchProjectList = createAsyncThunk(
       encodeValuesOnly: true,
     });
     const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/projects?${queryString}`;
-    console.log(endpoint, "end point");
     const response = await axios.get(endpoint);
     const data = response.data;
     return data;

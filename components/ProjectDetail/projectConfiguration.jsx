@@ -57,7 +57,6 @@ const ProjectConfiguration = ({ data, title }) => {
           "Content-Type": "application/json",
         },
       });
-      console.log("Google Sheet API response:", response2.data);
     } catch (error) {
       console.error(
         "Error submitting to Google Sheet API:",
@@ -87,7 +86,6 @@ const ProjectConfiguration = ({ data, title }) => {
       );
     }
     //Strapi backend Sheet End
-
   };
   return (
     <div className="">
@@ -100,6 +98,7 @@ const ProjectConfiguration = ({ data, title }) => {
             height={1000}
             width={1000}
             className="object-cover w-full h-full"
+            alt="background pattern"
           />
         </div>
         <div className="lg:flex lg:justify-end">
@@ -196,7 +195,7 @@ const ProjectConfiguration = ({ data, title }) => {
                                 <path
                                   d="M0 1H398"
                                   stroke="url(#paint0_linear_218_1257)"
-                                  stroke-width="0.7"
+                                  strokeWidth="0.7"
                                 />
                                 <defs>
                                   <linearGradient
@@ -207,11 +206,11 @@ const ProjectConfiguration = ({ data, title }) => {
                                     y2="1.5"
                                     gradientUnits="userSpaceOnUse"
                                   >
-                                    <stop stop-color="#FAF6EF" />
+                                    <stop stopColor="#FAF6EF" />
                                     <stop offset="0.25" />
                                     <stop offset="0.5" />
                                     <stop offset="0.75" />
-                                    <stop offset="1" stop-color="#FAF6EF" />
+                                    <stop offset="1" stopColor="#FAF6EF" />
                                   </linearGradient>
                                 </defs>
                               </svg>
@@ -285,7 +284,9 @@ const ProjectConfiguration = ({ data, title }) => {
         </div>
       </div>
       <Modal isOpen={show} onClose={() => setShow(false)}>
-        <p className="text-base font-bold text-center text-white lg:text-xl">Enquire Now</p>
+        <p className="text-base font-bold text-center text-white lg:text-xl">
+          Enquire Now
+        </p>
 
         <div className=" w-full lg:p-[2.5vw] p-4 bg-black rounded-lg ">
           <form

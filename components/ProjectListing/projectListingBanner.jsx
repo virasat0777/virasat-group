@@ -7,7 +7,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const ProjectListingBanner = ({ banner }) => {
-  console.log(banner[0], "project listing");
   return (
     <div>
       <Swiper

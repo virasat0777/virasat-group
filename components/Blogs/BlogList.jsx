@@ -5,71 +5,6 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const BlogList = ({ data }) => {
-  const blogs = [
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-    {
-      title: "Blog heading will come here",
-      url: "iudsgf-hsdg",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum facilis, eius iure maxime rem quas, quo aut natus fugit minima dignissimos sapiente illo quis tempore distinctio provident, animi placeat.",
-      thumbnailImage: "/images/home/blogImg1.png",
-    },
-  ];
   const router = useRouter();
   return (
     <div className="lg:py-[4.167vw] py-6 lg:px-[13.333vw] px-4 relative">
@@ -79,6 +14,7 @@ const BlogList = ({ data }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       <div>
@@ -101,6 +37,7 @@ const BlogList = ({ data }) => {
                     width={350}
                     height={366}
                     className="w-full h-full object-cover"
+                    alt="blog image"
                   />
                 </div>
               )}

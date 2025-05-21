@@ -38,6 +38,7 @@ const VisionMission = ({ data }) => {
                     height={407}
                     className="h-full w-full"
                     src={cleanImage(data?.visionImage?.data?.attributes?.url)}
+                    alt="about vision image one"
                   />
                 </div>
               )}
@@ -70,6 +71,7 @@ const VisionMission = ({ data }) => {
                     height={407}
                     className="h-full w-full"
                     src={cleanImage(data?.missionImage?.data?.attributes?.url)}
+                    alt="about mission image one"
                   />
                 </div>
               )}

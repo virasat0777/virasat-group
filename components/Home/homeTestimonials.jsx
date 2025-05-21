@@ -47,6 +47,7 @@ const HomeTestimonials = ({ testimonial }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       {testimonial?.title && (
@@ -91,7 +92,10 @@ const HomeTestimonials = ({ testimonial }) => {
                     disableOnInteraction: false,
                   }}
                 >
-                  {testimonial?.testimonialItems?.map((item, index) => (
+                  {[
+                    ...testimonial?.testimonialItems,
+                    ...testimonial?.testimonialItems,
+                  ]?.map((item, index) => (
                     <SwiperSlide key={index}>
                       <div className="">
                         <div className="lg:w-[21.833vw] w-full lg:h-[18.625vw] h-auto lg:p-[0.625vw] p-4 bg-black relative">
@@ -101,6 +105,7 @@ const HomeTestimonials = ({ testimonial }) => {
                               width={42}
                               height={51}
                               className="mb-2 "
+                              alt="quotation icon"
                             />
                           </div>
                           <p className="text-[#FAF6EF] lg:text-[1.042vw] lg:leading-[1.667vw] leading-[16px] lg:px-[1vw] text-[12px]">
@@ -113,6 +118,7 @@ const HomeTestimonials = ({ testimonial }) => {
                             width={68}
                             height={68}
                             className=""
+                            alt="triangle icon"
                           />
                         </div>
 
@@ -128,6 +134,7 @@ const HomeTestimonials = ({ testimonial }) => {
                                     )
                                   : "/images/home/profile.png"
                               }
+                              alt="profile image"
                             />
                           </div>
                           <p>{item?.name}</p>

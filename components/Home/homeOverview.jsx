@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { cleanImage } from "@/services/imageHandling";
 
 const HomeOverview = ({ overview }) => {
-  console.log(overview, "overview");
   return (
     <div className={`relative bg-cover bg-no-repeat  bg-center w-full `}>
       <div className="absolute inset-0 -z-10 opacity-[0.015]">
@@ -16,6 +15,7 @@ const HomeOverview = ({ overview }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       <div className={`lg:px-[10.417vw] px-[12px] lg:py-[4.375vw] py-4`}>
@@ -42,6 +42,7 @@ const HomeOverview = ({ overview }) => {
                   width={370}
                   height={370}
                   className="lg:mt-[3.383vw] mt-1 lg:w-[19.271vw] lg:h-[19.271vw] "
+                  alt="about overview image one"
                 />
               )}
             </div>
@@ -63,6 +64,7 @@ const HomeOverview = ({ overview }) => {
                     width={487}
                     height={600}
                     className="lg:w-[25.365vw] lg:h-[31.25vw] w-full h-auto"
+                    alt="about overview image two"
                   />
                 )}
               </div>
@@ -83,6 +85,7 @@ const HomeOverview = ({ overview }) => {
                   width={370}
                   height={370}
                   className="lg:mt-[10.942vw] mt-1 lg:w-[19.271vw] lg:h-[19.271vw]"
+                  alt="about overview image one"
                 />
               )}
             </div>

@@ -12,7 +12,9 @@ const Banner = ({ src, mobileSrc, title, isOther, full }) => {
         <Image
           src={src}
           alt="banner"
-          fill
+          // fill
+          height={1080}
+          width={1920}
           className="object-cover object-center"
           priority
         />
@@ -22,14 +24,20 @@ const Banner = ({ src, mobileSrc, title, isOther, full }) => {
         <Image
           src={mobileSrc || src}
           alt="banner-mobile"
-          fill
-          className="object-cover"
+          // fill
+          height={800}
+          width={500}
+          className="object-cover  w-full h-full object-center"
           priority
         />
       </div>
 
       {title && (
-        <div className="absolute lg:bottom-[4vw] lg:left-[4vw] bottom-[2.5vw] w-fit left-[2.5vw]">
+        <div
+          className={`absolute ${
+            full ? "lg:bottom-[4vw]" : "lg:bottom-[8vw]"
+          } lg:left-[4vw] bottom-[2.5vw] w-fit left-[2.5vw] `}
+        >
           <h1 className="text-white text-3xl lg:text-[1.042vw] font-bold drop-shadow-md">
             {title}
           </h1>

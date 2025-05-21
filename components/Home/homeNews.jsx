@@ -45,6 +45,7 @@ const HomeNews = ({ newsData }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background"
         />
       </div>
       <div className="w-full  h-full text-center lg:mb-[2.083vw] mb-2">
@@ -77,7 +78,7 @@ const HomeNews = ({ newsData }) => {
                 }}
               >
                 {newsData &&
-                  newsData.map((item, index) => (
+                  [...newsData, ...newsData].map((item, index) => (
                     <SwiperSlide key={index} className="h-full w-full">
                       <div className="">
                         {item?.attributes?.thumbnailImage?.data?.attributes
@@ -91,6 +92,7 @@ const HomeNews = ({ newsData }) => {
                               width={700}
                               height={1000}
                               className="w-full h-full object-cover"
+                              alt="news image"
                             />
                           </div>
                         )}

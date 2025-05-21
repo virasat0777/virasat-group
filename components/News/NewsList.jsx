@@ -6,58 +6,6 @@ import React from "react";
 
 const NewsList = ({ newsData }) => {
   const router = useRouter();
-  console.log(newsData, "news data");
-  const news = [
-    {
-      thumbnailImage: "/images/news/newsss1.png",
-      title: "News heading will come here",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum.",
-      url: "news 1",
-    },
-    {
-      thumbnailImage: "/images/news/newsss1.png",
-      title: "News heading will come here",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum.",
-      url: "news 1",
-    },
-    {
-      thumbnailImage: "/images/news/newsss1.png",
-      title: "News heading will come here",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum.",
-      url: "news 1",
-    },
-    {
-      thumbnailImage: "/images/news/newsss1.png",
-      title: "News heading will come here",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum.",
-      url: "news 1",
-    },
-    {
-      thumbnailImage: "/images/news/newsss1.png",
-      title: "News heading will come here",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum.",
-      url: "news 1",
-    },
-    {
-      thumbnailImage: "/images/news/newsss1.png",
-      title: "News heading will come here",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum.",
-      url: "news 1",
-    },
-    {
-      thumbnailImage: "/images/news/newsss1.png",
-      title: "News heading will come here",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Et bibendum diam volutpat nibh sagittis orci dolor. Ipsum amet et elementum ipsum.",
-      url: "news 1",
-    },
-  ];
 
   return (
     <div className={`lg:pt-[2.133vw] pt-6 lg:px-[12.292vw] px-4 relative`}>
@@ -86,6 +34,7 @@ const NewsList = ({ newsData }) => {
                     src={cleanImage(
                       item?.attributes?.thumbnailImage?.data?.attributes?.url
                     )}
+                    alt="news image"
                   />
                 </div>
               )}

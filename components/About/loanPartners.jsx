@@ -77,6 +77,7 @@ const LoanPartners = ({ data }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       <div className="lg:py-[4.167vw] py-4 lg:px-[11.667vw] px-4">

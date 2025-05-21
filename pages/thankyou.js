@@ -15,7 +15,7 @@ const ThankYou = () => {
     const hash = window.location.hash;
     if (hash) {
       setHashValue(hash); // includes '#'
-      console.log("Hash value found:", hash);
+    
     }
 
     const countdownInterval = setInterval(() => {

@@ -11,33 +11,6 @@ import { Fancybox as NativeFancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 const ConstructionUpdates = ({ data }) => {
-  const constructionUpatesImages = [
-    {
-      image: "/images/project-details/construction-updates/1.png",
-      date: "Aug 2021",
-    },
-    {
-      image: "/images/project-details/construction-updates/2.png",
-      date: "Dec 2021",
-    },
-    {
-      image: "/images/project-details/construction-updates/3.png",
-      date: "Jan 2022",
-    },
-    {
-      image: "/images/project-details/construction-updates/4.png",
-      date: "Mar 2022",
-    },
-    {
-      image: "/images/project-details/construction-updates/2.png",
-      date: "Dec 2021",
-    },
-    {
-      image: "/images/project-details/construction-updates/2.png",
-      date: "Dec 2021",
-    },
-  ];
-  console.log(data?.constructionItems);
   useEffect(() => {
     NativeFancybox.bind("[data-fancybox]", {});
 

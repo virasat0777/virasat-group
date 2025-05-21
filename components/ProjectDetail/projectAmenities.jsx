@@ -83,6 +83,7 @@ const ProjectAmenities = ({ title, data, bg }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       <div className="absolute w-screen -z-10 lg:hidden h-full block">
@@ -91,6 +92,7 @@ const ProjectAmenities = ({ title, data, bg }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
 
@@ -140,6 +142,7 @@ const ProjectAmenities = ({ title, data, bg }) => {
                             width={100}
                             height={100}
                             className="w-full h-full object-cover"
+                            alt="amenities image"
                           />
                         </div>
                       )}
@@ -191,6 +194,7 @@ const ProjectAmenities = ({ title, data, bg }) => {
                           width={100}
                           height={100}
                           className="w-full h-full object-cover"
+                          alt="amenities image"
                         />
                       </div>
                     )}

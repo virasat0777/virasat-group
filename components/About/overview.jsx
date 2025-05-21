@@ -13,6 +13,7 @@ const Overview = ({ data }) => {
           src={`/images/home/homeOverviewPattern.svg`}
           height={1000}
           width={1000}
+          alt="background pattern"
           className="w-full h-full object-cover"
         />
       </div>

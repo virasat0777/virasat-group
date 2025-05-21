@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 
 const ProjectBanner = ({ data }) => {
   return (
-    <div>
+    <div className="lg:mt-[4vw] mt-0 relative">
       <Swiper
         spaceBetween={30}
         slidesPerView={1}

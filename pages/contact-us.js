@@ -59,7 +59,7 @@ const ContactUs = ({ data }) => {
           src={data?.officeLocation?.mapLink}
           allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
           className="h-full w-full"
         ></iframe>
       </div>

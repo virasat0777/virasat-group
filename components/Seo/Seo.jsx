@@ -5,7 +5,6 @@ import React from "react";
 const Seo = (props) => {
   const imgUrl = cleanImage(props?.seo?.metaImage?.data?.attributes?.url);
   const schema = props?.seo?.schema;
-  // console.log("seo", props);
   return (
     <Head>
       <title>
@@ -51,7 +50,6 @@ const Seo = (props) => {
       {/* <script type="application/ld+json">{JSON.stringify(props?.seo?.structuredData) == null ? "" : JSON.stringify(props?.seo?.structuredData)}</script> */}
       {schema &&
         schema.map((item, index) => {
-          // console.log("item", item);
           return (
             <script
               key={"websiteJSON" + index}

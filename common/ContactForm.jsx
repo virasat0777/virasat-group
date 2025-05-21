@@ -15,8 +15,6 @@ const ContactForm = () => {
   const { query } = router;
 
   const onSubmit = async (data) => {
-    console.log(data);
-
     const utmdata = {
       utm_campaign: query.utm_campaign ? query.utm_campaign : "",
       utm_channel: query.utm_channel ? query.utm_channel : "",
@@ -46,7 +44,6 @@ const ContactForm = () => {
           "Content-Type": "application/json",
         },
       });
-      console.log("Google Sheet API response:", response2.data);
     } catch (error) {
       console.error(
         "Error submitting to Google Sheet API:",

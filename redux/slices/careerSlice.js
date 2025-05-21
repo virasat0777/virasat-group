@@ -23,7 +23,6 @@ export const fetchCareerData = createAsyncThunk(
       encodeValuesOnly: true,
     });
     const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}${api}?${queryString}`;
-    console.log(endpoint, "blogs end point");
     const response = await axios.get(endpoint);
     const data = response.data;
     return data;

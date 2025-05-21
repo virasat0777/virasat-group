@@ -140,7 +140,7 @@ export function AnimatedTitle({ title }) {
         return (
           <Word
             ref={ref}
-            aria-hidden="true"
+            // aria-hidden="true"
             key={index}
             initial="hidden"
             animate={ctrls}
@@ -152,7 +152,7 @@ export function AnimatedTitle({ title }) {
           >
             {wordWithSpace.split("").map((character, charIndex) => (
               <Character
-                aria-hidden="true"
+                // aria-hidden="true"
                 key={charIndex}
                 variants={characterAnimation}
               >

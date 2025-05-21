@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 const JobDescriptionAccordion = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(item, "item in JDAccordion");
   const handleToggle = () => setIsOpen((prev) => !prev);
 
   return (

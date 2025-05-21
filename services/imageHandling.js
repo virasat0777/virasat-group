@@ -20,7 +20,5 @@ export const webFullurl = (originalImage) => {
   if (originalImage) {
     homeUrl = `${process.env.NEXT_PUBLIC_WEBSITE_HOME_URL}${originalImage}`;
   }
-
-  // // console.log("homeUrl", homeUrl);
   return homeUrl;
 };

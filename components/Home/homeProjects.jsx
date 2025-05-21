@@ -18,30 +18,6 @@ const HomeProjects = ({ projects }) => {
   const featuredProjectData = projects?.filter(
     (item) => item?.attributes?.projectStatus.toLowerCase() === "ongoing"
   );
-  console.log(featuredProjectData, "projects featured");
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "Virasat UdaiGrand",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Malesuada amet amet ultrices maecenas magnis purus.",
-      image1: "/images/home/project1.png",
-      image2: "/images/home/project2.png",
-      url: "#",
-      date: "June 2024",
-    },
-    {
-      id: 2,
-      title: "Virasat ",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Malesuada amet amet ultrices maecenas magnis purus.",
-      image1: "/images/home/project1.png",
-      image2: "/images/home/project2.png",
-      url: "#",
-      date: "June 2024",
-    },
-  ];
-
   return (
     <div
       className={`lg:pt-[4.167vw] pt-4 lg:overflow-x-hidden relative bg-cover bg-no-repeat  bg-center w-full  `}
@@ -52,6 +28,7 @@ const HomeProjects = ({ projects }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       <div className="lg:flex lg:justify-end">
@@ -101,6 +78,7 @@ const HomeProjects = ({ projects }) => {
                                   ?.data?.attributes?.url
                               )}
                               alt={item?.attributes?.title}
+
                             />
                           </div>
                         )}
@@ -183,6 +161,7 @@ const HomeProjects = ({ projects }) => {
                             ?.data?.attributes?.url
                         )}
                         alt={item?.attributes?.title}
+                        
                       />
                     )}
                   </div>

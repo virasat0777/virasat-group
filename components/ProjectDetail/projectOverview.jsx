@@ -12,8 +12,6 @@ import { cleanImage } from "@/services/imageHandling";
 import Modal from "@/common/Modal";
 
 const ProjectOverview = ({ data, title }) => {
-  // console.log(data, "projectData");
-// console.log('title',title)
 
   const [show, setShow] = useState(false);
   const {
@@ -58,7 +56,6 @@ const ProjectOverview = ({ data, title }) => {
           "Content-Type": "application/json",
         },
       });
-      console.log("Google Sheet API response:", response2.data);
     } catch (error) {
       console.error(
         "Error submitting to Google Sheet API:",
@@ -101,6 +98,7 @@ const ProjectOverview = ({ data, title }) => {
           height={1000}
           width={1000}
           className="object-cover w-full h-full"
+          alt="background pattern"
         />
       </div>
       <div className="">

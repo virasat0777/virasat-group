@@ -41,6 +41,7 @@ const ProjectFloorPlans = ({ data }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       {data?.title && (
@@ -61,6 +62,9 @@ const ProjectFloorPlans = ({ data }) => {
                   breakpoints={{
                     0: {
                       slidesPerView: 1,
+                    },
+                    768: {
+                      slidesPerView: 2,
                     },
                     1024: {
                       slidesPerView: 3,

@@ -13,7 +13,33 @@ import BlackButton from "@/common/BlackButton";
 
 const MyApp = ({ Component, pageProps }) => {
   const [isPopUpVisible, setIsPopUpVisible] = useState(true);
+  // useEffect(() => {
+  //   document.addEventListener("contextmenu", (e) => e.preventDefault());
 
+  //   function ctrlShiftKey(e, keyCode) {
+  //     return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+  //   }
+
+  //   const onKeyDown = (e) => {
+  //     if (
+  //       e.keyCode === 123 || 
+  //       ctrlShiftKey(e, "I") || 
+  //       ctrlShiftKey(e, "J") || 
+  //       ctrlShiftKey(e, "C") || // Ctrl+Shift+C
+  //       (e.ctrlKey && e.keyCode === "U".charCodeAt(0)) // Ctrl+U
+  //     ) {
+  //       e.preventDefault();
+  //       return false;
+  //     }
+  //   };
+
+  //   document.addEventListener("keydown", onKeyDown);
+
+  //   return () => {
+  //     document.removeEventListener("contextmenu", (e) => e.preventDefault());
+  //     document.removeEventListener("keydown", onKeyDown);
+  //   };
+  // }, []);
   const handlePopUpClose = () => {
     setIsPopUpVisible(false);
   };
@@ -52,7 +78,6 @@ const MyApp = ({ Component, pageProps }) => {
       ...utmdata,
     };
 
-    // console.log('leadData',leadData)
     const payload = {
       data: leadData,
     };
@@ -64,7 +89,6 @@ const MyApp = ({ Component, pageProps }) => {
           "Content-Type": "application/json",
         },
       });
-      console.log("Google Sheet API response:", response2.data);
     } catch (error) {
       console.error(
         "Error submitting to Google Sheet API:",

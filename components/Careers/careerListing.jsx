@@ -13,7 +13,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const CareerListing = ({ data }) => {
-  console.log(data?.available_jobs?.data[0].attributes?.badges, "abai");
   const [show, setShow] = useState(false);
   const router = useRouter();
   const {
@@ -23,16 +22,9 @@ const CareerListing = ({ data }) => {
     reset,
   } = useForm();
   const [selectedFile, setSelectedFile] = useState(null);
-  // const onSubmit = (data) => {
-  //   console.log("Form Submitted:");
-  //   console.log("Name:", data.name);
-  //   console.log("Email:", data.email);
-  //   console.log("Mobile:", data.mobile);
-  // };
+
 
   const onSubmit = async (data) => {
-    console.log("Form Data:", data);
-    console.log("Selected File:", selectedFile);
 
     if (!selectedFile) {
       alert("Please select a file.");
@@ -60,7 +52,6 @@ const CareerListing = ({ data }) => {
         }
       );
 
-      console.log("Form submitted successfully:", response.data);
 
       if (response.status === 200) {
         router.push("/thankyou");
@@ -89,6 +80,7 @@ const CareerListing = ({ data }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
 

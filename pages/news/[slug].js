@@ -57,7 +57,6 @@ export async function getServerSideProps(params) {
     encodeValuesOnly: true,
   });
   const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}${api}?${queryString}`;
-  console.log(endpoint, "news sep end point");
   const response = await axios.get(endpoint);
   const data = response.data;
   return {

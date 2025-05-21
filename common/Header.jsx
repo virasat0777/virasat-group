@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import SideBar from "./Sidebar";
 
 const Header = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [showProjectDropdown, setShowProjectDropdown] = useState(false);
   const router = useRouter();
@@ -23,7 +22,6 @@ const Header = () => {
       document.body.style.overflowY = "";
     }
 
-    // Cleanup function to restore scroll when the component unmounts
     return () => {
       document.documentElement.style.overflowY = "";
       document.body.style.overflowY = "";
@@ -283,6 +281,7 @@ const Header = () => {
             onClick={() => {
               router.push("/", undefined, { scroll: true });
             }}
+            priority
             alt="Logo"
           />
           <div className="flex gap-10">

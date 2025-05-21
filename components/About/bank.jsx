@@ -30,6 +30,7 @@ const Bank = ({ data }) => {
           height={1000}
           width={1000}
           className="w-full h-full object-cover"
+          alt="background pattern"
         />
       </div>
       {data?.title && (

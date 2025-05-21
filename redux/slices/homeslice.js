@@ -28,7 +28,6 @@ export const fetchHomeData = createAsyncThunk(
       encodeValuesOnly: true,
     });
     const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/home?${queryString}`;
-    console.log(endpoint, "endpoint");
     const response = await axios.get(endpoint);
     const data = response.data.data;
     return data;

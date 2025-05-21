@@ -79,6 +79,7 @@ const PopUp = ({ imageSrc, onClose, source }) => {
               height={1000}
               width={1000}
               className="object-contain rounded-lg size-full"
+              
             />
           </div>
         </div>

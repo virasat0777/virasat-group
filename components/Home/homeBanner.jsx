@@ -145,7 +145,6 @@ const HomeBanner = ({ data, text }) => {
       "<" // run at the same time as previous, or adjust timing here
     );
   }, []);
-  console.log(data?.desktopBanner?.data?.attributes?.url, "banner data");
   return (
     <div className="bg-black w-screen h-screen relative flex justify-center items-end overflow-hidden">
       <div className="flex justify-center items-center lg:gap-[2vw] gap-4 h-full flex-col ">
@@ -204,6 +203,7 @@ const HomeBanner = ({ data, text }) => {
             height={1000}
             width={1000}
             className="w-full h-full object-cover"
+            alt="background pattern"
           />
         </div>
       </div>

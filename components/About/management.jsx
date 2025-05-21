@@ -95,6 +95,7 @@ const Management = ({ data }) => {
                               width={350}
                               height={366}
                               className="w-full h-full object-cover"
+                              alt="management image"
                             />
                           </div>
                         )}

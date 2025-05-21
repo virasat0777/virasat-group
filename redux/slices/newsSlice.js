@@ -19,7 +19,6 @@ export const fetchNewsList = createAsyncThunk(
       encodeValuesOnly: true,
     });
     const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/news?${queryString}`;
-    console.log(endpoint, "news end point");
     const response = await axios.get(endpoint);
     const data = response.data;
     return data;

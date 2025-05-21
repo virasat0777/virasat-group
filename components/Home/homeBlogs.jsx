@@ -87,7 +87,7 @@ const HomeBlogs = ({ data }) => {
                 //   disableOnInteraction: false,
                 // }}
               >
-                {data?.map((item, index) => (
+                {[...data, ...data]?.map((item, index) => (
                   <SwiperSlide key={index}>
                     <div className="lg:p-[1.25vw] w-fit p-2 border-[1px] border-black">
                       {item?.attributes?.thumbnailImage?.data?.attributes
@@ -101,6 +101,7 @@ const HomeBlogs = ({ data }) => {
                             width={350}
                             height={350}
                             className="w-full h-full object-cover"
+                            alt="blog image"
                           />
                         </div>
                       )}
@@ -117,7 +118,11 @@ const HomeBlogs = ({ data }) => {
                       <p
                         className="mt-2 font-bold text-black cursor-pointer lg:text-[1.042vw] lg:leading-[1.667vw] leading-[5.208vw]  hover:text-blue-600"
                         onClick={() =>
-                          router.push(`/blogs/${item?.attributes?.slug}`, undefined, { scroll: true })
+                          router.push(
+                            `/blogs/${item?.attributes?.slug}`,
+                            undefined,
+                            { scroll: true }
+                          )
                         }
                       >
                         Read more

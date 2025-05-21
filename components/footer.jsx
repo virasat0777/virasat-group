@@ -29,6 +29,7 @@ const Footer = () => {
             height={1000}
             width={1000}
             className="w-full h-full object-cover"
+            alt="Background Image"
           />
         </div>
         <div className="flex lg:flex-row flex-col lg:justify-between justify-start items-center">
@@ -115,7 +116,6 @@ const Footer = () => {
               >
                 <Image
                   className="w-[2.2rem] cursor-pointer h-[2.2rem]"
-                  text-black
                   src={"/icon/ytsvg.svg"}
                   height={100}
                   width={100}
