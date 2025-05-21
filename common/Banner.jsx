@@ -5,17 +5,17 @@ const Banner = ({ src, mobileSrc, title, isOther, full }) => {
   return (
     <div
       className={`relative w-full  ${
-        full ? "h-screen" : "h-[70vh]"
+        full ? "h-screen " : "h-[70vh]"
       } overflow-x-hidden`}
     >
-      <div className={`hidden md:block w-full `}>
+      <div className={`hidden md:block h-full w-full `}>
         <Image
           src={src}
           alt="banner"
           // fill
           height={1080}
           width={1920}
-          className="object-cover object-center"
+          className="object-cover object-center h-full"
           priority
         />
       </div>
