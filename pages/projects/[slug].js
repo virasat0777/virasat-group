@@ -98,8 +98,9 @@ export async function getServerSideProps(params) {
     encodeValuesOnly: true,
   });
   const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/projects?${queryString}`;
+  console.log("Endpoint1234:", endpoint);
   const response = await axios.get(endpoint);
-  const data = response.data?.data[0]?.attributes;
+  const data = response.data?.data[0][0]?.attributes;
 
   return {
     props: {
