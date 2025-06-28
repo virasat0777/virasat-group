@@ -15,10 +15,23 @@ import { fetchBlogsList } from "@/redux/slices/blogsSlice";
 import Seo from "@/components/Seo/Seo";
 import { useEffect } from "react";
 export default function Home({ homeData, newsData, projects, blogs }) {
+
+
+   console.log("Server LIVE homeData:", homeData);
+  console.log("Server LIVE testimonial:", homeData?.testimonial);
+
+  // optional: check if testimonialItems is accessible
+  console.log("Server testimonialItems:", homeData?.testimonial?.testimonialItems);
+
   useEffect(() => {
     if (window && window.location.hash) {
       const id = window.location.hash.replace("#", "");
       const el = document.getElementById(id);
+       console.log(" Client LIVE homeData:", homeData);
+  console.log("Client LIVE testimonial:", homeData?.testimonial);
+
+  // optional: check if testimonialItems is accessible
+  console.log(" Client testimonialItems:", homeData?.testimonial?.testimonialItems);
       if (el) {
         setTimeout(() => {
           el.scrollIntoView({ behavior: "smooth", block: "start" });
