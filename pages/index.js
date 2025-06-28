@@ -41,9 +41,9 @@ export default function Home({ homeData, newsData, projects, blogs }) {
         {homeData?.counter && <CounterSection counter={homeData?.counter} />}
         {projects.length > 0 && <HomeProjects projects={projects} />}
         {homeData?.awards && <HomeAwards award={homeData?.awards} />}
-        {homeData?.testimonial?.length > 0 && (
-          <HomeTestimonials testimonial={homeData?.testimonial} />
-        )}
+       {homeData?.testimonial?.testimonialItems?.length > 0 && (
+  <HomeTestimonials testimonial={homeData?.testimonial?.testimonialItems} />
+)}
         {newsData.length > 0 && <HomeNews newsData={newsData} />}
         {blogs.length > 0 && <HomeBlogs data={blogs} />}
       </div>
